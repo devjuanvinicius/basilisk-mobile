@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         // Criando entradas para o gráfico
         val entries = arrayListOf(
             PieEntry(gastos, "Gasto"),
-            PieEntry(renda - gastos, "Renda")
+            PieEntry(renda - gastos, "xaublas")
         )
 
         // Definindo as cores específicas
