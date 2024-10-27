@@ -7,5 +7,7 @@
     <color name="darkorange">#FFBF54</color>
     <color name="lightorange">#FFCB74</color>
     <color name="lightergrey">#9F9F9F</color>
-
+    <color name="darkred">#482c2c</color>
+    <color name="lightred">#f84c58</color>
+    <color name="lightergrey2">#504c4c</color>
 </resources>
