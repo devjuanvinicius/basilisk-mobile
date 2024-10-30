@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#111111</color>
-    <color name="white">#FFFFFF</color>
-    <color name="darkgrey">#1C1C1C</color>
-    <color name="lightgrey">#2F2F2F</color>
-    <color name="darkorange">#FFBF54</color>
-    <color name="lightorange">#FFCB74</color>
+    <color name="slate950">#111111</color>
+    <color name="slate800">#1C1C1C</color>
+    <color name="slate600">#2F2F2F</color>
+    <color name="golden900">#FFBF54</color>
+    <color name="golden800">#FFCB74</color>
+    <color name="white">#F6F6F6</color>
     <color name="lightergrey">#9F9F9F</color>
     <color name="darkred">#482c2c</color>
-    <color name="lightred">#f84c58</color>
+    <color name="red">#EF4444</color>
+    <color name="red200">#33EF4444</color>
     <color name="lightergrey2">#504c4c</color>
 </resources>
