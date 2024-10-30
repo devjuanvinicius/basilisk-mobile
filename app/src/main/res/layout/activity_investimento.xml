@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/slate950"
     android:contentDescription="botao"
     tools:context=".MainActivity">
 
@@ -11,13 +11,13 @@
   <ScrollView
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="@color/background">
+      android:background="@color/slate950">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background"
+        android:background="@color/slate950"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
             android:id="@+id/noti"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:backgroundTint="@color/background"
+            android:backgroundTint="@color/slate950"
             android:contentDescription="notifications"
             android:drawableTop="@drawable/notification"
             android:text="@string/noti"
@@ -63,7 +63,7 @@
             android:id="@+id/set"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:backgroundTint="@color/background"
+            android:backgroundTint="@color/slate950"
             android:contentDescription="settings"
             android:drawableTop="@drawable/settings"
             android:text="@string/set"
@@ -90,7 +90,7 @@
         <Button
             android:id="@+id/novoinvestimento"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="156dp"
             android:background="#002F2F2F"
@@ -194,15 +194,15 @@
               android:layout_marginStart="119dp"
               android:layout_marginTop="17dp"
               android:layout_marginEnd="119dp"
-              android:background="@drawable/red_background"
+              android:background="@color/red200"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
             <ImageView
                 android:id="@+id/flechaVermelha"
-                android:layout_height="11dp"
                 android:layout_width="9pt"
+                android:layout_height="11dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -219,7 +219,7 @@
                 android:layout_marginBottom="4dp"
                 android:fontFamily="@font/inter_medium"
                 android:text="-R$ 25,00 (0.9%)"
-                android:textColor="@color/lightred"
+                android:textColor="@color/red"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -288,7 +288,7 @@
               android:layout_marginBottom="16dp"
               android:fontFamily="@font/inter_medium"
               android:text="+0,81%"
-              android:textColor="@color/lightorange"
+              android:textColor="@color/red"
               android:textSize="12sp"
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintStart_toStartOf="parent" />
@@ -297,6 +297,7 @@
               android:id="@+id/ultimos7Dias"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+              android:layout_marginStart="8dp"
               android:layout_marginEnd="21dp"
               android:layout_marginBottom="16dp"
               android:fontFamily="@font/inter_medium"
@@ -304,18 +305,8 @@
               android:textColor="@color/white"
               android:textSize="12sp"
               app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintEnd_toEndOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="168dp"
-            android:layout_height="33dp"
-            android:layout_marginBottom="160dp"
-            android:background="@drawable/radiuscar3"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toEndOf="@+id/positivoAmarelo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -362,7 +353,7 @@
               android:layout_marginBottom="16dp"
               android:fontFamily="@font/inter_medium"
               android:text="-1,43%"
-              android:textColor="@color/lightred"
+              android:textColor="@color/red"
               android:textSize="12sp"
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintStart_toStartOf="parent" />
@@ -371,6 +362,7 @@
               android:id="@+id/ultimos7Dias2"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+              android:layout_marginStart="8dp"
               android:layout_marginEnd="21dp"
               android:layout_marginBottom="16dp"
               android:fontFamily="@font/inter_medium"
@@ -378,7 +370,8 @@
               android:textColor="@color/white"
               android:textSize="12sp"
               app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintEnd_toEndOf="parent" />
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toEndOf="@+id/negativoVermelho" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -446,9 +439,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="228dp"
+            android:alpha="0.6"
             android:fontFamily="@font/inter_medium"
             android:text="S1PO34"
-            android:textColor="@color/lightergrey"
+            android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/spotimg"
@@ -470,9 +464,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
+            android:alpha="0.6"
             android:fontFamily="@font/inter_medium"
             android:text="-R$ 21,90"
-            android:textColor="@color/lightergrey"
+            android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -524,9 +519,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="228dp"
+            android:alpha="0.6"
             android:fontFamily="@font/inter_medium"
             android:text="A1LO68"
-            android:textColor="@color/lightergrey"
+            android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/spotimg2"
@@ -548,9 +544,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
+            android:alpha="0.6"
             android:fontFamily="@font/inter_medium"
             android:text="-R$ 21,90"
-            android:textColor="@color/lightergrey"
+            android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -596,7 +593,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/homeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/homeicon"
@@ -650,7 +647,6 @@
 
 
   </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

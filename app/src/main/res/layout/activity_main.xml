@@ -1,9 +1,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alpha"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/slate950"
     android:contentDescription="botao"
     tools:context=".MainActivity">
 
@@ -11,13 +12,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background">
+        android:background="@color/slate950">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/background"
+            android:background="@color/slate950"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +51,7 @@
                     android:id="@+id/noti"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:backgroundTint="@color/background"
+                    android:backgroundTint="@color/slate950"
                     android:contentDescription="notifications"
                     android:drawableTop="@drawable/notification"
                     android:text="@string/noti"
@@ -63,7 +64,7 @@
                     android:id="@+id/set"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:backgroundTint="@color/background"
+                    android:backgroundTint="@color/slate950"
                     android:contentDescription="settings"
                     android:drawableTop="@drawable/settings"
                     android:text="@string/set"
@@ -314,7 +315,7 @@
                             android:fontFamily="@font/inter_semibold"
                             android:padding="5dp"
                             android:text="Próximo pagamento"
-                            android:textColor="@color/background"
+                            android:textColor="@color/slate950"
                             android:textSize="12sp" />
 
                         <TextView
@@ -325,7 +326,7 @@
                             android:fontFamily="@font/inter_bold"
                             android:padding="5dp"
                             android:text="R$ 16,00"
-                            android:textColor="@color/background"
+                            android:textColor="@color/slate950"
                             android:textSize="18sp" />
 
                         <TextView
@@ -334,7 +335,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/inter_semibold"
                             android:text="Apple TV+"
-                            android:textColor="@color/background"
+                            android:textColor="@color/slate950"
                             android:textSize="12sp"
                             android:translationX="5dp"
                             android:translationY="60dp" />
@@ -426,9 +427,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="201dp"
+                    android:alpha="0.6"
                     android:fontFamily="@font/inter_medium"
                     android:text="6 de agosto"
-                    android:textColor="@color/lightergrey"
+                    android:textColor="@color/white"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/spottext" />
@@ -449,9 +451,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="27dp"
                     android:layout_marginEnd="31dp"
+                    android:alpha="0.6"
                     android:fontFamily="@font/inter_medium"
                     android:text="-R$ 21,90"
-                    android:textColor="@color/lightergrey"
+                    android:textColor="@color/white"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -476,9 +479,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="200dp"
+                    android:alpha="0.6"
                     android:fontFamily="@font/inter_medium"
                     android:text="6 de agosto"
-                    android:textColor="@color/lightergrey"
+                    android:textColor="@color/white"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -512,9 +516,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="27dp"
                     android:layout_marginEnd="31dp"
+                    android:alpha="0.6"
                     android:fontFamily="@font/inter_medium"
                     android:text="-R$ 21,90"
-                    android:textColor="@color/lightergrey"
+                    android:textColor="@color/white"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -551,7 +556,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/homeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/homeicon"
@@ -605,7 +610,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
