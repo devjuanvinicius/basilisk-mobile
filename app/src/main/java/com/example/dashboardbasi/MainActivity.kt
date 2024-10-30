@@ -1,11 +1,13 @@
 package com.example.dashboardbasi
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageButton
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -20,6 +22,7 @@ import com.github.mikephil.charting.data.PieEntry
 class MainActivity : AppCompatActivity() {
 
     lateinit var pieChart: PieChart
+    lateinit var buttonInvestimento: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,11 +100,19 @@ class MainActivity : AppCompatActivity() {
         pieChart.legend.typeface = typeface
         val boldTypeface = Typeface.create(typeface, Typeface.BOLD) // Define a fonte como bold
 
-// Aplicar a fonte bold à legenda e ao texto central
+        // Aplicar a fonte bold à legenda e ao texto central
         pieChart.legend.typeface = boldTypeface
         pieChart.setCenterTextTypeface(boldTypeface)
 
+        //Botao de navegação
+        buttonInvestimento = findViewById(R.id.investbutton)
+        buttonInvestimento.setOnClickListener{
+            val intent = Intent(
+                this,
+                InvestimentoActivity::class.java
+            )
 
-
+            startActivity(intent)
+        }
     }
 }
