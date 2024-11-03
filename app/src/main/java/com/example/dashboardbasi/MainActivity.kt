@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.ImageButton
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -22,7 +21,7 @@ import com.github.mikephil.charting.data.PieEntry
 class MainActivity : AppCompatActivity() {
 
     lateinit var pieChart: PieChart
-    lateinit var buttonInvestimento: ImageButton
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +39,20 @@ class MainActivity : AppCompatActivity() {
         // Configurando o Spinner
         val spinner: Spinner = findViewById(R.id.spinnermes)
         val meses = resources.getStringArray(R.array.meses)
-        val mesesabv = arrayOf("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez")
+        val mesesabv = arrayOf(
+            "Jan",
+            "Fev",
+            "Mar",
+            "Abr",
+            "Mai",
+            "Jun",
+            "Jul",
+            "Ago",
+            "Set",
+            "Out",
+            "Nov",
+            "Dez"
+        )
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, meses)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -48,7 +60,12 @@ class MainActivity : AppCompatActivity() {
 
         val selectedMonthTextView: TextView = findViewById(R.id.selectedMonth)
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 selectedMonthTextView.text = mesesabv[position]
             }
 
@@ -96,7 +113,10 @@ class MainActivity : AppCompatActivity() {
         legend.textColor = Color.WHITE
         legend.textSize = 12f
         legend.typeface = customFont // Aplicando fonte customizada na legenda
-        val typeface = Typeface.createFromAsset(assets, "fonts/custom_font.ttf") // Certifique-se de que o caminho está correto
+        val typeface = Typeface.createFromAsset(
+            assets,
+            "fonts/custom_font.ttf"
+        ) // Certifique-se de que o caminho está correto
         pieChart.legend.typeface = typeface
         val boldTypeface = Typeface.create(typeface, Typeface.BOLD) // Define a fonte como bold
 
@@ -104,15 +124,19 @@ class MainActivity : AppCompatActivity() {
         pieChart.legend.typeface = boldTypeface
         pieChart.setCenterTextTypeface(boldTypeface)
 
-        //Botao de navegação
-        buttonInvestimento = findViewById(R.id.investbutton)
-        buttonInvestimento.setOnClickListener{
-            val intent = Intent(
-                this,
-                InvestimentoActivity::class.java
-            )
-
-            startActivity(intent)
-        }
     }
+
+
+    fun irParaInvestimento(view: View) {
+        val intent = Intent(view.context, InvestimentoActivity::class.java)
+        view.context.startActivity(intent)
+    }
+
+    fun irParaCoffin(view: View) {
+        val intent = Intent(view.context, CofrinhoActivity::class.java)
+        view.context.startActivity(intent)
+    }
+
 }
+
+

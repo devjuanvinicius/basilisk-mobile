@@ -2,6 +2,7 @@ package com.example.dashboardbasi
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageButton
 import android.widget.SearchView
 import androidx.activity.enableEdgeToEdge
@@ -23,12 +24,16 @@ class InvestimentoActivity : AppCompatActivity() {
       insets
     }
 
-    homeButton = findViewById(R.id.homeButton)
-    homeButton.setOnClickListener{
-      val intent = Intent(this, MainActivity::class.java)
 
-      startActivity(intent)
-    }
   }
   private lateinit var searchView: SearchView
+
+  fun irParaDash(view: View) {
+    val intent = Intent(view.context, MainActivity::class.java)
+    view.context.startActivity(intent)
+  }
+  fun irParaCoffin(view: View){
+    val intent = Intent(view.context, CofrinhoActivity::class.java)
+    view.context.startActivity(intent)
+  }
 }
