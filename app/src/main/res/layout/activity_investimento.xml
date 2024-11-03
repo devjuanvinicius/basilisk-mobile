@@ -414,7 +414,7 @@
           android:layout_marginEnd="32dp"
           android:background="@drawable/radiuscar2"
           app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.416"
+          app:layout_constraintHorizontal_bias="1.0"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent">
 
@@ -590,7 +590,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <ImageButton
         android:id="@+id/homeButton"
@@ -603,7 +604,9 @@
         app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home" />
+        app:srcCompat="@drawable/home"
+        android:onClick="irParaDash"
+        />
 
     <ImageButton
         android:id="@+id/investbutton"
@@ -630,7 +633,9 @@
         app:layout_constraintHorizontal_bias="0.72"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cofrinhoicon" />
+        app:srcCompat="@drawable/cofrinhoicon"
+        android:onClick="irParaCoffin"
+        />
 
     <ImageButton
         android:id="@+id/calendarbutton"

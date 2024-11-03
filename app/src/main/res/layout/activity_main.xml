@@ -433,7 +433,7 @@
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/spottext" />
+                    tools:layout_editor_absoluteY="37dp" />
 
                 <ImageView
                     android:id="@+id/spotimg"
@@ -471,8 +471,10 @@
                 android:background="@drawable/radiuscar2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
 
                 <TextView
                     android:id="@+id/textView7"
@@ -579,7 +581,9 @@
             app:layout_constraintHorizontal_bias="0.25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/investicon" />
+            app:srcCompat="@drawable/investicon"
+            android:onClick="irParaInvestimento"
+            />
 
 
         <ImageButton
@@ -593,7 +597,9 @@
             app:layout_constraintHorizontal_bias="0.72"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/cofrinhoicon" />
+            app:srcCompat="@drawable/cofrinhoicon"
+            android:onClick="irParaCoffin"
+            />
 
         <ImageButton
             android:id="@+id/calendarbutton"
