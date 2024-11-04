@@ -45,7 +45,8 @@
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@id/headline"
                     app:layout_constraintStart_toStartOf="@id/headline"
-                    app:layout_constraintTop_toTopOf="@id/headline" />
+                    app:layout_constraintTop_toTopOf="@id/headline"
+                    app:layout_constraintVertical_bias="0.523" />
 
                 <Button
                     android:id="@+id/noti"

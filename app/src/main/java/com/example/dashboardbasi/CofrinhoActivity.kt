@@ -87,4 +87,10 @@ class CofrinhoActivity : AppCompatActivity() {
         intent = Intent(view.context, InvestimentoActivity::class.java)
         view.context.startActivity(intent)
     }
+
+    fun irparaAddMeta(view: View) {
+        intent = Intent(view.context, FragmentaAddMeta::class.java)
+        view.context.startActivity(intent)
+    }
 }
+
