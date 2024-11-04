@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FragmentEditMeta"
+    android:background="@color/slate800">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ExtraText">
+
+
+        <TextView
+            android:id="@+id/textNomeMeta"
+            android:layout_width="216dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:text="Adicione Meta"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.097"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/Titulo_meta"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.432"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.236"
+            android:layout_width="375dp"
+            android:layout_height="49dp"
+            android:background="@drawable/backgrainput"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="140dp" />
+
+        <EditText
+            android:id="@+id/valor_total"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.376"
+            android:layout_width="375dp"
+            android:layout_height="49dp"
+            android:background="@drawable/backgrainput"
+            android:ems="10"
+            android:hint="valor da meta"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="18dp"
+            tools:layout_editor_absoluteY="275dp" />
+
+        <EditText
+            android:id="@+id/data_de_inicio"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.514"
+            android:layout_width="375dp"
+            android:layout_height="49dp"
+            android:background="@drawable/backgrainput"
+            android:ems="10"
+            android:hint="09/10"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:textSize="15dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="18dp"
+            tools:layout_editor_absoluteY="341dp" />
+
+        <EditText
+            android:id="@+id/edit_data_de_finalizacao"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.444"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.652"
+            android:layout_width="375dp"
+            android:layout_height="49dp"
+            android:background="@drawable/backgrainput"
+            android:ems="10"
+            android:hint="09/11"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="443dp" />
+
+        <TextView
+            android:id="@+id/Titulo_metaTexto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Titulo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.073"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.199"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:fontFamily="@font/roboto_slab_bold"
+
+            />
+
+        <TextView
+            android:id="@+id/Valor_totalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Valor Total"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.073"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.334"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:textSize="15dp"
+            />
+
+        <TextView
+            android:id="@+id/dataInicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data de inicio"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.073"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.466"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_slab_bold"
+            />
+
+        <TextView
+            android:id="@+id/datadefinalizacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data de finalizacao"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.073"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.598"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:textSize="15dp"
+            />
+
+
+
+        <Button
+            android:id="@+id/button_excluir"
+            android:layout_width="169dp"
+            android:layout_height="38dp"
+            android:background="@drawable/radiuscar4"
+            android:text="Excluir"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.872"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_data_de_finalizacao"
+            app:layout_constraintVertical_bias="0.309"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/button_editar"
+            android:layout_width="169dp"
+            android:layout_height="38dp"
+            android:background="@drawable/radiuscar3"
+            android:text="Editar"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.111"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_data_de_finalizacao"
+            app:layout_constraintVertical_bias="0.311"
+            tools:ignore="MissingConstraints" /> <!-- Adiciona espaço à esquerda do texto -->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+
+</FrameLayout>
