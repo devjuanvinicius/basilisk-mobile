@@ -136,6 +136,11 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(view.context, CofrinhoActivity::class.java)
         view.context.startActivity(intent)
     }
+    fun irParaAddRenda(view: View) {
+        val intent = Intent(view.context, novaRendaActivity::class.java)
+        view.context.startActivity(intent)
+    }
+
 
 }
 

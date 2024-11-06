@@ -5,6 +5,7 @@
     <string name="dash">Dashboard</string>
     <string name="Saldo">Saldo</string>
     <string name="inves">Investimento</string>
+    <string name="novarenda">Adicione uma renda</string>
     <string-array name="meses">
         <item>Janeiro</item>
         <item>Fevereiro</item>

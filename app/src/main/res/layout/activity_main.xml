@@ -102,7 +102,8 @@
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:onClick="irParaAddRenda"/>
 
                 <Button
                     android:id="@+id/editarsaldo"
@@ -415,18 +416,21 @@
                     android:id="@+id/spottext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="155dp"
                     android:fontFamily="@font/inter_bold"
                     android:text="Spotify Premium"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/spotimg"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/spotday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
                     android:layout_marginEnd="201dp"
                     android:alpha="0.6"
                     android:fontFamily="@font/inter_medium"
@@ -434,7 +438,7 @@
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:layout_editor_absoluteY="37dp" />
+                    app:layout_constraintTop_toBottomOf="@+id/spottext" />
 
                 <ImageView
                     android:id="@+id/spotimg"
@@ -465,14 +469,12 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="345dp"
                 android:layout_height="70dp"
-                android:layout_marginStart="32dp"
                 android:layout_marginTop="730dp"
-                android:layout_marginEnd="34dp"
                 android:layout_marginBottom="90dp"
                 android:background="@drawable/radiuscar2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0">

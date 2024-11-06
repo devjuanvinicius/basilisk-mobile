@@ -13,14 +13,11 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="348dp"
         android:layout_height="232dp"
-        android:layout_marginStart="31dp"
         android:layout_marginTop="-10dp"
-        android:layout_marginEnd="31dp"
         android:layout_marginBottom="444dp"
         android:background="@drawable/radiuscar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
 
@@ -28,16 +25,11 @@
             android:id="@+id/NovaEconomia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:fontFamily="@font/inter_medium"
             android:text="+ Nova econimia"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.067"
-            app:layout_constraintStart_toStartOf="parent"
 
-            />
+            tools:layout_editor_absoluteY="196dp" />
 
         <ImageView
             android:id="@+id/EditarEconomiaSeting"
@@ -51,24 +43,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/baseline_settings_24"/>
+            app:srcCompat="@drawable/baseline_settings_24" />
 
         <TextView
             android:id="@+id/EditarEconomia"
             android:layout_width="115dp"
             android:layout_height="18dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="28dp"
-            android:layout_marginBottom="15dp"
             android:fontFamily="@font/inter_medium"
             android:text="Editar economia"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.994"
-            app:layout_constraintStart_toStartOf="@+id/NovaEconomia"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-            app:layout_constraintVertical_bias="0.0" />
+            tools:layout_editor_absoluteX="205dp"
+            tools:layout_editor_absoluteY="199dp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -147,7 +132,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -221,11 +205,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="61dp"
+                android:layout_marginBottom="77dp"
                 android:fontFamily="@font/inter_medium"
                 android:text="Guardar valor"
                 android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -240,24 +226,30 @@
                 android:text="Julho"
                 android:textColor="#000"
                 android:textSize="23dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textGuardarValor" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
 
             <TextView
                 android:id="@+id/textValorGuardado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="71dp"
                 android:layout_marginEnd="43dp"
+                android:layout_marginBottom="6dp"
                 android:fontFamily="@font/inter_medium"
                 android:text="Valor: R$200,00"
                 android:textColor="#000"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -372,120 +364,89 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="355dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginBottom="26dp"
+        android:id="@+id/navbar"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/navbar_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="87dp"
-            android:layout_height="64dp"
-            android:layout_marginStart="149dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="150dp"
-            android:layout_marginBottom="4dp"
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:background="@drawable/icon"
+            android:contentDescription="botao"
+            android:scaleType="centerCrop"
+            android:src="@drawable/rectangle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/homeicon"
+            android:contentDescription="home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/rectangle" />
+            app:srcCompat="@drawable/home" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="121dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/Home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView4"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/home"
-                android:onClick="irParaDash"
-                />
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/Home"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/investicon"
-                android:onClick="irParaInvestimento"
-                />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="121dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="15dp"
+        <ImageButton
+            android:id="@+id/investbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/homeicon"
+            android:contentDescription="investiemntos"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/investicon"
+            android:onClick="irParaInvestimento"
+            />
 
-            <ImageView
-                android:id="@+id/Cofrinho"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="31dp"
-                android:layout_marginBottom="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/Calendar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/cofrinhoicon" />
 
-            <ImageView
-                android:id="@+id/Calendar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="26dp"
-                android:layout_marginBottom="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/Cofrinho"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.454"
-                app:srcCompat="@drawable/calendarioicon" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/cofrinhobutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/homeicon"
+            android:contentDescription="cofrinho"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.72"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/cofrinhoicon"
+            android:onClick="irParaCoffin"
+            />
+
+        <ImageButton
+            android:id="@+id/calendarbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/homeicon"
+            android:contentDescription="calendario"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/calendarioicon" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout5"
