@@ -409,12 +409,10 @@
       <androidx.constraintlayout.widget.ConstraintLayout
           android:layout_width="345dp"
           android:layout_height="70dp"
-          android:layout_marginStart="32dp"
           android:layout_marginTop="628dp"
-          android:layout_marginEnd="32dp"
           android:background="@drawable/radiuscar2"
           app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="1.0"
+          app:layout_constraintHorizontal_bias="0.5"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent">
 
