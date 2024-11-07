@@ -115,6 +115,7 @@
         android:background="@drawable/radiuscar3"
         android:text="Entrar"
         android:textAllCaps="false"
+        android:textColor="@color/slate800"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
