@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_browse_fragment"
+    android:id="@+id/mainBackgroundCadastro"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/slate950"
@@ -11,26 +11,24 @@
     tools:ignore="MergeRootFrame">
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/registerLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="@font/roboto_slab_bold"
         android:text="Faça seu Cadastro!"
         android:textColor="#F2F2F2"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="0dp"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="30dp"
@@ -41,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/registerLink" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Nomecad"
@@ -259,14 +257,16 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/radiuscar"
+        android:contentDescription="Cadastro via Google"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.603"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttoncadastro"
-        app:srcCompat="@drawable/google" />
+        app:srcCompat="@drawable/google"
+        tools:srcCompat="@drawable/google" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/loginLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -277,17 +277,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/googleBtn" />
 
-    <TextView
-        android:id="@+id/mainBackgroundCadastro"
+    <ImageView
+        android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_slab_bold"
-        android:text="BS"
-        android:textColor="#FFCB74"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/logo_reduzida"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toBottomOf="@+id/loginLink" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

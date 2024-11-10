@@ -2,7 +2,6 @@ package com.example.dashboardbasi
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned
@@ -16,7 +15,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class EntryActivity : AppCompatActivity() {
-    lateinit var entryButton: Button
+    lateinit var logginButton: Button
+    lateinit var registerButton: Button
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,10 +43,16 @@ class EntryActivity : AppCompatActivity() {
 
         textView.text = spannable
 
-        entryButton = findViewById(R.id.entrarBtn)
-        entryButton.setOnClickListener{
+        logginButton = findViewById(R.id.loginBtn)
+        logginButton.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
 
+            startActivity(intent)
+        }
+
+        registerButton = findViewById(R.id.registerBtn)
+        registerButton.setOnClickListener{
+            val intent = Intent(this, CadastroActivity::class.java)
             startActivity(intent)
         }
     }
