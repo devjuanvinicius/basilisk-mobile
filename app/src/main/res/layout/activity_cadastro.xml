@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_browse_fragment"
@@ -13,63 +12,61 @@
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="245dp"
-        android:layout_height="49dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
         android:fontFamily="@font/roboto_slab_bold"
         android:text="Faça seu Cadastro!"
         android:textColor="#F2F2F2"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.048" />
 
+
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="332dp"
+        android:layout_width="0dp"
         android:layout_height="46dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="30dp"
         android:fontFamily="@font/inter_medium"
         android:text="Faça o cadastro e descubra melhor forma de se organizar financeiramente."
+        android:textAlignment="center"
         android:textColor="#F2F2F2"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.034" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Nomecad"
-        android:layout_width="375dp"
-        android:layout_height="95dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.265">
+        app:layout_constraintTop_toBottomOf="@+id/textView14">
 
         <TextView
             android:id="@+id/textNomeCompleto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:fontFamily="@font/inter_medium"
             android:text="Nome completo"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            tools:layout_editor_absoluteY="-4dp" />
 
         <EditText
             android:id="@+id/NomeCompleto"
             android:layout_width="353dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="36dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/textinput"
             android:ems="10"
             android:inputType="text"
@@ -79,40 +76,35 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.355"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textNomeCompleto" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/telefonetext"
-        android:layout_width="198dp"
-        android:layout_height="87dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.388">
+        app:layout_constraintTop_toBottomOf="@+id/Nomecad">
 
         <TextView
             android:id="@+id/numberphone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:fontFamily="@font/inter_medium"
             android:text="Telefone"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            tools:layout_editor_absoluteY="-1dp" />
 
         <EditText
             android:id="@+id/inputphone"
             android:layout_width="170dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="40dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/textinput"
             android:ems="9"
             android:inputType="number"
@@ -122,81 +114,34 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.139"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/email"
-        android:layout_width="392dp"
-        android:layout_height="90dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499">
-
-        <TextView
-            android:id="@+id/textemaild"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/inter_medium"
-            android:text="Email"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/emailcadd"
-            android:layout_width="368dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="44dp"
-            android:background="@drawable/textinput"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            android:padding="2dp"
-            android:paddingStart="10dp"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.333"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/numberphone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintnascimento"
-        android:layout_width="186dp"
-        android:layout_height="87dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/telefonetext"
-        app:layout_constraintHorizontal_bias="0.071"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.355">
+        app:layout_constraintTop_toBottomOf="@+id/Nomecad">
 
         <TextView
             android:id="@+id/nascimento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:fontFamily="@font/inter_medium"
             android:text="Nascimento"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/nascimentotxt"
             android:layout_width="170dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="40dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/textinput"
             android:ems="9"
             android:inputType="date"
@@ -206,21 +151,61 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.139"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/nascimento" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/Constsenha"
-        android:layout_width="384dp"
-        android:layout_height="79dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.641">
+        app:layout_constraintTop_toBottomOf="@+id/constraintnascimento">
+
+        <TextView
+            android:id="@+id/textemaild"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
+            android:text="Email"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/emailcadd"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textinput"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:padding="2dp"
+            android:paddingStart="10dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textemaild" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Constsenha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email">
 
         <TextView
             android:id="@+id/senhaview"
@@ -230,14 +215,12 @@
             android:fontFamily="@font/inter_medium"
             android:text="Senha"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.026"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/inputsenha"
-            android:layout_width="359dp"
+            android:layout_width="0dp"
             android:layout_height="33dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/textinput"
@@ -257,48 +240,47 @@
         android:id="@+id/buttoncadastro"
         android:layout_width="351dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="172dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/radiuscar3"
         android:text="Cadastrar"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="#011111"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Constsenha" />
 
-    <Button
-        android:id="@+id/buttongoogle"
-        android:layout_width="351dp"
+    <ImageButton
+        android:id="@+id/googleBtn"
+        android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="124dp"
-        android:background="@drawable/radiuscar3"
-        android:text="Entre com o google"
-        android:textAllCaps="false"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textColor="#011111"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/radiuscar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.603"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttoncadastro"
+        app:srcCompat="@drawable/google" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/roboto_slab_bold"
         android:text="Já possui uma conta? faça o login"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/googleBtn" />
 
     <TextView
-        android:id="@+id/BS"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
+        android:id="@+id/mainBackgroundCadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_slab_bold"
         android:text="BS"
         android:textColor="#FFCB74"
