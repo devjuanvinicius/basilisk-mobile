@@ -22,47 +22,55 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout6"
+            android:layout_width="98dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+            <ImageView
+                android:id="@+id/EditarEconomiaSeting"
+                android:layout_width="12dp"
+                android:layout_height="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/EditarEconomia"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/baseline_settings_24" />
+
+            <TextView
+                android:id="@+id/EditarEconomia"
+                android:layout_width="wrap_content"
+                android:layout_height="21dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="Editar meta"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/EditarEconomiaSeting"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <TextView
             android:id="@+id/NovaEconomia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="46dp"
-
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="13dp"
             android:fontFamily="@font/inter_medium"
-            android:text="+ Nova economia"
+            android:text="+ Nova meta"
+            android:onClick="irparaAddMeta"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/EditarEconomiaSeting"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-            app:layout_constraintVertical_bias="0.5" />
-
-        <ImageView
-            android:id="@+id/EditarEconomiaSeting"
-            android:layout_width="12dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="148dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-            app:layout_constraintVertical_bias="0.5"
-            app:srcCompat="@drawable/baseline_settings_24" />
-
-        <TextView
-            android:id="@+id/EditarEconomia"
-            android:layout_width="wrap_content"
-            android:layout_height="18dp"
-            android:layout_marginEnd="28dp"
-            android:fontFamily="@font/inter_medium"
-            android:text="Editar economia"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/EditarEconomiaSeting"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
