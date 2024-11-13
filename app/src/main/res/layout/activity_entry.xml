@@ -54,42 +54,34 @@
 
     <Button
         android:id="@+id/loginBtn"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="30dp"
-        android:background="@color/golden900"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="180dp"
+        android:background="@drawable/radiuscar3"
         android:fontFamily="@font/inter_medium"
-        android:radius="8dp"
         android:text="Entrar com e-mail e senha"
-        android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="@color/slate800"
-        android:textSize="15sp"
+        android:textSize="16sp"
+        android:textColor="@color/slate950"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/registerBtn"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
-        android:background="@color/slate600"
-        android:fontFamily="@font/inter_medium"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="110dp"
+        android:background="@drawable/radiuscar"
         android:text="Não possuo uma conta"
-        android:textAlignment="center"
         android:textAllCaps="false"
+        android:textSize="16sp"
         android:textColor="@color/white"
-        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -99,6 +91,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerBtn"
-        app:srcCompat="@mipmap/ic_launcher_foreground" />
+        app:srcCompat="@mipmap/ic_launcher_foreground"
+        android:onClick="irParaDash"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

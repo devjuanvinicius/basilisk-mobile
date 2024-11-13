@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -55,5 +56,10 @@ class EntryActivity : AppCompatActivity() {
             val intent = Intent(this, CadastroActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    fun irParaDash(view: View) {
+        val intent = Intent(view.context, MainActivity::class.java)
+        view.context.startActivity(intent)
     }
 }
