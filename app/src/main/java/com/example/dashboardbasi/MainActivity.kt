@@ -1,5 +1,6 @@
 package com.example.dashboardbasi
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
@@ -7,22 +8,27 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+
+
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var pieChart: PieChart
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -36,43 +42,7 @@ class MainActivity : AppCompatActivity() {
         // Carregar fonte personalizada da pasta assets/fonts
         val customFont = Typeface.createFromAsset(assets, "fonts/custom_font.ttf")
 
-        // Configurando o Spinner
-        val spinner: Spinner = findViewById(R.id.spinnermes)
-        val meses = resources.getStringArray(R.array.meses)
-        val mesesabv = arrayOf(
-            "Jan",
-            "Fev",
-            "Mar",
-            "Abr",
-            "Mai",
-            "Jun",
-            "Jul",
-            "Ago",
-            "Set",
-            "Out",
-            "Nov",
-            "Dez"
-        )
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, meses)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = adapter
-
-        val selectedMonthTextView: TextView = findViewById(R.id.selectedMonth)
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                selectedMonthTextView.text = mesesabv[position]
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-
-            }
-        }
 
         pieChart = findViewById(R.id.pieChart)
 
@@ -124,6 +94,28 @@ class MainActivity : AppCompatActivity() {
         pieChart.legend.typeface = boldTypeface
         pieChart.setCenterTextTypeface(boldTypeface)
 
+        val buttonRenda = findViewById<Button>(R.id.buttonRenda)
+        val buttonDespesa = findViewById<Button>(R.id.buttonDespesa)
+
+        if (savedInstanceState == null) {
+            replaceFragment(RendaFragment())
+        }
+
+        buttonRenda.setOnClickListener {
+            replaceFragment(DespesaFragment())
+        }
+
+        buttonDespesa.setOnClickListener {
+            replaceFragment(RendaFragment())
+        }
+
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment, fragment)
+        fragmentTransaction.commit()
     }
 
 
