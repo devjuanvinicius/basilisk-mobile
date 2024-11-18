@@ -61,7 +61,7 @@
             tools:layout_editor_absoluteY="-4dp" />
 
         <EditText
-            android:id="@+id/NomeCompleto"
+            android:id="@+id/NomeCompletoCad"
             android:layout_width="353dp"
             android:layout_height="35dp"
             android:layout_marginTop="10dp"
@@ -99,13 +99,13 @@
             tools:layout_editor_absoluteY="-1dp" />
 
         <EditText
-            android:id="@+id/inputphone"
+            android:id="@+id/TelefoneCad"
             android:layout_width="170dp"
             android:layout_height="35dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/textinput"
             android:ems="9"
-            android:inputType="number"
+            android:inputType="phone"
             android:padding="2dp"
             android:paddingStart="9dp"
             android:textColor="@color/white"
@@ -136,7 +136,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/nascimentotxt"
+            android:id="@+id/nascimentoCad"
             android:layout_width="170dp"
             android:layout_height="35dp"
             android:layout_marginTop="10dp"
@@ -176,7 +176,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/emailcadd"
+            android:id="@+id/emailCad"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_marginTop="10dp"
@@ -217,13 +217,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/inputsenha"
+            android:id="@+id/senhaCad"
             android:layout_width="0dp"
             android:layout_height="33dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/textinput"
             android:ems="9"
-            android:inputType="textPassword"
+            android:inputType="numberPassword"
             android:padding="2dp"
             android:paddingStart="9dp"
             android:textColor="@color/white"

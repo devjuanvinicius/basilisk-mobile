@@ -45,7 +45,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/inputEmail"
+            android:id="@+id/emailCad"
             android:layout_width="300dp"
             android:layout_height="37dp"
             android:layout_marginTop="10dp"
@@ -59,7 +59,8 @@
             android:textColorHint="#66F6F6F6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTituloEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/textTituloEmail"
+            tools:ignore="TextFields" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -83,13 +84,13 @@
             android:fontFamily="@font/inter_medium"
             android:text="Senha"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/inputSenha"
+            app:layout_constraintBottom_toTopOf="@id/textTituloSenha"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/inputSenha"
+            android:id="@+id/senhaCad"
             android:layout_width="300dp"
             android:layout_height="37dp"
             android:layout_marginTop="31dp"
@@ -111,7 +112,7 @@
         android:id="@+id/btnEntrar"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/radiuscar3"
         android:text="Entrar"
         android:textAllCaps="false"
