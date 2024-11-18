@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "286711260280",
+    "project_id": "basilisk-34969",
+    "storage_bucket": "basilisk-34969.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286711260280:android:38292d578296881cc4f98d",
+        "android_client_info": {
+          "package_name": "com.example.dashboardbasi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRb-tscYIHpBWlMkZB-qeUyCAEnlAb-qE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

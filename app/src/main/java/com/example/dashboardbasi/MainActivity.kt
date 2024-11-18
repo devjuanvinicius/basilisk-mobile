@@ -6,34 +6,30 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.Spinner
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.example.dashboardbasi.databinding.ActivityMainBinding
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
-
-
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var pieChart: PieChart
-
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var pieChart: PieChart
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -42,7 +38,11 @@ class MainActivity : AppCompatActivity() {
         // Carregar fonte personalizada da pasta assets/fonts
         val customFont = Typeface.createFromAsset(assets, "fonts/custom_font.ttf")
 
-
+        binding.buttonTesteDeLogof.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+            val voltarTelaLogin = Intent(this, CadastroActivity::class.java)
+            startActivity(voltarTelaLogin)
+        }
 
         pieChart = findViewById(R.id.pieChart)
 
