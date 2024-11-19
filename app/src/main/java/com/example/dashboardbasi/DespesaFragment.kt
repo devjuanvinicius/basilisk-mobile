@@ -10,7 +10,7 @@ class DespesaFragment : Fragment(R.layout.fragment_despesa) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Configurando botões para chamar as funções
+
         view.findViewById<View>(R.id.novaDespesa)?.setOnClickListener {
             irParaAddDespesa()
         }

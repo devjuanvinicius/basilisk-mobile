@@ -19,7 +19,7 @@ class EditarDespesa : AppCompatActivity() {
             insets
         }
     }
-
+//
     fun irParaDash(view: View) {
         intent = Intent(view.context, MainActivity::class.java)
         view.context.startActivity(intent)
