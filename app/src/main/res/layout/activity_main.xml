@@ -125,6 +125,54 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="120dp"
+                    android:background="@drawable/radiuscar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Spinner
+                        android:id="@+id/spinnermes"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="64dp"
+                        android:layout_marginTop="-4dp"
+                        android:backgroundTint="#FFFCFC"
+                        android:entries="@array/meses"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/selectedMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Jan"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="6dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.12"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.72"
+                        app:srcCompat="@drawable/calendario" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -432,7 +480,6 @@
         android:id="@+id/navbar"
         android:layout_width="350dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="50dp"
         android:background="@drawable/navbar_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -471,14 +518,13 @@
             android:layout_height="wrap_content"
             android:background="@drawable/homeicon"
             android:contentDescription="investiemntos"
+            android:onClick="irParaInvestimento"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/investicon"
-            android:onClick="irParaInvestimento"
-            />
+            app:srcCompat="@drawable/investicon" />
 
 
         <ImageButton
@@ -487,14 +533,13 @@
             android:layout_height="wrap_content"
             android:background="@drawable/homeicon"
             android:contentDescription="cofrinho"
+            android:onClick="irParaCoffin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.72"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/cofrinhoicon"
-            android:onClick="irParaCoffin"
-            />
+            app:srcCompat="@drawable/cofrinhoicon" />
 
         <ImageButton
             android:id="@+id/calendarbutton"
