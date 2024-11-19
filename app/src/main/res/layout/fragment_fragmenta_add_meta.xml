@@ -33,20 +33,7 @@
                 android:drawableTop="@drawable/notification"
                 android:text="@string/noti"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.848"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/set"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:backgroundTint="@color/slate950"
-                android:contentDescription="settings"
-                android:drawableTop="@drawable/settings"
-                android:text="@string/set"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.98"
+                app:layout_constraintHorizontal_bias="0.955"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -215,8 +202,12 @@
                 android:id="@+id/constraintDataFinal"
                 android:layout_width="348dp"
                 android:layout_height="81dp"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="337dp">
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintDataInicio">
 
                 <TextView
                     android:id="@+id/tituloDataFinal"

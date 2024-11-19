@@ -34,14 +34,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/editarsaldo"
+            android:id="@+id/editarRenda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="156dp"
             android:layout_marginEnd="40dp"
             android:background="#002F2F2F"
             android:fontFamily="@font/inter_medium"
-            android:text="Editar saldo"
+            android:text="Editar renda"
+            android:onClick="irParaEditRenda"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="12sp"
