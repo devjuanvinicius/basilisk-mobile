@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentEditMeta"
+    tools:context=".EditarDespesa"
     android:background="@color/slate950">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,7 +42,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@drawable/backicon"
-                android:onClick="irParaCoffin"
+                android:onClick="irParaDash"
                 android:padding="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="76dp"
             android:fontFamily="@font/roboto_slab_bold"
-            android:text="@string/novameta"
+            android:text="Editar despesa"
             android:textColor="@color/white"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -67,8 +68,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/EspacoInputNovaMeta"
-            android:layout_width="362dp"
-            android:layout_height="448dp"
+            android:layout_width="379dp"
+            android:layout_height="350dp"
             android:layout_marginTop="132dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.489"
@@ -158,51 +159,15 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintDataInicio"
-                android:layout_width="348dp"
-                android:layout_height="81dp"
-                android:layout_marginTop="236dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/tituloDataInicio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginEnd="261dp"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="Data de início*"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <EditText
-                    android:id="@+id/inputDataInicio"
-                    android:layout_width="320dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="31dp"
-                    android:background="@drawable/textinput"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:padding="2dp"
-                    android:paddingStart="10dp"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintDataFinal"
                 android:layout_width="348dp"
                 android:layout_height="81dp"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="337dp">
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintValorMeta">
 
                 <TextView
                     android:id="@+id/tituloDataFinal"
@@ -238,22 +203,63 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="320dp"
+        <TextView
+            android:id="@+id/textRendaFixa"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="84dp"
-            android:background="@drawable/radiuscar3"
-            android:text="Adicionar"
-            android:textAllCaps="false"
-            android:textSize="16sp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="470dp"
             android:fontFamily="@font/inter_medium"
+            android:text="Despesa fixa"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch1"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginTop="466dp"
+            android:layout_marginEnd="51dp"
+            android:thumb="@drawable/switch_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:track="@drawable/switch_track" />
+
+        <Button
+            android:id="@+id/button_excluir"
+            android:layout_width="150dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="164dp"
+            android:background="@drawable/radiuscar4"
+            android:text="Excluir"
+            android:textColor="#000"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" /> <!-- Adiciona espaço à esquerda do texto -->
+            app:layout_constraintStart_toEndOf="@+id/button_editar"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/button_editar"
+            android:layout_width="150dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="164dp"
+            android:background="@drawable/radiuscar3"
+            android:text="Editar"
+
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_excluir"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

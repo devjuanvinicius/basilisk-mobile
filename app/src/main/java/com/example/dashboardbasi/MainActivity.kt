@@ -6,7 +6,11 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -29,14 +33,33 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val customFont = Typeface.createFromAsset(assets, "fonts/custom_font.ttf")
+
+        // Configurando o Spinner
+        val spinner: Spinner = findViewById(R.id.spinnermes)
+        val meses = resources.getStringArray(R.array.meses)
+        val mesesabv = arrayOf("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez")
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, meses)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+
+        val selectedMonthTextView: TextView = findViewById(R.id.selectedMonth)
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                selectedMonthTextView.text = mesesabv[position]
+                selectedMonthTextView.typeface = customFont
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Carregar fonte personalizada da pasta assets/fonts
-        val customFont = Typeface.createFromAsset(assets, "fonts/custom_font.ttf")
 
         binding.buttonTesteDeLogof.setOnClickListener{
             FirebaseAuth.getInstance().signOut()
