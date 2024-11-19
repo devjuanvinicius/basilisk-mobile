@@ -19,7 +19,7 @@ class EditarRenda : AppCompatActivity() {
             insets
         }
     }
-
+//
     fun irParaDash(view: View) {
         val intent = Intent(view.context, MainActivity::class.java)
         view.context.startActivity(intent)

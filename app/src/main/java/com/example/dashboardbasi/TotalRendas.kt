@@ -24,3 +24,4 @@ class TotalRendas : AppCompatActivity() {
         view.context.startActivity(intent)
     }
 }
+//

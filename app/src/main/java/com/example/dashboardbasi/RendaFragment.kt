@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-
+//
 class RendaFragment : Fragment(R.layout.fragment_renda) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
