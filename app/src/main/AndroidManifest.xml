@@ -13,6 +13,18 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".TotalRendas"
+            android:exported="false" />
+        <activity
+            android:name=".EditarDespesa"
+            android:exported="false" />
+        <activity
+            android:name=".novaDespesa"
+            android:exported="false" />
+        <activity
+            android:name=".EditarRenda"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
