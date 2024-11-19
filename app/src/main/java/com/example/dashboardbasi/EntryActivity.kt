@@ -2,11 +2,11 @@ package com.example.dashboardbasi
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -16,7 +16,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class EntryActivity : AppCompatActivity() {
-    lateinit var entryButton: Button
+    lateinit var logginButton: Button
+    lateinit var registerButton: Button
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,11 +44,22 @@ class EntryActivity : AppCompatActivity() {
 
         textView.text = spannable
 
-        entryButton = findViewById(R.id.entrarBtn)
-        entryButton.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+        logginButton = findViewById(R.id.loginBtn)
+        logginButton.setOnClickListener{
+            val intent = Intent(this, LoginActivity::class.java)
 
             startActivity(intent)
         }
+
+        registerButton = findViewById(R.id.registerBtn)
+        registerButton.setOnClickListener{
+            val intent = Intent(this, CadastroActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    fun irParaDash(view: View) {
+        val intent = Intent(view.context, MainActivity::class.java)
+        view.context.startActivity(intent)
     }
 }

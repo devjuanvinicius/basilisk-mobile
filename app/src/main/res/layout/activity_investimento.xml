@@ -55,20 +55,7 @@
             android:drawableTop="@drawable/notification"
             android:text="@string/noti"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.848"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/set"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:backgroundTint="@color/slate950"
-            android:contentDescription="settings"
-            android:drawableTop="@drawable/settings"
-            android:text="@string/set"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintHorizontal_bias="0.955"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -413,12 +400,10 @@
       <androidx.constraintlayout.widget.ConstraintLayout
           android:layout_width="345dp"
           android:layout_height="70dp"
-          android:layout_marginStart="32dp"
           android:layout_marginTop="628dp"
-          android:layout_marginEnd="32dp"
           android:background="@drawable/radiuscar2"
           app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.416"
+          app:layout_constraintHorizontal_bias="0.5"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent">
 
@@ -594,7 +579,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <ImageButton
         android:id="@+id/homeButton"
@@ -607,7 +593,9 @@
         app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home" />
+        app:srcCompat="@drawable/home"
+        android:onClick="irParaDash"
+        />
 
     <ImageButton
         android:id="@+id/investbutton"
@@ -634,7 +622,9 @@
         app:layout_constraintHorizontal_bias="0.72"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cofrinhoicon" />
+        app:srcCompat="@drawable/cofrinhoicon"
+        android:onClick="irParaCoffin"
+        />
 
     <ImageButton
         android:id="@+id/calendarbutton"
@@ -656,3 +646,4 @@
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    <!-- Este é um comentário em XML -->

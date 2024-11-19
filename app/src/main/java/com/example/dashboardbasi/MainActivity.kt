@@ -1,5 +1,6 @@
 package com.example.dashboardbasi
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
@@ -7,34 +8,31 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.ImageButton
+import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import com.example.dashboardbasi.databinding.ActivityMainBinding
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var pieChart: PieChart
-    lateinit var buttonInvestimento: ImageButton
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var pieChart: PieChart
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // Carregar fonte personalizada da pasta assets/fonts
         val customFont = Typeface.createFromAsset(assets, "fonts/custom_font.ttf")
 
         // Configurando o Spinner
@@ -50,11 +48,23 @@ class MainActivity : AppCompatActivity() {
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 selectedMonthTextView.text = mesesabv[position]
+                selectedMonthTextView.typeface = customFont
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
 
-            }
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+
+        binding.buttonTesteDeLogof.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+            val voltarTelaLogin = Intent(this, CadastroActivity::class.java)
+            startActivity(voltarTelaLogin)
         }
 
         pieChart = findViewById(R.id.pieChart)
@@ -96,7 +106,10 @@ class MainActivity : AppCompatActivity() {
         legend.textColor = Color.WHITE
         legend.textSize = 12f
         legend.typeface = customFont // Aplicando fonte customizada na legenda
-        val typeface = Typeface.createFromAsset(assets, "fonts/custom_font.ttf") // Certifique-se de que o caminho está correto
+        val typeface = Typeface.createFromAsset(
+            assets,
+            "fonts/custom_font.ttf"
+        ) // Certifique-se de que o caminho está correto
         pieChart.legend.typeface = typeface
         val boldTypeface = Typeface.create(typeface, Typeface.BOLD) // Define a fonte como bold
 
@@ -104,15 +117,46 @@ class MainActivity : AppCompatActivity() {
         pieChart.legend.typeface = boldTypeface
         pieChart.setCenterTextTypeface(boldTypeface)
 
-        //Botao de navegação
-        buttonInvestimento = findViewById(R.id.investbutton)
-        buttonInvestimento.setOnClickListener{
-            val intent = Intent(
-                this,
-                InvestimentoActivity::class.java
-            )
+        val buttonRenda = findViewById<Button>(R.id.buttonRenda)
+        val buttonDespesa = findViewById<Button>(R.id.buttonDespesa)
 
-            startActivity(intent)
+        if (savedInstanceState == null) {
+            replaceFragment(RendaFragment())
         }
+
+        buttonRenda.setOnClickListener {
+            replaceFragment(DespesaFragment())
+        }
+
+        buttonDespesa.setOnClickListener {
+            replaceFragment(RendaFragment())
+        }
+
     }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment, fragment)
+        fragmentTransaction.commit()
+    }
+
+
+    fun irParaInvestimento(view: View) {
+        val intent = Intent(view.context, InvestimentoActivity::class.java)
+        view.context.startActivity(intent)
+    }
+
+    fun irParaCoffin(view: View) {
+        val intent = Intent(view.context, CofrinhoActivity::class.java)
+        view.context.startActivity(intent)
+    }
+    fun irParaAddRenda(view: View) {
+        val intent = Intent(view.context, novaRendaActivity::class.java)
+        view.context.startActivity(intent)
+    }
+
+
 }
+
+

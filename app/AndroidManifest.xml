@@ -10,29 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:theme="@style/Theme.DashboardBasi"
         tools:targetApi="31">
-        <activity
-            android:name=".TotalRendas"
-            android:exported="false" />
-        <activity
-            android:name=".EditarDespesa"
-            android:exported="false" />
-        <activity
-            android:name=".novaDespesa"
-            android:exported="false" />
-        <activity
-            android:name=".EditarRenda"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CadastroActivity"
-            android:exported="false" />
-        <activity
-            android:name=".novaRendaActivity"
-            android:exported="false" />
         <activity
             android:name=".CofrinhoActivity"
             android:exported="true" />
