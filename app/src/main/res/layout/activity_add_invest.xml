@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/slate950"
+    tools:context=".AddInvestActivity">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:ignore="ExtraText">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headline"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+      <Button
+          android:id="@+id/noti"
+          android:layout_width="48dp"
+          android:layout_height="48dp"
+          android:backgroundTint="@color/slate950"
+          android:contentDescription="notifications"
+          android:drawableTop="@drawable/notification"
+          android:text="@string/noti"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.955"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <ImageView
+          android:id="@+id/voltar"
+          android:layout_width="48dp"
+          android:layout_height="48dp"
+          android:background="@drawable/backicon"
+          android:onClick="irParaCoffin"
+          android:padding="8dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:srcCompat="@drawable/chevron_left" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textAddInvest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:fontFamily="@font/roboto_slab_bold"
+        android:text="Adicione um novo\ninvestimento"
+        android:textColor="@color/white"
+        android:textSize="23sp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/espacoInputNovoInvest"
+        android:layout_width="362dp"
+        android:layout_height="448dp"
+        android:layout_marginTop="132dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".MainActivity">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintCodAcao"
+          android:layout_width="348dp"
+          android:layout_height="81dp"
+          android:layout_marginTop="32dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textCodigoAcao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="259dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="Código da ação*"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/inputCodigoAcao"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="31dp"
+            android:background="@drawable/textinput"
+            android:ems="10"
+            android:inputType="text"
+            android:padding="2dp"
+            android:paddingStart="10dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintValorInvest"
+          android:layout_width="348dp"
+          android:layout_height="81dp"
+          android:layout_marginTop="16dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/constraintCodAcao">
+
+        <TextView
+            android:id="@+id/textValorInvest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="261dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="Valor*"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.09"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/inputValorInvest"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="31dp"
+            android:background="@drawable/textinput"
+            android:ems="10"
+            android:inputType="text"
+            android:padding="2dp"
+            android:paddingStart="10dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintQuantInvest"
+          android:layout_width="348dp"
+          android:layout_height="81dp"
+          android:layout_marginTop="16dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/constraintValorInvest">
+
+        <TextView
+            android:id="@+id/textQuantInvest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="256dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="Quantidade de ações*"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/inputQuantInvest"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="31dp"
+            android:background="@drawable/textinput"
+            android:ems="10"
+            android:inputType="text"
+            android:padding="2dp"
+            android:paddingStart="10dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintDataInvest"
+          android:layout_width="348dp"
+          android:layout_height="81dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginTop="16dp"
+          android:layout_marginEnd="6dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/constraintQuantInvest">
+
+        <TextView
+            android:id="@+id/textDataInvest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="256dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="Data de compra*"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/inputDataInvest"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="31dp"
+            android:background="@drawable/textinput"
+            android:ems="10"
+            android:inputType="text"
+            android:padding="2dp"
+            android:paddingStart="10dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/buttonAddInvest"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="88dp"
+        android:background="@drawable/radiuscar3"
+        android:text="Adicionar"
+        android:textColor="#000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" /> <!-- Adiciona espaço à esquerda do texto -->
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

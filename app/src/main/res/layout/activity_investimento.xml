@@ -5,10 +5,11 @@
     android:layout_height="match_parent"
     android:background="@color/slate950"
     android:contentDescription="botao"
-    tools:context=".MainActivity">
+    tools:context=".InvestimentoActivity">
 
   <!-- Conteúdo que rola -->
   <ScrollView
+      android:id="@+id/fragmentAddInvest"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:background="@color/slate950">
@@ -55,20 +56,7 @@
             android:drawableTop="@drawable/notification"
             android:text="@string/noti"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.848"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/set"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:backgroundTint="@color/slate950"
-            android:contentDescription="settings"
-            android:drawableTop="@drawable/settings"
-            android:text="@string/set"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintHorizontal_bias="0.955"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,7 +76,7 @@
           app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/novoinvestimento"
+            android:id="@+id/novoInvestimento"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_marginStart="32dp"
@@ -100,10 +88,11 @@
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="irParaAddInvest"/>
 
         <Button
-            android:id="@+id/editarinvestimento"
+            android:id="@+id/editarInvestimento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="156dp"
@@ -288,7 +277,7 @@
               android:layout_marginBottom="16dp"
               android:fontFamily="@font/inter_medium"
               android:text="+0,81%"
-              android:textColor="@color/red"
+              android:textColor="@color/golden800"
               android:textSize="12sp"
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintStart_toStartOf="parent" />
@@ -377,18 +366,24 @@
 
       </androidx.constraintlayout.widget.ConstraintLayout>
 
-      <SearchView
-          android:id="@+id/searchView"
-          android:layout_width="342dp"
-          android:layout_height="40dp"
-          android:layout_marginStart="32dp"
-          android:layout_marginTop="496dp"
-          android:layout_marginEnd="32dp"
-          android:background="@drawable/lighter_gray"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.507"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="342dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="496dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/lighter_gray"
+            android:iconifiedByDefault="false"
+            android:textColorHint="#000"
+            android:queryHint="Pesquisar..."
+            app:queryBackground="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
 
       <TextView
           android:id="@+id/textView8"
@@ -416,37 +411,37 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/spottext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="220dp"
-            android:fontFamily="@font/inter_bold"
-            android:text="Spotify"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/spotimg"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/spottext"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="5dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginEnd="220dp"-->
+<!--            android:fontFamily="@font/inter_bold"-->
+<!--            android:text="Spotify"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="16dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/spotimg"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <TextView
-            android:id="@+id/spotday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="228dp"
-            android:alpha="0.6"
-            android:fontFamily="@font/inter_medium"
-            android:text="S1PO34"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/spotimg"
-            app:layout_constraintTop_toBottomOf="@+id/spottext" />
+<!--        <TextView-->
+<!--            android:id="@+id/spotday"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="5dp"-->
+<!--            android:layout_marginEnd="228dp"-->
+<!--            android:alpha="0.6"-->
+<!--            android:fontFamily="@font/inter_medium"-->
+<!--            android:text="S1PO34"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="12sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/spotimg"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/spottext" />-->
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/spotimg"
             android:layout_width="50dp"
             android:layout_height="40dp"
@@ -454,7 +449,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/spotify" />
+            app:srcCompat="@drawable/spotify" />-->
 
         <TextView
             android:id="@+id/textView10"
@@ -496,37 +491,37 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/spottext2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="220dp"
-            android:fontFamily="@font/inter_bold"
-            android:text="Spotify"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/spotimg2"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/spottext2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="5dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginEnd="220dp"-->
+<!--            android:fontFamily="@font/inter_bold"-->
+<!--            android:text="Spotify"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="16dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/spotimg2"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <TextView
-            android:id="@+id/spotday2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="228dp"
-            android:alpha="0.6"
-            android:fontFamily="@font/inter_medium"
-            android:text="A1LO68"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/spotimg2"
-            app:layout_constraintTop_toBottomOf="@+id/spottext2" />
+<!--        <TextView-->
+<!--            android:id="@+id/spotday2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="5dp"-->
+<!--            android:layout_marginEnd="228dp"-->
+<!--            android:alpha="0.6"-->
+<!--            android:fontFamily="@font/inter_medium"-->
+<!--            android:text="A1LO68"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="12sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/spotimg2"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/spottext2" />-->
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/spotimg2"
             android:layout_width="50dp"
             android:layout_height="40dp"
@@ -534,7 +529,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/spotify" />
+            app:srcCompat="@drawable/spotify" />-->
 
         <TextView
             android:id="@+id/textView11"
@@ -655,3 +650,4 @@
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    <!-- Este é um comentário em XML -->

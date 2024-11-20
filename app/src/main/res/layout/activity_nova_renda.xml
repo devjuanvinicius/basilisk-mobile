@@ -28,20 +28,7 @@
             android:drawableTop="@drawable/notification"
             android:text="@string/noti"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.848"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/set"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:backgroundTint="@color/slate950"
-            android:contentDescription="settings"
-            android:drawableTop="@drawable/settings"
-            android:text="@string/set"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintHorizontal_bias="0.955"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -138,10 +125,10 @@
                 android:id="@+id/constraintValorRenda"
                 android:layout_width="318dp"
                 android:layout_height="75dp"
-                android:layout_marginTop="136dp"
+                android:layout_marginTop="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/constraintTituloRenda">
 
                 <TextView
                     android:id="@+id/textValorRenda"
@@ -178,10 +165,10 @@
                 android:id="@+id/constraintDataPagRenda"
                 android:layout_width="318dp"
                 android:layout_height="75dp"
-                android:layout_marginTop="240dp"
+                android:layout_marginTop="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/constraintValorRenda">
 
                 <TextView
                     android:id="@+id/tituloDataPagRenda"
@@ -218,7 +205,7 @@
                 android:id="@+id/textRendaFixa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="332dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/inter_medium"
                 android:text="Renda fixa"
                 android:textColor="@color/white"
@@ -226,13 +213,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.08"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintDataPagRenda" />
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch1"
                 android:layout_width="60dp"
                 android:layout_height="30dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:thumb="@drawable/switch_thumb"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.906"
@@ -263,3 +250,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Este é um comentário em XML -->

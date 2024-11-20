@@ -18,34 +18,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/novosaldo"
+            android:id="@+id/novaDespesa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="156dp"
+            android:layout_marginStart="124dp"
+            android:layout_marginTop="155dp"
             android:background="#002F2F2F"
             android:fontFamily="@font/inter_medium"
-            android:onClick="irParaAddRenda"
-            android:text="+ Novo saldo"
+            android:onClick="irParaAddDespesa"
+            android:text="+ Nova despesa"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/editarsaldo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="156dp"
-            android:layout_marginEnd="40dp"
-            android:background="#002F2F2F"
-            android:fontFamily="@font/inter_medium"
-            android:text="Editar saldo"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -121,55 +106,8 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="110dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="117dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="118dp"
-                android:background="@drawable/radiuscar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
-                <Spinner
-                    android:id="@+id/spinnermes"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="64dp"
-                    android:layout_marginTop="-4dp"
-                    android:backgroundTint="#FFFCFC"
-                    android:entries="@array/meses"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/selectedMonth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Jan"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="6dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.12"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.72"
-                    app:srcCompat="@drawable/calendario" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Este é um comentário em XML -->

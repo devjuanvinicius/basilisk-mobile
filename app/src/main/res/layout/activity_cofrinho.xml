@@ -489,22 +489,11 @@
             android:drawableTop="@drawable/notification"
             android:text="@string/noti"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.848"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/set"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:backgroundTint="@color/slate950"
-            android:contentDescription="settings"
-            android:drawableTop="@drawable/settings"
-            android:text="@string/set"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintHorizontal_bias="0.955"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Este é um comentário em XML -->
