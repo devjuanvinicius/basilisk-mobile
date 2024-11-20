@@ -1,4 +1,4 @@
-package com.example.dashboardbasi
+package com.example.basilisk
 
 import android.annotation.SuppressLint
 import android.content.Intent

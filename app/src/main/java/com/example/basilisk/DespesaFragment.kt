@@ -1,4 +1,4 @@
-package com.example.dashboardbasi
+package com.example.basilisk
 
 import android.graphics.Typeface
 import android.os.Bundle
@@ -9,7 +9,7 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
-class RendaFragment : Fragment(R.layout.fragment_renda) {
+class DespesaFragment : Fragment(R.layout.fragment_despesa) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

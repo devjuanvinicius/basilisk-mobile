@@ -1,52 +1,35 @@
-package com.example.dashboardbasi
+package com.example.basilisk
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Spinner
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 
-
-
-class MainActivity : AppCompatActivity() {
-
+class CofrinhoActivity : AppCompatActivity() {
     lateinit var pieChart: PieChart
 
-
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_cofrinho) // Certifique-se de que este layout existe
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        // Carregar fonte personalizada da pasta assets/fonts
+        pieChart = findViewById(R.id.pieChart)
         val customFont = Typeface.createFromAsset(assets, "fonts/custom_font.ttf")
 
-
-
-        pieChart = findViewById(R.id.pieChart)
-
-        val gastos = 600f
+        val gastos = 700f
         val renda = 1000f
         val porcentagemGastos = (gastos / renda) * 100
 
@@ -93,47 +76,21 @@ class MainActivity : AppCompatActivity() {
         // Aplicar a fonte bold à legenda e ao texto central
         pieChart.legend.typeface = boldTypeface
         pieChart.setCenterTextTypeface(boldTypeface)
-
-        val buttonRenda = findViewById<Button>(R.id.buttonRenda)
-        val buttonDespesa = findViewById<Button>(R.id.buttonDespesa)
-
-        if (savedInstanceState == null) {
-            replaceFragment(RendaFragment())
-        }
-
-        buttonRenda.setOnClickListener {
-            replaceFragment(DespesaFragment())
-        }
-
-        buttonDespesa.setOnClickListener {
-            replaceFragment(RendaFragment())
-        }
-
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragment, fragment)
-        fragmentTransaction.commit()
+    fun irParaDash(view: View) {
+        intent = Intent(view.context, MainActivity::class.java)
+        view.context.startActivity(intent)
     }
-
 
     fun irParaInvestimento(view: View) {
-        val intent = Intent(view.context, InvestimentoActivity::class.java)
+        intent = Intent(view.context, InvestimentoActivity::class.java)
         view.context.startActivity(intent)
     }
 
-    fun irParaCoffin(view: View) {
-        val intent = Intent(view.context, CofrinhoActivity::class.java)
+    fun irparaAddMeta(view: View) {
+        intent = Intent(view.context, FragmentaAddMeta::class.java)
         view.context.startActivity(intent)
     }
-    fun irParaAddRenda(view: View) {
-        val intent = Intent(view.context, novaRendaActivity::class.java)
-        view.context.startActivity(intent)
-    }
-
-
 }
-
 
