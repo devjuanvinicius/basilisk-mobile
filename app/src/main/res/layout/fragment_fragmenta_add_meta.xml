@@ -79,8 +79,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintTituloMeta"
-                android:layout_width="343dp"
-                android:layout_height="96dp"
+                android:layout_width="348dp"
+                android:layout_height="81dp"
                 android:layout_marginTop="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -120,12 +120,12 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintValorMeta"
-                android:layout_width="345dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="136dp"
+                android:layout_width="348dp"
+                android:layout_height="81dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/constraintTituloMeta">
 
                 <TextView
                     android:id="@+id/textValorMeta"
@@ -162,10 +162,10 @@
                 android:id="@+id/constraintDataInicio"
                 android:layout_width="348dp"
                 android:layout_height="81dp"
-                android:layout_marginTop="240dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/constraintValorMeta">
 
                 <TextView
                     android:id="@+id/tituloDataInicio"
