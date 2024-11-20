@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.dashboardbasi"
+    namespace = "com.example.basilisk"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.dashboardbasi"
+        applicationId = "com.example.basilisk"
         minSdk = 33
         targetSdk = 34
         versionCode = 1

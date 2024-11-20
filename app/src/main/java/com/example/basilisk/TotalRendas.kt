@@ -1,4 +1,4 @@
-package com.example.dashboardbasi
+package com.example.basilisk
 
 import android.content.Intent
 import android.os.Bundle

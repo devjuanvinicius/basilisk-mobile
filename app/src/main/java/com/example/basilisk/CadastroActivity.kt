@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentActivity
-import com.example.dashboardbasi.databinding.ActivityCadastroBinding // Ajuste o pacote conforme necessário
+import com.example.basilisk.databinding.ActivityCadastroBinding // Ajuste o pacote conforme necessário
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth

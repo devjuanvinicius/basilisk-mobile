@@ -1,26 +1,36 @@
 {
   "project_info": {
-    "project_number": "286711260280",
-    "project_id": "basilisk-34969",
-    "storage_bucket": "basilisk-34969.firebasestorage.app"
+    "project_number": "22642442212",
+    "project_id": "basilisk-mobile",
+    "storage_bucket": "basilisk-mobile.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:286711260280:android:38292d578296881cc4f98d",
+        "mobilesdk_app_id": "1:22642442212:android:f9ad88cd1506cf23cfd1f1",
         "android_client_info": {
-          "package_name": "com.example.dashboardbasi"
+          "package_name": "com.example.basilisk"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "22642442212-6qm750s9bvr0kngearerh8ef531gtbuj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyBRb-tscYIHpBWlMkZB-qeUyCAEnlAb-qE"
+          "current_key": "AIzaSyDQpD3zbdlinBxEv7q2jpJ_3oO7jqcbUS8"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "22642442212-6qm750s9bvr0kngearerh8ef531gtbuj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
