@@ -141,12 +141,10 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 
-
     fun irParaInvestimento(view: View) {
         val intent = Intent(view.context, InvestimentoActivity::class.java)
         view.context.startActivity(intent)
     }
-
     fun irParaCoffin(view: View) {
         val intent = Intent(view.context, CofrinhoActivity::class.java)
         view.context.startActivity(intent)
@@ -155,8 +153,6 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(view.context, novaRendaActivity::class.java)
         view.context.startActivity(intent)
     }
-
-
 }
 
 
