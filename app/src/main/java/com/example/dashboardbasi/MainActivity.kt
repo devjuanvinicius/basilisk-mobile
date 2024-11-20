@@ -153,6 +153,10 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(view.context, novaRendaActivity::class.java)
         view.context.startActivity(intent)
     }
+    fun irParaPerfil(view: View) {
+        val intent = Intent(view.context, PerfilActivity::class.java)
+        view.context.startActivity(intent)
+    }
 }
 
 
