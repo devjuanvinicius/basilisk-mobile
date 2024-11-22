@@ -104,7 +104,8 @@
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="irParaEditInvest"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
@@ -565,10 +566,11 @@
       android:id="@+id/navbar"
       android:layout_width="350dp"
       android:layout_height="80dp"
-      android:layout_marginBottom="50dp"
+      android:layout_marginBottom="22dp"
       android:background="@drawable/navbar_background"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.491"
       app:layout_constraintStart_toStartOf="parent">
 
 
@@ -578,13 +580,13 @@
         android:layout_height="65dp"
         android:background="@drawable/icon"
         android:contentDescription="botao"
+        android:onClick="irParaPerfil"
         android:scaleType="centerCrop"
         android:src="@drawable/rectangle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/homeButton"
@@ -592,21 +594,20 @@
         android:layout_height="wrap_content"
         android:background="@drawable/homeicon"
         android:contentDescription="home"
+        android:onClick="irParaHome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home"
-        android:onClick="irParaDash"
-        />
+        app:srcCompat="@drawable/home" />
 
     <ImageButton
         android:id="@+id/investbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/homeicon"
-        android:contentDescription="investiemntos"
+        android:contentDescription="investimentos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.25"
@@ -621,14 +622,13 @@
         android:layout_height="wrap_content"
         android:background="@drawable/homeicon"
         android:contentDescription="cofrinho"
+        android:onClick="irParaCofrinho"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.72"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cofrinhoicon"
-        android:onClick="irParaCoffin"
-        />
+        app:srcCompat="@drawable/cofrinhoicon" />
 
     <ImageButton
         android:id="@+id/calendarbutton"
@@ -641,7 +641,8 @@
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/calendarioicon" />
+        app:srcCompat="@drawable/calendarioicon"
+        android:onClick="irParaCalendario"/>
 
 
   </androidx.constraintlayout.widget.ConstraintLayout>

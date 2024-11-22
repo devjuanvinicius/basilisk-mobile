@@ -308,7 +308,8 @@
           app:layout_constraintHorizontal_bias="0.04"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent"
-          app:srcCompat="@drawable/home" />
+          app:srcCompat="@drawable/home"
+          android:onClick="irParaHome"/>
 
       <ImageButton
           android:id="@+id/investbutton"
@@ -316,13 +317,13 @@
           android:layout_height="wrap_content"
           android:background="@drawable/homeicon"
           android:contentDescription="investiemntos"
-          android:onClick="irParaInvestimento"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintHorizontal_bias="0.25"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent"
-          app:srcCompat="@drawable/investicon" />
+          app:srcCompat="@drawable/investicon"
+          android:onClick="irParaInvest"/>
 
 
       <ImageButton
@@ -331,13 +332,13 @@
           android:layout_height="wrap_content"
           android:background="@drawable/homeicon"
           android:contentDescription="cofrinho"
-          android:onClick="irParaCoffin"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintHorizontal_bias="0.72"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent"
-          app:srcCompat="@drawable/cofrinhoicon" />
+          app:srcCompat="@drawable/cofrinhoicon"
+          android:onClick="irParaCofrinho"/>
 
       <ImageButton
           android:id="@+id/calendarbutton"
@@ -350,7 +351,8 @@
           app:layout_constraintHorizontal_bias="0.95"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent"
-          app:srcCompat="@drawable/calendarioicon" />
+          app:srcCompat="@drawable/calendarioicon"
+          android:onClick="irParaCalendario"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

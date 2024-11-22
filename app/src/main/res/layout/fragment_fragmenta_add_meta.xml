@@ -42,12 +42,12 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@drawable/backicon"
-                android:onClick="irParaCoffin"
                 android:padding="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/chevron_left" />
+                app:srcCompat="@drawable/chevron_left"
+                android:onClick="irParaCoffin"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

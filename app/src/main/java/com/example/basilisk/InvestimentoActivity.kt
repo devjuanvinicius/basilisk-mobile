@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.basilisk.utils.EditInvestActivity
 
 class InvestimentoActivity : AppCompatActivity() {
 
@@ -33,6 +34,26 @@ class InvestimentoActivity : AppCompatActivity() {
   }
   fun irParaAddInvest(view: View) {
     val intent = Intent(view.context, AddInvestActivity::class.java)
+    view.context.startActivity(intent)
+  }
+  fun irParaHome(view: View) {
+    val intent = Intent(view.context, MainActivity::class.java)
+    view.context.startActivity(intent)
+  }
+  fun irParaCofrinho(view: View) {
+    val intent = Intent(view.context, CofrinhoActivity::class.java)
+    view.context.startActivity(intent)
+  }
+  fun irParaPerfil(view: View) {
+    val intent = Intent(view.context, PerfilActivity::class.java)
+    view.context.startActivity(intent)
+  }
+  fun irParaEditInvest(view: View) {
+    val intent = Intent(view.context, EditInvestActivity::class.java)
+    view.context.startActivity(intent)
+  }
+  fun irParaCalendario(view: View) {
+    val intent = Intent(view.context, CalendarioActivity::class.java)
     view.context.startActivity(intent)
   }
 }

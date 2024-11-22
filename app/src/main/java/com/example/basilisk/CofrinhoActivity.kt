@@ -88,8 +88,18 @@ class CofrinhoActivity : AppCompatActivity() {
         view.context.startActivity(intent)
     }
 
-    fun irparaAddMeta(view: View) {
+    fun irParaAddMeta(view: View) {
         intent = Intent(view.context, FragmentaAddMeta::class.java)
+        view.context.startActivity(intent)
+    }
+
+    fun irParaPerfil(view: View) {
+        intent = Intent(view.context, PerfilActivity::class.java)
+        view.context.startActivity(intent)
+    }
+
+    fun irParaCalendario(view: View) {
+        val intent = Intent(view.context, CalendarioActivity::class.java)
         view.context.startActivity(intent)
     }
 }
