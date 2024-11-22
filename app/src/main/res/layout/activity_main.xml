@@ -469,7 +469,8 @@
             app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/calendarioicon" />
+            app:srcCompat="@drawable/calendarioicon"
+            android:onClick="irParaCalendario"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
