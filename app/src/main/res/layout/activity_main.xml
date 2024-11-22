@@ -280,7 +280,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="121dp"
                         android:fontFamily="@font/inter_medium"
-                        android:text="Saldo"
+                        android:text="@string/Saldo"
                         android:textColor="@color/white"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -312,9 +312,11 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="44dp"
                 android:layout_marginEnd="276dp"
+                android:layout_marginBottom="268dp"
                 android:fontFamily="@font/inter_bold"
                 android:text="Últimos gastos"
                 android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
@@ -374,70 +376,14 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="345dp"
-                android:layout_height="70dp"
-                android:layout_marginTop="730dp"
-                android:layout_marginBottom="90dp"
-                android:background="@drawable/radiuscar2"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0">
-
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="260dp"
-                    android:alpha="0.6"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="6 de agosto"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="244dp"
-                    android:fontFamily="@font/inter_bold"
-                    android:text="Prime Video"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="27dp"
-                    android:layout_marginEnd="31dp"
-                    android:alpha="0.6"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="-R$ 21,90"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
             <Button
                 android:id="@+id/buttonTesteDeLogof"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Button"
+                tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="232dp"
-                tools:layout_editor_absoluteY="316dp"
-                tools:ignore="MissingConstraints" />
-
+                tools:layout_editor_absoluteY="316dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
