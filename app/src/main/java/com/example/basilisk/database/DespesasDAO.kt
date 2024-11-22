@@ -14,12 +14,12 @@ class DespesasDAO(private val db: FirebaseFirestore, private val auth: FirebaseA
         onSuccess: () -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        if (idUsuario.isNotEmpty()) {
-            val documentReference = db.collection("users").document(idUsuario)
-                .collection("despesas").document() // Cria um documento com ID automático
-            val despesaComId = despesa.copy(id = documentReference.id) // Adiciona o ID gerado ao objeto
-
-            documentReference.set(despesaComId)
+        if(idUsuario.isNotEmpty()){
+            db.collection("users").document(idUsuario)
+                .set(
+                    mapOf("despesa" to FieldValue.arrayUnion(despesa)),
+                    SetOptions.merge()
+                )
                 .addOnSuccessListener { onSuccess() }
                 .addOnFailureListener { exception -> onFailure(exception) }
         } else {
@@ -66,6 +66,7 @@ class DespesasDAO(private val db: FirebaseFirestore, private val auth: FirebaseA
                         item.copy(
                             nome = despesa.nome,
                             valor = despesa.valor,
+                            parcelas = despesa.parcelas,
                             despesaFixa = despesa.despesaFixa,
                             dataPagamento = despesa.dataPagamento,
                         )

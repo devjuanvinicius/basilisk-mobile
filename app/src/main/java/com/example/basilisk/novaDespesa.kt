@@ -8,65 +8,61 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
-import android.widget.Switch
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.basilisk.database.DespesasDAO
+import com.example.basilisk.databinding.ActivityNovaDespesaBinding
 import com.example.basilisk.model.Despesas
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import java.math.BigDecimal
 import java.util.Locale
+import java.util.UUID
 
 class novaDespesa : AppCompatActivity() {
 
-    private lateinit var tituloInput: EditText
-    private lateinit var valorInput: EditText
-    private lateinit var dataPagamentoInput: EditText
-    private lateinit var despesaFixaSwitch: SwitchCompat
-    private lateinit var adicionarButton: Button
+    private lateinit var binding: ActivityNovaDespesaBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_nova_despesa)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+
+        // Inicializa o View Binding
+        binding = ActivityNovaDespesaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-
-        tituloInput = findViewById(R.id.inputTituloDespesa)
-        valorInput = findViewById(R.id.inputValorDespesa)
-        dataPagamentoInput = findViewById(R.id.inputDataFinal)
-        despesaFixaSwitch = findViewById(R.id.switch1)
-        adicionarButton = findViewById(R.id.button3)
-        valorInput.addTextChangedListener(ExampleTextWatcher(valorInput))
-
         val db = FirebaseFirestore.getInstance()
         val auth = FirebaseAuth.getInstance()
         val despesasDAO = DespesasDAO(db, auth)
 
-        adicionarButton.setOnClickListener {
-            val titulo = tituloInput.text.toString()
-            val valorText = valorInput.text.toString()
+        // Configura o TextWatcher para o campo de valor
+        binding.inputValorDespesa.addTextChangedListener(ExampleTextWatcher(binding.inputValorDespesa))
+
+        // Evento de clique do botão adicionar
+        binding.button3.setOnClickListener {
+            val titulo = binding.inputTituloDespesa.text.toString()
+            val valorText = binding.inputValorDespesa.text.toString()
                 .replace("[R$\\s,.]".toRegex(), "") // Remove caracteres como "R$", espaços e vírgulas
             val valor = valorText.toDoubleOrNull()?.div(100)
-            val dataPagamento = dataPagamentoInput.text.toString()
+            val dataPagamento = binding.inputDataFinal.text.toString()
 
             if (titulo.isNotEmpty() && valor != null && dataPagamento.isNotEmpty()) {
-                val despesaFixa = despesaFixaSwitch.isChecked
+                val despesaFixa = binding.switch1.isChecked
+                val idAleatorio = UUID.randomUUID().toString()
+
 
                 val novaDespesa = Despesas(
-                    id = "",
+                    id = idAleatorio,
                     nome = titulo,
                     valor = valor,
                     despesaFixa = despesaFixa,
@@ -103,25 +99,24 @@ class novaDespesa : AppCompatActivity() {
                     .show()
             }
         }
-
-
     }
 
-    class ExampleTextWatcher(val editText: EditText?) : TextWatcher {
+    // Função para redirecionar para a tela principal
+    fun irParaDash(view: View) {
+        val intent = Intent(view.context, MainActivity::class.java)
+        view.context.startActivity(intent)
+    }
+
+    // Classe TextWatcher para o campo de valor
+    class ExampleTextWatcher(private val editText: EditText?) : TextWatcher {
 
         companion object {
             private const val replaceRegex: String = "[R$,.\u00a0]"
             private const val replaceFinal: String = "R$\u00a0"
         }
 
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-        }
-
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-        }
-
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         override fun afterTextChanged(editable: Editable?) {
             try {
                 val stringEditable = editable.toString()
@@ -135,22 +130,16 @@ class novaDespesa : AppCompatActivity() {
                     .divide(BigDecimal(100), BigDecimal.ROUND_FLOOR)
 
                 val decimalFormat = NumberFormat.getCurrencyInstance(Locale("pt", "BR")) as DecimalFormat
-                val formated = decimalFormat.format(parsed)
+                val formatted = decimalFormat.format(parsed)
 
-                val stringFinal = formated.replace(replaceFinal, "")
+                val stringFinal = formatted.replace(replaceFinal, "")
                 editText?.setText(stringFinal)
                 editText?.setSelection(stringFinal.length)
                 editText?.addTextChangedListener(this)
 
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 Log.e("ERROR", e.toString())
             }
         }
-
-    }
-    fun irParaDash(view: View) {
-        val intent = Intent(view.context, MainActivity::class.java)
-        view.context.startActivity(intent)
     }
 }
-
