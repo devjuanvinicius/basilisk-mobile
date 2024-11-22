@@ -66,10 +66,8 @@ class DespesasDAO(private val db: FirebaseFirestore, private val auth: FirebaseA
                         item.copy(
                             nome = despesa.nome,
                             valor = despesa.valor,
-                            parcelas = despesa.parcelas,
                             despesaFixa = despesa.despesaFixa,
                             dataPagamento = despesa.dataPagamento,
-                            tag = despesa.tag
                         )
                     } else {
                         item
