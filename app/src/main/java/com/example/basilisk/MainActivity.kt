@@ -1,4 +1,4 @@
-package com.example.dashboardbasi
+package com.example.basilisk
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import com.example.dashboardbasi.databinding.ActivityMainBinding
+import com.example.basilisk.databinding.ActivityMainBinding
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet

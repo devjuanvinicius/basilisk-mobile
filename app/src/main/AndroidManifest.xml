@@ -31,6 +31,9 @@
             android:name=".EditarRenda"
             android:exported="false" />
         <activity
+            android:name=".CalendarioActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity

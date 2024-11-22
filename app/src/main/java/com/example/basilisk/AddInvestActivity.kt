@@ -1,4 +1,4 @@
-package com.example.dashboardbasi
+package com.example.basilisk
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,20 +8,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class EditarDespesa : AppCompatActivity() {
+class AddInvestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_editar_despesa)
+        setContentView(R.layout.activity_add_invest)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
     }
-//
-    fun irParaDash(view: View) {
-        intent = Intent(view.context, MainActivity::class.java)
+    fun irParaInvest(view: View) {
+        val intent = Intent(view.context,InvestimentoActivity::class.java)
         view.context.startActivity(intent)
     }
 }
