@@ -108,7 +108,6 @@ class DespesasDAO(private val db: FirebaseFirestore, private val auth: FirebaseA
                             valor = it["valor"] as Double,
                             despesaFixa = it["despesaFixa"] as Boolean,
                             dataPagamento = it["dataPagamento"] as String,
-                            tag = it["tag"] as String,
                             parcelas = it["parcelas"] as Int
                         )
                     }

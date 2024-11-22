@@ -6,6 +6,5 @@ data class Despesas(
     val parcelas: Int,
     val dataPagamento: String,
     val despesaFixa: Boolean,
-    val tag: String,
     val valor: Double
 )

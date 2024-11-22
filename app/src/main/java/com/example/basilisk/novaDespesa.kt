@@ -71,7 +71,6 @@ class novaDespesa : AppCompatActivity() {
                     valor = valor,
                     despesaFixa = despesaFixa,
                     dataPagamento = dataPagamento,
-                    tag = "default",
                     parcelas = 1
                 )
 
