@@ -35,4 +35,16 @@ class InvestimentoActivity : AppCompatActivity() {
     val intent = Intent(view.context, AddInvestActivity::class.java)
     view.context.startActivity(intent)
   }
+  fun irParaHome(view: View) {
+    val intent = Intent(view.context, MainActivity::class.java)
+    view.context.startActivity(intent)
+  }
+  fun irParaCofrinho(view: View) {
+    val intent = Intent(view.context, CofrinhoActivity::class.java)
+    view.context.startActivity(intent)
+  }
+  fun irParaPerfil(view: View) {
+    val intent = Intent(view.context, PerfilActivity::class.java)
+    view.context.startActivity(intent)
+  }
 }

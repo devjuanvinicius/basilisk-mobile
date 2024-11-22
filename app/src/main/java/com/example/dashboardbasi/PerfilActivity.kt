@@ -2,6 +2,7 @@ package com.example.dashboardbasi
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,5 +18,17 @@ class PerfilActivity : AppCompatActivity() {
       v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
       insets
     }
+  }
+  fun irParaHome(view: View) {
+    val intent = Intent(view.context, MainActivity::class.java)
+    view.context.startActivity(intent)
+  }
+  fun irParaInvest(view: View) {
+    val intent = Intent(view.context, InvestimentoActivity::class.java)
+    view.context.startActivity(intent)
+  }
+  fun irParaCofrinho(view: View) {
+    val intent = Intent(view.context, CofrinhoActivity::class.java)
+    view.context.startActivity(intent)
   }
 }
