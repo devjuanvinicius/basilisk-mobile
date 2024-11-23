@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PerfilActivity"
+    android:background="@color/slate950">
+
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintLayout7"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:ignore="ExtraText">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headline"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+      <ImageButton
+          android:id="@+id/imagePerfil"
+          android:layout_width="65dp"
+          android:layout_height="65dp"
+          android:background="@drawable/icon"
+          android:contentDescription="botao"
+          android:scaleType="centerCrop"
+          android:src="@drawable/rectangle"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.109"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintVertical_bias="0.6" />
+
+      <TextView
+          android:id="@+id/textNomeUsuario"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:fontFamily="@font/roboto_slab_bold"
+          android:text="Juan Vinicius"
+          android:textColor="@color/white"
+          android:textSize="25sp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.823"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+          android:id="@+id/textEmailUsuario"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="126dp"
+          android:layout_marginTop="2dp"
+          android:fontFamily="@font/inter_medium"
+          android:text="juanvinicius@gmail.com"
+          android:textColor="@color/lightergrey"
+          android:textSize="12sp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/imagePerfil"
+          app:layout_constraintTop_toBottomOf="@+id/textNomeUsuario" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintEditPerfil"
+        android:layout_width="352dp"
+        android:layout_height="372dp"
+        android:layout_marginTop="132dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".MainActivity">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintNomeUsuario"
+          android:layout_width="343dp"
+          android:layout_height="80dp"
+          android:layout_marginTop="32dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textEditNomeUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="261dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="Nome completo"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/inputNomeUsuario"
+            android:layout_width="320dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="31dp"
+            android:background="@drawable/textinput"
+            android:ems="10"
+            android:inputType="text"
+            android:padding="2dp"
+            android:paddingStart="10dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintEmailUsuario"
+          android:layout_width="345dp"
+          android:layout_height="80dp"
+          android:layout_marginTop="4dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/constraintNomeUsuario">
+
+        <TextView
+            android:id="@+id/textEditEmailUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="288dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="Email"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/inputEmailUsuario"
+            android:layout_width="320dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="31dp"
+            android:background="@drawable/textinput"
+            android:ems="10"
+            android:inputType="text"
+            android:padding="2dp"
+            android:paddingStart="10dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintNascimentoUsuario"
+          android:layout_width="348dp"
+          android:layout_height="80dp"
+          android:layout_marginTop="4dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/constraintEmailUsuario">
+
+        <TextView
+            android:id="@+id/textNascimentoUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="284dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="Nascimento"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/inputNascimentoUsuario"
+            android:layout_width="320dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="31dp"
+            android:background="@drawable/textinput"
+            android:ems="10"
+            android:inputType="text"
+            android:padding="2dp"
+            android:paddingStart="10dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintTelefoneUsuario"
+          android:layout_width="348dp"
+          android:layout_height="80dp"
+          android:layout_marginTop="4dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/constraintNascimentoUsuario">
+
+        <TextView
+            android:id="@+id/textTelefoneUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="195dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="Telefone"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.037"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/inputTelefoneUsuario"
+            android:layout_width="320dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="31dp"
+            android:background="@drawable/textinput"
+            android:ems="10"
+            android:inputType="text"
+            android:padding="2dp"
+            android:paddingStart="10dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/button_editar"
+        android:layout_width="320dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/radiuscar3"
+        android:text="Editar"
+        android:textColor="#000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintEditPerfil"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button_excluir"
+        android:layout_width="320dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/radiuscar4"
+        android:text="Excluir"
+        android:textColor="#000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintEditPerfil"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/navbar"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:background="@drawable/navbar_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+      <ImageButton
+          android:id="@+id/imageButton"
+          android:layout_width="65dp"
+          android:layout_height="65dp"
+          android:background="@drawable/icon"
+          android:contentDescription="botao"
+          android:scaleType="centerCrop"
+          android:src="@drawable/rectangle"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <ImageButton
+          android:id="@+id/homeButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/homeicon"
+          android:contentDescription="home"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.04"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:srcCompat="@drawable/home"
+          android:onClick="irParaHome"/>
+
+      <ImageButton
+          android:id="@+id/investbutton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/homeicon"
+          android:contentDescription="investiemntos"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.25"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:srcCompat="@drawable/investicon"
+          android:onClick="irParaInvest"/>
+
+
+      <ImageButton
+          android:id="@+id/cofrinhobutton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/homeicon"
+          android:contentDescription="cofrinho"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.72"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:srcCompat="@drawable/cofrinhoicon"
+          android:onClick="irParaCofrinho"/>
+
+      <ImageButton
+          android:id="@+id/calendarbutton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/homeicon"
+          android:contentDescription="calendario"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.95"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:srcCompat="@drawable/calendarioicon"
+          android:onClick="irParaCalendario"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

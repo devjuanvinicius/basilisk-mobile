@@ -1,13 +1,10 @@
-package com.example.dashboardbasi
+package com.example.basilisk
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,46 +14,22 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 
-class MainActivity : AppCompatActivity() {
-
+class CofrinhoActivity : AppCompatActivity() {
     lateinit var pieChart: PieChart
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_cofrinho) // Certifique-se de que este layout existe
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        // Carregar fonte personalizada da pasta assets/fonts
+        pieChart = findViewById(R.id.pieChart)
         val customFont = Typeface.createFromAsset(assets, "fonts/custom_font.ttf")
 
-        // Configurando o Spinner
-        val spinner: Spinner = findViewById(R.id.spinnermes)
-        val meses = resources.getStringArray(R.array.meses)
-        val mesesabv = arrayOf("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez")
-
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, meses)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = adapter
-
-        val selectedMonthTextView: TextView = findViewById(R.id.selectedMonth)
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                selectedMonthTextView.text = mesesabv[position]
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-
-            }
-        }
-
-        pieChart = findViewById(R.id.pieChart)
-
-        val gastos = 600f
+        val gastos = 700f
         val renda = 1000f
         val porcentagemGastos = (gastos / renda) * 100
 
@@ -93,15 +66,41 @@ class MainActivity : AppCompatActivity() {
         legend.textColor = Color.WHITE
         legend.textSize = 12f
         legend.typeface = customFont // Aplicando fonte customizada na legenda
-        val typeface = Typeface.createFromAsset(assets, "fonts/custom_font.ttf") // Certifique-se de que o caminho está correto
+        val typeface = Typeface.createFromAsset(
+            assets,
+            "fonts/custom_font.ttf"
+        ) // Certifique-se de que o caminho está correto
         pieChart.legend.typeface = typeface
         val boldTypeface = Typeface.create(typeface, Typeface.BOLD) // Define a fonte como bold
 
-// Aplicar a fonte bold à legenda e ao texto central
+        // Aplicar a fonte bold à legenda e ao texto central
         pieChart.legend.typeface = boldTypeface
         pieChart.setCenterTextTypeface(boldTypeface)
+    }
 
+    fun irParaDash(view: View) {
+        intent = Intent(view.context, MainActivity::class.java)
+        view.context.startActivity(intent)
+    }
 
+    fun irParaInvestimento(view: View) {
+        intent = Intent(view.context, InvestimentoActivity::class.java)
+        view.context.startActivity(intent)
+    }
 
+    fun irParaAddMeta(view: View) {
+        intent = Intent(view.context, FragmentaAddMeta::class.java)
+        view.context.startActivity(intent)
+    }
+
+    fun irParaPerfil(view: View) {
+        intent = Intent(view.context, PerfilActivity::class.java)
+        view.context.startActivity(intent)
+    }
+
+    fun irParaCalendario(view: View) {
+        val intent = Intent(view.context, CalendarioActivity::class.java)
+        view.context.startActivity(intent)
     }
 }
+

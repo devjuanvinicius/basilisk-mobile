@@ -1,12 +1,14 @@
 <resources>
-  <string name="app_name">dashboardBasi</string>
+  <string name="app_name">Basilisk</string>
   <string name="noti">notifications</string>
-  <string name="menu">menu</string>
-  <string name="buttomprofile">profile</string>
   <string name="set">settings</string>
   <string name="dash">Dashboard</string>
   <string name="Saldo">Saldo</string>
-  <string name="invest">Investimento</string>
+  <string name="inves">Investimento</string>
+  <string name="confrin">Cofrinho</string>
+  <string name="calendario">Calendario</string>
+  <string name="novarenda">Adicione uma renda</string>
+  <string name="novameta">Adicione uma meta</string>
   <string-array name="meses">
     <item>Janeiro</item>
     <item>Fevereiro</item>
@@ -23,4 +25,5 @@
   </string-array>
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="adicione_uma_meta">Adicione uma meta</string>
 </resources>

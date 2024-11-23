@@ -1,9 +1,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alpha"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/slate950"
     android:contentDescription="botao"
     tools:context=".MainActivity">
 
@@ -11,13 +12,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background">
+        android:background="@color/slate950">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/background"
+            android:background="@color/slate950"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,201 +45,121 @@
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@id/headline"
                     app:layout_constraintStart_toStartOf="@id/headline"
-                    app:layout_constraintTop_toTopOf="@id/headline" />
+                    app:layout_constraintTop_toTopOf="@id/headline"
+                    app:layout_constraintVertical_bias="0.523" />
 
                 <Button
                     android:id="@+id/noti"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:backgroundTint="@color/background"
+                    android:backgroundTint="@color/slate950"
                     android:contentDescription="notifications"
                     android:drawableTop="@drawable/notification"
                     android:text="@string/noti"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.848"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/set"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:backgroundTint="@color/background"
-                    android:contentDescription="settings"
-                    android:drawableTop="@drawable/settings"
-                    android:text="@string/set"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.98"
+                    app:layout_constraintHorizontal_bias="0.955"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/Saldo"
-                android:layout_width="345dp"
-                android:layout_height="200dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="92dp"
-                android:layout_marginEnd="36dp"
-                android:background="@drawable/radiuscar"
+                android:layout_width="360dp"
+                android:layout_height="220dp"
+                android:layout_marginTop="97dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.4"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <Button
-                    android:id="@+id/novosaldo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="156dp"
-                    android:background="#002F2F2F"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="+ Novo saldo"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/editarsaldo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="156dp"
-                    android:layout_marginEnd="40dp"
-                    android:background="#002F2F2F"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="Editar saldo"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:id="@+id/buttonRenda"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="30dp"
+                    android:backgroundTint="@color/slate800"
+                    android:contentDescription="notifications"
+                    android:drawableTop="@drawable/content_right"
+                    android:text="@string/noti"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.41000003" />
+
+                <Button
+                    android:id="@+id/buttonDespesa"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="30dp"
+                    android:backgroundTint="@color/slate800"
+                    android:contentDescription="notifications"
+                    android:drawableTop="@drawable/content_left"
+                    android:text="@string/noti"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.41000003" />
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fragment"
+                    android:layout_width="345dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout2"
-                    android:layout_width="match_parent"
-                    android:layout_height="165dp"
-                    android:layout_marginBottom="35dp"
-                    android:background="@drawable/radiuscar2"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="120dp"
+                    android:background="@drawable/radiuscar"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0">
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Spinner
+                        android:id="@+id/spinnermes"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="64dp"
+                        android:layout_marginTop="-4dp"
+                        android:backgroundTint="#FFFCFC"
+                        android:entries="@array/meses"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/selectedMonth"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="143dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="144dp"
-                        android:layout_marginBottom="130dp"
-                        android:fontFamily="@font/inter_medium"
-                        android:text="Saldo"
+                        android:layout_marginTop="4dp"
+                        android:text="Jan"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintLayout"
+                    <ImageView
+                        android:id="@+id/imageView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="6dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.12"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.496">
-
-                        <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="7dp"
-                            android:fontFamily="@font/inter_bold"
-                            android:text="R$"
-                            android:textColor="@color/white"
-                            android:textSize="30sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/textView5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.4" />
-
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/inter_bold"
-                            android:text="2.200,00"
-                            android:textColor="@color/white"
-                            android:textSize="30sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/textView4"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.4" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="110dp"
-                        android:layout_height="35dp"
-                        android:layout_marginStart="117dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="118dp"
-                        android:background="@drawable/radiuscar"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
-
-                        <Spinner
-                            android:id="@+id/spinnermes"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_marginStart="64dp"
-                            android:layout_marginTop="-4dp"
-                            android:backgroundTint="#FFFCFC"
-                            android:entries="@array/meses"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/selectedMonth"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Jan"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginBottom="6dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.12"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.72"
-                            app:srcCompat="@drawable/calendario" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                        app:layout_constraintVertical_bias="0.72"
+                        app:srcCompat="@drawable/calendario" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -314,7 +235,7 @@
                             android:fontFamily="@font/inter_semibold"
                             android:padding="5dp"
                             android:text="Próximo pagamento"
-                            android:textColor="@color/background"
+                            android:textColor="@color/slate950"
                             android:textSize="12sp" />
 
                         <TextView
@@ -325,7 +246,7 @@
                             android:fontFamily="@font/inter_bold"
                             android:padding="5dp"
                             android:text="R$ 16,00"
-                            android:textColor="@color/background"
+                            android:textColor="@color/slate950"
                             android:textSize="18sp" />
 
                         <TextView
@@ -334,7 +255,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/inter_semibold"
                             android:text="Apple TV+"
-                            android:textColor="@color/background"
+                            android:textColor="@color/slate950"
                             android:textSize="12sp"
                             android:translationX="5dp"
                             android:translationY="60dp" />
@@ -359,7 +280,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="121dp"
                         android:fontFamily="@font/inter_medium"
-                        android:text="Saldo"
+                        android:text="@string/Saldo"
                         android:textColor="@color/white"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -391,9 +312,11 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="44dp"
                 android:layout_marginEnd="276dp"
+                android:layout_marginBottom="268dp"
                 android:fontFamily="@font/inter_bold"
                 android:text="Últimos gastos"
                 android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
@@ -413,35 +336,29 @@
                     android:id="@+id/spottext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="155dp"
+                    android:layout_marginEnd="212dp"
                     android:fontFamily="@font/inter_bold"
                     android:text="Spotify Premium"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
+
                     app:layout_constraintTop_toTopOf="parent" />
+
 
                 <TextView
                     android:id="@+id/spotday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="201dp"
+                    android:layout_marginEnd="256dp"
+                    android:alpha="0.6"
                     android:fontFamily="@font/inter_medium"
                     android:text="6 de agosto"
-                    android:textColor="@color/lightergrey"
+                    android:textColor="@color/white"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/spottext" />
-
-                <ImageView
-                    android:id="@+id/spotimg"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/spotify" />
 
                 <TextView
                     android:id="@+id/textView10"
@@ -449,80 +366,29 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="27dp"
                     android:layout_marginEnd="31dp"
+                    android:alpha="0.6"
                     android:fontFamily="@font/inter_medium"
                     android:text="-R$ 21,90"
-                    android:textColor="@color/lightergrey"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="345dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="730dp"
-                android:layout_marginEnd="34dp"
-                android:layout_marginBottom="90dp"
-                android:background="@drawable/radiuscar2"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="200dp"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="6 de agosto"
-                    android:textColor="@color/lightergrey"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="185dp"
-                    android:fontFamily="@font/inter_bold"
-                    android:text="Prime Video"
                     android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/amazon" />
-
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="27dp"
-                    android:layout_marginEnd="31dp"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="-R$ 21,90"
-                    android:textColor="@color/lightergrey"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/buttonTesteDeLogof"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="232dp"
+                tools:layout_editor_absoluteY="316dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     </ScrollView>
 
@@ -530,7 +396,6 @@
         android:id="@+id/navbar"
         android:layout_width="350dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="50dp"
         android:background="@drawable/navbar_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -548,10 +413,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="irParaPerfil"/>
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/homeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/homeicon"
@@ -569,6 +435,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/homeicon"
             android:contentDescription="investiemntos"
+            android:onClick="irParaInvestimento"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.25"
@@ -583,6 +450,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/homeicon"
             android:contentDescription="cofrinho"
+            android:onClick="irParaCoffin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.72"
@@ -601,11 +469,12 @@
             app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/calendarioicon" />
+            app:srcCompat="@drawable/calendarioicon"
+            android:onClick="irParaCalendario"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Este é um comentário em XML -->
