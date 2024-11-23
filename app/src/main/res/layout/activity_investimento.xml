@@ -347,43 +347,28 @@
               android:textSize="12sp"
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintStart_toStartOf="parent" />
-
-          <TextView
-              android:id="@+id/ultimos7Dias2"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginStart="8dp"
-              android:layout_marginEnd="21dp"
-              android:layout_marginBottom="16dp"
-              android:fontFamily="@font/inter_medium"
-              android:text="Últimos 7 dias"
-              android:textColor="@color/white"
-              android:textSize="12sp"
-              app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toEndOf="@+id/negativoVermelho" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
       </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="342dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="496dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/lighter_gray"
-            android:iconifiedByDefault="false"
-            android:textColorHint="#000"
-            android:queryHint="Pesquisar..."
-            app:queryBackground="@null"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+      <SearchView
+          android:id="@+id/searchView"
+          android:layout_width="342dp"
+          android:layout_height="40dp"
+          android:layout_marginStart="32dp"
+          android:layout_marginTop="496dp"
+          android:layout_marginEnd="32dp"
+          android:background="@drawable/lighter_gray"
+          android:iconifiedByDefault="false"
+          android:textColorHint="#000"
+          android:queryHint="Pesquisar..."
+          app:queryBackground="@null"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.6"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"/>
 
 
       <TextView
@@ -412,35 +397,35 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent">
 
-<!--        <TextView-->
-<!--            android:id="@+id/spottext"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="5dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:layout_marginEnd="220dp"-->
-<!--            android:fontFamily="@font/inter_bold"-->
-<!--            android:text="Spotify"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="16dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/spotimg"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/spottext"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="5dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:layout_marginEnd="220dp"-->
+        <!--            android:fontFamily="@font/inter_bold"-->
+        <!--            android:text="Spotify"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="16dp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/spotimg"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/spotday"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="5dp"-->
-<!--            android:layout_marginEnd="228dp"-->
-<!--            android:alpha="0.6"-->
-<!--            android:fontFamily="@font/inter_medium"-->
-<!--            android:text="S1PO34"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="12sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/spotimg"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/spottext" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/spotday"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="5dp"-->
+        <!--            android:layout_marginEnd="228dp"-->
+        <!--            android:alpha="0.6"-->
+        <!--            android:fontFamily="@font/inter_medium"-->
+        <!--            android:text="S1PO34"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="12sp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/spotimg"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/spottext" />-->
 
         <!--<ImageView
             android:id="@+id/spotimg"
@@ -492,35 +477,35 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent">
 
-<!--        <TextView-->
-<!--            android:id="@+id/spottext2"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="5dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:layout_marginEnd="220dp"-->
-<!--            android:fontFamily="@font/inter_bold"-->
-<!--            android:text="Spotify"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="16dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/spotimg2"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/spottext2"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="5dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:layout_marginEnd="220dp"-->
+        <!--            android:fontFamily="@font/inter_bold"-->
+        <!--            android:text="Spotify"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="16dp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/spotimg2"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/spotday2"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="5dp"-->
-<!--            android:layout_marginEnd="228dp"-->
-<!--            android:alpha="0.6"-->
-<!--            android:fontFamily="@font/inter_medium"-->
-<!--            android:text="A1LO68"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="12sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/spotimg2"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/spottext2" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/spotday2"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="5dp"-->
+        <!--            android:layout_marginEnd="228dp"-->
+        <!--            android:alpha="0.6"-->
+        <!--            android:fontFamily="@font/inter_medium"-->
+        <!--            android:text="A1LO68"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="12sp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/spotimg2"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/spottext2" />-->
 
         <!--<ImageView
             android:id="@+id/spotimg2"
