@@ -32,6 +32,7 @@ class InvestimentoActivity : AppCompatActivity() {
       insets
     }
 
+
     homeButton = findViewById(R.id.homeButton)
     homeButton.setOnClickListener {
       val intent = Intent(this, MainActivity::class.java)
@@ -77,6 +78,7 @@ class InvestimentoActivity : AppCompatActivity() {
     })
   }
 
+
   fun irParaAddInvest(view: View) {
     val intent = Intent(view.context, AddInvestActivity::class.java)
     view.context.startActivity(intent)
@@ -96,6 +98,7 @@ class InvestimentoActivity : AppCompatActivity() {
     val intent = Intent(view.context, PerfilActivity::class.java)
     view.context.startActivity(intent)
   }
+
 
   fun irParaCalendario(view: View) {
     val intent = Intent(view.context, CalendarioActivity::class.java)

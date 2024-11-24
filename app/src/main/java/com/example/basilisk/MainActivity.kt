@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.basilisk.databinding.ActivityMainBinding
 import com.example.basilisk.model.Despesas
+import com.example.basilisk.recyclers.ItemAdapterDespesa
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         // Configurando o Spinner
         val spinner: Spinner = findViewById(R.id.spinnermes)
         val meses = resources.getStringArray(R.array.meses)
-        val mesesabv = arrayOf("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez")
+        val mesesabv = arrayOf("Nov", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez")
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, meses)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -136,8 +137,35 @@ class MainActivity : AppCompatActivity() {
             replaceFragment(RendaFragment())
         }
 
+        val despesasArray = listOf(
+            Despesas(
+                id = "1",
+                nome = "Aluguel",
+                parcelas = 1,
+                dataPagamento = "2024-11-01",
+                despesaFixa = true,
+                valor = 1500.00
+            ),
+            Despesas(
+                id = "2",
+                nome = "Supermercado",
+                parcelas = 3,
+                dataPagamento = "2024-11-10",
+                despesaFixa = false,
+                valor = 300.50
+            ),
+            Despesas(
+                id = "3",
+                nome = "Porsche",
+                parcelas = 1,
+                dataPagamento = "2024-11-10",
+                despesaFixa = false,
+                valor = 300000.50
+            )
+        )
+
         rvLista = findViewById(R.id.rv_dashboard)
-        rvLista.adapter = ItemAdapter() //Aqui vc vai colocar a lista com as despesas
+        rvLista.adapter = ItemAdapterDespesa(despesasArray) //Aqui vc vai colocar a lista com as despesas
         rvLista.layoutManager = LinearLayoutManager(this)
     }
 

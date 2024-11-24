@@ -1,4 +1,4 @@
-package com.example.basilisk
+package com.example.basilisk.recyclers
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.basilisk.R
 import com.example.basilisk.model.Despesas
 
-class ItemAdapter(
+class ItemAdapterDespesa(
     val lista: List<Despesas>
-) : Adapter<ItemAdapter.ItemViewHolder>() {
+) : Adapter<ItemAdapterDespesa.ItemViewHolder>() {
 
     inner class ItemViewHolder(
         val itemView: View
