@@ -70,7 +70,6 @@ dependencies {
 
     // Fragment KTX (versão mais recente)
     implementation("androidx.fragment:fragment-ktx:1.6.1")
-    /*implementation(libs.core.ktx)*/
 
     // Testes
     testImplementation(libs.junit)
@@ -80,6 +79,7 @@ dependencies {
     testImplementation ("junit:junit:4.13.2")
     testImplementation ("org.mockito:mockito-core:4.11.0")
     testImplementation ("org.mockito.kotlin:mockito-kotlin:4.1.0")
+    testImplementation("org.robolectric:robolectric:4.10")
 
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.5.1")

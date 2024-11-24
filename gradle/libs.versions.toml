@@ -9,9 +9,6 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.9.1"
 constraintlayout = "2.1.4"
-materialVersion = "<latest_version>"
-viewpager2 = "1.1.0"
-supportV13 = "28.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -22,9 +19,6 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-androidx-viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "viewpager2" }
-material-vlatestversion = { module = "com.google.android.material:material", version.ref = "materialVersion" }
-support-v13 = { group = "com.android.support", name = "support-v13", version.ref = "supportV13" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
