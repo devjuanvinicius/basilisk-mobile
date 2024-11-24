@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         // Configurando o Spinner
         val spinner: Spinner = findViewById(R.id.spinnermes)
         val meses = resources.getStringArray(R.array.meses)
-        val mesesabv = arrayOf("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez")
+        val mesesabv = arrayOf("Nov", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez")
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, meses)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

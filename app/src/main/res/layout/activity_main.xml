@@ -137,7 +137,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Jan"
+                        android:text="Nov"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -310,16 +310,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="44dp"
-                android:layout_marginEnd="276dp"
-                android:layout_marginBottom="268dp"
+                android:layout_marginTop="574dp"
                 android:fontFamily="@font/inter_bold"
                 android:text="Últimos gastos"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/buttonTesteDeLogof"
@@ -333,15 +329,17 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_dashboard"
                 android:layout_width="0dp"
-                android:layout_height="266dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
+                android:layout_marginBottom="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8"
-                tools:itemCount="4"
+                tools:itemCount="2"
                 tools:listitem="@layout/item_lista" />
 
 
