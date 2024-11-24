@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
 
 class CadastroActivity : FragmentActivity() {
-    private lateinit var binding: ActivityCadastroBinding
+    public lateinit var binding: ActivityCadastroBinding
 
     private val auth by lazy { FirebaseAuth.getInstance() }
     private val db by lazy { FirebaseFirestore.getInstance() }
@@ -46,7 +46,7 @@ class CadastroActivity : FragmentActivity() {
         }
     }
 
-    private fun cadastrarUsuario() {
+    public fun cadastrarUsuario() {
         val email = binding.emailCad.text.toString()
         val senha = binding.senhaCad.text.toString()
         val nome = binding.NomeCompletoCad.text.toString()
@@ -72,7 +72,7 @@ class CadastroActivity : FragmentActivity() {
         )
     }
 
-    private fun getMensagemErro(exception: Exception): String {
+    public fun getMensagemErro(exception: Exception): String {
         return when (exception) {
             is FirebaseAuthWeakPasswordException -> "Digite uma senha com no mínimo 6 caracteres"
             is FirebaseAuthInvalidCredentialsException -> "Digite um e-mail válido"
@@ -85,7 +85,7 @@ class CadastroActivity : FragmentActivity() {
         }
     }
 
-    private fun validarCampos(email: String, senha: String, nome: String, telefone: String, dataNascimentoString: String): Boolean {
+    public fun validarCampos(email: String, senha: String, nome: String, telefone: String, dataNascimentoString: String): Boolean {
         if (email.isEmpty() || senha.isEmpty() || nome.isEmpty() || dataNascimentoString.isEmpty() || telefone.isEmpty()) {
             exibirMensagem("Preencha todos os campos!")
             return false
@@ -99,7 +99,7 @@ class CadastroActivity : FragmentActivity() {
         return true
     }
 
-    private fun limparCampos() {
+    public fun limparCampos() {
         with(binding) {
             NomeCompletoCad.setText("")
             nascimentoCad.setText("")
@@ -108,4 +108,5 @@ class CadastroActivity : FragmentActivity() {
             senhaCad.setText("")
         }
     }
+
 }
