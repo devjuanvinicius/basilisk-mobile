@@ -66,6 +66,8 @@ dependencies {
     // API Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.11.0")
 
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+
     // Fragment KTX (versão mais recente)
     implementation("androidx.fragment:fragment-ktx:1.6.1")
 
