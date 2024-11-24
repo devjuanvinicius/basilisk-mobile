@@ -108,4 +108,5 @@ class CadastroActivity : FragmentActivity() {
             senhaCad.setText("")
         }
     }
+
 }

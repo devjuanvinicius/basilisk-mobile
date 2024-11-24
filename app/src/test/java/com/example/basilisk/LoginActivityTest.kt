@@ -42,7 +42,7 @@ class LoginActivityTest {
     verify(mockActivity).exibirMensagem("Preencha todos os campos")
   }
 
-  // Quando o login é bem-sucedido, o usuário deve ser encaminhado para a MainActivity
+  // Quando o login é bem-sucedido, o usuário deve ser encaminhado para o MainActivity
   @Test
   fun navegacaoParaMainActivityAcontece() {
     // Mockando FirebaseAuth
@@ -72,7 +72,7 @@ class LoginActivityTest {
     verify(mockActivity).finish()
   }
 
-  //Caso o usuário clique para se cadastrar ao invés de preencher o campo de login, ele dev ser redirecionado para o cadastro.
+  //Caso o usuário clique para se cadastrar ao invés de preencher o campo de login, ele deve ser redirecionado para o cadastro.
   @Test
   fun navegacaoParaCadastroAcontece() {
     // Mockando a Activity

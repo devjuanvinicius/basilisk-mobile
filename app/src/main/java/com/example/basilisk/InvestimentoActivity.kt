@@ -99,7 +99,6 @@ class InvestimentoActivity : AppCompatActivity() {
     view.context.startActivity(intent)
   }
 
-
   fun irParaCalendario(view: View) {
     val intent = Intent(view.context, CalendarioActivity::class.java)
     view.context.startActivity(intent)

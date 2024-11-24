@@ -18,6 +18,7 @@ class CadastroActivityTest {
     binding = mock(ActivityCadastroBinding::class.java) // Mock do binding
   }
 
+  // Testa o resultado de quando o cadastro é preenchido corretamente
   @Test
   fun cadastroPreenchidoCorretamente() {
     val email = "teste@exemplo.com"
@@ -30,6 +31,7 @@ class CadastroActivityTest {
     assertTrue(resultado) // Campos válidos devem retornar true
   }
 
+  // Testa o resultado de quando o cadastro é preenchido incorretamente
   @Test
   fun cadastroPreenchidoIncorretamente() {
     val email = ""
