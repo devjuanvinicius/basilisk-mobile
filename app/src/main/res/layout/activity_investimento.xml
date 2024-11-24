@@ -99,13 +99,13 @@
             android:layout_marginEnd="32dp"
             android:background="#002F2F2F"
             android:fontFamily="@font/inter_medium"
+            android:onClick="irParaEditInvest"
             android:text="Editar investimentos"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="irParaEditInvest"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
@@ -387,161 +387,17 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
 
-      <androidx.constraintlayout.widget.ConstraintLayout
-          android:layout_width="345dp"
-          android:layout_height="70dp"
-          android:layout_marginTop="628dp"
-          android:background="@drawable/radiuscar2"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.5"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent">
-
-        <!--        <TextView-->
-        <!--            android:id="@+id/spottext"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginStart="5dp"-->
-        <!--            android:layout_marginTop="16dp"-->
-        <!--            android:layout_marginEnd="220dp"-->
-        <!--            android:fontFamily="@font/inter_bold"-->
-        <!--            android:text="Spotify"-->
-        <!--            android:textColor="@color/white"-->
-        <!--            android:textSize="16dp"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toEndOf="@+id/spotimg"-->
-        <!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-        <!--        <TextView-->
-        <!--            android:id="@+id/spotday"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginStart="5dp"-->
-        <!--            android:layout_marginEnd="228dp"-->
-        <!--            android:alpha="0.6"-->
-        <!--            android:fontFamily="@font/inter_medium"-->
-        <!--            android:text="S1PO34"-->
-        <!--            android:textColor="@color/white"-->
-        <!--            android:textSize="12sp"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toEndOf="@+id/spotimg"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/spottext" />-->
-
-        <!--<ImageView
-            android:id="@+id/spotimg"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/spotify" />-->
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            android:alpha="0.6"
-            android:fontFamily="@font/inter_medium"
-            android:text="-R$ 21,90"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/grafInvestimento"
-            android:layout_width="65dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="264dp"
-            android:layout_marginTop="28dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/grafico_investimento" />
-
-      </androidx.constraintlayout.widget.ConstraintLayout>
-
-      <androidx.constraintlayout.widget.ConstraintLayout
-          android:layout_width="345dp"
-          android:layout_height="70dp"
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rvInvestimento"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
           android:layout_marginStart="32dp"
-          android:layout_marginTop="710dp"
+          android:layout_marginTop="16dp"
           android:layout_marginEnd="32dp"
-          android:layout_marginBottom="120dp"
-          android:background="@drawable/radiuscar2"
-          app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.416"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent">
-
-        <!--        <TextView-->
-        <!--            android:id="@+id/spottext2"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginStart="5dp"-->
-        <!--            android:layout_marginTop="16dp"-->
-        <!--            android:layout_marginEnd="220dp"-->
-        <!--            android:fontFamily="@font/inter_bold"-->
-        <!--            android:text="Spotify"-->
-        <!--            android:textColor="@color/white"-->
-        <!--            android:textSize="16dp"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toEndOf="@+id/spotimg2"-->
-        <!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-        <!--        <TextView-->
-        <!--            android:id="@+id/spotday2"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginStart="5dp"-->
-        <!--            android:layout_marginEnd="228dp"-->
-        <!--            android:alpha="0.6"-->
-        <!--            android:fontFamily="@font/inter_medium"-->
-        <!--            android:text="A1LO68"-->
-        <!--            android:textColor="@color/white"-->
-        <!--            android:textSize="12sp"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toEndOf="@+id/spotimg2"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/spottext2" />-->
-
-        <!--<ImageView
-            android:id="@+id/spotimg2"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/spotify" />-->
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            android:alpha="0.6"
-            android:fontFamily="@font/inter_medium"
-            android:text="-R$ 21,90"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/grafInvestimento2"
-            android:layout_width="65dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="264dp"
-            android:layout_marginTop="28dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/grafico_investimento" />
-
-      </androidx.constraintlayout.widget.ConstraintLayout>
+          app:layout_constraintTop_toBottomOf="@+id/textView8"
+          tools:listitem="@layout/item_lista" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

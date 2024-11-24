@@ -7,20 +7,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.basilisk.R
-import com.example.basilisk.model.Despesas
-import java.text.NumberFormat
-import java.util.Locale
+import com.example.basilisk.model.Investimento
 
-class ItemAdapterDespesa(
-    val lista: List<Despesas>
-) : Adapter<ItemAdapterDespesa.ItemViewHolder>() {
+class ItemAdapterInvestimento(
+    val lista: List<Investimento>
+) : Adapter<ItemAdapterInvestimento.ItemViewHolder>() {
 
     inner class ItemViewHolder(
         val itemView: View
     ) : ViewHolder(itemView){
-        val tituloDespesa: TextView = itemView.findViewById(R.id.tituloItemLista)
-        val dataDespesa: TextView = itemView.findViewById(R.id.subTituloItemLista)
-        val valorDespesa: TextView = itemView.findViewById(R.id.valorItemLista)
+        val titulo: TextView = itemView.findViewById(R.id.tituloItemLista)
+        val codigo: TextView = itemView.findViewById(R.id.subTituloItemLista)
+        val valor: TextView = itemView.findViewById(R.id.valorItemLista)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -35,11 +33,10 @@ class ItemAdapterDespesa(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val itemDaLista = lista[position]
-        val formatador = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
 
-        holder.tituloDespesa.text = itemDaLista.nome
-        holder.dataDespesa.text = itemDaLista.dataPagamento
-        holder.valorDespesa.text = formatador.format(itemDaLista.valor)
+        holder.titulo.text = itemDaLista.dataCompra
+        holder.codigo.text = itemDaLista.codigoAcao
+        holder.valor.text = itemDaLista.valor.toString()
     }
 
     override fun getItemCount(): Int {

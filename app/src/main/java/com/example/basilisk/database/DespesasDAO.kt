@@ -2,13 +2,12 @@ package com.example.basilisk.database
 
 import android.util.Log
 import com.example.basilisk.model.Despesas
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.gson.Gson
 
-class DespesasDAO(private val db: FirebaseFirestore, private val auth: FirebaseAuth): IDespesasDAO {
+class DespesasDAO(private val db: FirebaseFirestore): IDespesasDAO {
 
     override fun criarDespesa(
         idUsuario: String,

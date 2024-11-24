@@ -43,7 +43,7 @@ class novaDespesa : AppCompatActivity() {
 
         val db = FirebaseFirestore.getInstance()
         val auth = FirebaseAuth.getInstance()
-        val despesasDAO = DespesasDAO(db, auth)
+        val despesasDAO = DespesasDAO(db)
 
         // Configura o TextWatcher para o campo de valor
         binding.inputValorDespesa.addTextChangedListener(ExampleTextWatcher(binding.inputValorDespesa))

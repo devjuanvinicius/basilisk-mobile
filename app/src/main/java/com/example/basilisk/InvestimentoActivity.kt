@@ -9,8 +9,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.basilisk.model.Investimento
 import com.example.basilisk.network.IbovespaResponse
 import com.example.basilisk.network.RetrofitClient
+import com.example.basilisk.recyclers.ItemAdapterInvestimento
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,6 +23,7 @@ class InvestimentoActivity : AppCompatActivity() {
   lateinit var homeButton: ImageButton
   private lateinit var ibovespaTextView: TextView
   private lateinit var variaçãoTextView: TextView
+  private lateinit var rvInvestimento: RecyclerView
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -45,6 +50,20 @@ class InvestimentoActivity : AppCompatActivity() {
 
     val token = "6AfdujsFQpyPMnwfgeNWFf"
     getIbovespa(token)
+
+    val investimentos = listOf(
+      Investimento(codigoAcao = "PETR4", dataCompra = "2024-01-15", qtdAcoes = 100, valor = 28.50),
+      Investimento(codigoAcao = "VALE3", dataCompra = "2023-12-10", qtdAcoes = 50, valor = 70.20),
+      Investimento(codigoAcao = "ITUB4", dataCompra = "2024-02-01", qtdAcoes = 200, valor = 24.90),
+      Investimento(codigoAcao = "ABEV3", dataCompra = "2023-11-20", qtdAcoes = 150, valor = 14.75),
+      Investimento(codigoAcao = "BBDC4", dataCompra = "2024-03-05", qtdAcoes = 80, valor = 16.60)
+    )
+
+
+    rvInvestimento = findViewById(R.id.rvInvestimento)
+    rvInvestimento.adapter = ItemAdapterInvestimento(investimentos)
+    rvInvestimento.layoutManager = LinearLayoutManager(this)
+
   }
 
   private fun getIbovespa(token: String) {
@@ -81,6 +100,11 @@ class InvestimentoActivity : AppCompatActivity() {
 
   fun irParaAddInvest(view: View) {
     val intent = Intent(view.context, AddInvestActivity::class.java)
+    view.context.startActivity(intent)
+  }
+
+  fun irParaEditInvest(view: View) {
+    val intent = Intent(view.context, EditInvestActivity::class.java)
     view.context.startActivity(intent)
   }
 

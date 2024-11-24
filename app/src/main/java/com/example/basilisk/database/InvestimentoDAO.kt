@@ -1,9 +1,11 @@
 package com.example.basilisk.database
 
+import android.util.Log
 import com.example.basilisk.model.Investimento
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.google.gson.Gson
 
 class InvestimentoDAO(private val db: FirebaseFirestore): IInvestimentoDAO {
     override fun criarInvestimento(
@@ -98,18 +100,21 @@ class InvestimentoDAO(private val db: FirebaseFirestore): IInvestimentoDAO {
         db.collection("users").document(idUsuario).get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
-                    val investimentos = document.get("investimentos") as? List<Map<String, Any>> ?: emptyList()
-                    val investimentosList = investimentos.map {
-                        Investimento(
-                            codigoAcao = it["codigoAcao"] as String,
-                            dataCompra = it["dataCompra"] as String,
-                            qtdAcoes = it["qtdAcoes"] as Int,
-                            valor = it["valor"] as Double
-                        )
+                    val investimentoList = document.get("investimentos") as? List<Map<String, Any>> ?: emptyList()
+
+                    val investimentos = investimentoList.mapNotNull { investimentosMap ->
+                        try {
+                            val json = Gson().toJson(investimentosMap)
+                            Gson().fromJson(json, Investimento::class.java)
+                        } catch (e: Exception) {
+                            Log.e("InvestimentoDAO", "Erro ao mapear despesa: ${e.message}")
+                            null
+                        }
                     }
-                    onSuccess(investimentosList)
+
+                    onSuccess(investimentos)
                 } else {
-                    onFailure(Exception("Documento não encontrado"))
+                    onFailure(Exception("Documento não encontrado no Firebase."))
                 }
             }
             .addOnFailureListener { exception ->
