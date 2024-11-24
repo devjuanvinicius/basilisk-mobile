@@ -1,10 +1,12 @@
 package com.example.basilisk.database
 
+import android.util.Log
 import com.example.basilisk.model.Despesas
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.google.gson.Gson
 
 class DespesasDAO(private val db: FirebaseFirestore, private val auth: FirebaseAuth): IDespesasDAO {
 
@@ -98,27 +100,32 @@ class DespesasDAO(private val db: FirebaseFirestore, private val auth: FirebaseA
         onSuccess: (List<Despesas>) -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        db.collection("users").document(idUsuario).get()
-            .addOnSuccessListener { document ->
-                if (document.exists()) {
-                    val despesas = document.get("despesa") as? List<Map<String, Any>> ?: emptyList()
-                    val despesasList = despesas.map {
-                        Despesas(
-                            id = it["id"] as String,
-                            nome = it["nome"] as String,
-                            valor = it["valor"] as Double,
-                            despesaFixa = it["despesaFixa"] as Boolean,
-                            dataPagamento = it["dataPagamento"] as String,
-                            parcelas = it["parcelas"] as Int
-                        )
+        if (idUsuario.isNotEmpty()) {
+            db.collection("users").document(idUsuario).get()
+                .addOnSuccessListener { document ->
+                    if (document.exists()) {
+                        val despesasList = document.get("despesa") as? List<Map<String, Any>> ?: emptyList()
+
+                        val despesas = despesasList.mapNotNull { despesaMap ->
+                            try {
+                                val json = Gson().toJson(despesaMap)
+                                Gson().fromJson(json, Despesas::class.java)
+                            } catch (e: Exception) {
+                                Log.e("DespesasDAO", "Erro ao mapear despesa: ${e.message}")
+                                null
+                            }
+                        }
+
+                        onSuccess(despesas)
+                    } else {
+                        onFailure(Exception("Documento não encontrado no Firebase."))
                     }
-                    onSuccess(despesasList)
-                } else {
-                    onFailure(Exception("Documento não encontrado"))
                 }
-            }
-            .addOnFailureListener { exception ->
-                onFailure(exception)
-            }
+                .addOnFailureListener { exception ->
+                    onFailure(exception)
+                }
+        } else {
+            onFailure(Exception("ID do usuário é inválido ou está vazio."))
+        }
     }
 }

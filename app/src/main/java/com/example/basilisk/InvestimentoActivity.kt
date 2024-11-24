@@ -14,8 +14,8 @@ import com.example.basilisk.network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-class InvestimentoActivity : AppCompatActivity() {
 
+class InvestimentoActivity : AppCompatActivity() {
   lateinit var homeButton: ImageButton
   private lateinit var ibovespaTextView: TextView
   private lateinit var variaçãoTextView: TextView

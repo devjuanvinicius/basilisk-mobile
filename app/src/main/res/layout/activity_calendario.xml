@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/slate950"
-    tools:context=".CalendarioActivity" >
+    tools:context=".CalendarioActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headlineCalendario"
@@ -74,13 +74,52 @@
         tools:ignore="MissingConstraints">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout6"
+            android:id="@+id/marcarPago"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            app:layout_constraintEnd_toStartOf="@+id/editarPagamento"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="197dp">
+
+            <ImageView
+                android:id="@+id/marcarPagoIcon"
+                android:layout_width="12dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/marcarPagoText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/baseline_check_24" />
+
+            <TextView
+                android:id="@+id/marcarPagoText"
+                android:layout_width="wrap_content"
+                android:layout_height="21dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="Marcar como pago"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/marcarPagoIcon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/editarPagamento"
             android:layout_width="wrap_content"
             android:layout_height="27dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/marcarPago"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
             <ImageView
@@ -106,24 +145,8 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/EditarEconomiaSeting"
                 app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/MarcarPago"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="13dp"
-            android:fontFamily="@font/inter_medium"
-            android:onClick="irparaAddMeta"
-            android:text="Marcar como pago"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/constraintLayout6"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -166,7 +189,6 @@
                 app:layout_constraintBottom_toTopOf="@+id/tipoPagamento"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/headline"
                 tools:ignore="NotSibling" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -222,6 +244,129 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:focusedMonthDateColor="@color/golden800"
+        android:selectedWeekBackgroundColor="@color/golden800"
+        android:weekNumberColor="@color/golden800"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/proximoPagamento" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_calendario"
+        android:layout_width="0dp"
+        android:layout_height="266dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_lista" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/navbar"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:background="@drawable/navbar_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:background="@drawable/icon"
+            android:contentDescription="botao"
+            android:onClick="irParaPerfil"
+            android:scaleType="centerCrop"
+            android:src="@drawable/rectangle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/homeicon"
+            android:contentDescription="home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/home" />
+
+        <ImageButton
+            android:id="@+id/investbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/homeicon"
+            android:contentDescription="investiemntos"
+            android:onClick="irParaInvestimento"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/investicon" />
+
+
+        <ImageButton
+            android:id="@+id/cofrinhobutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/homeicon"
+            android:contentDescription="cofrinho"
+            android:onClick="irParaCoffin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.72"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/cofrinhoicon" />
+
+        <ImageButton
+            android:id="@+id/calendarbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/homeicon"
+            android:contentDescription="calendario"
+            android:onClick="irParaCalendario"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/calendarioicon" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

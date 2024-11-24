@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.basilisk.databinding.ActivityMainBinding
-import com.example.basilisk.model.Despesas
+import com.example.basilisk.recyclers.ItemAdapterDespesa
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         rvLista = findViewById(R.id.rv_dashboard)
-        rvLista.adapter = ItemAdapter() //Aqui vc vai colocar a lista com as despesas
+        rvLista.adapter = ItemAdapterDespesa() //Aqui vc vai colocar a lista com as despesas
         rvLista.layoutManager = LinearLayoutManager(this)
     }
 
