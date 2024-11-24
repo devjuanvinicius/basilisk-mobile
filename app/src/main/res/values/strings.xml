@@ -9,6 +9,8 @@
   <string name="calendario">Calendario</string>
   <string name="novarenda">Adicione uma renda</string>
   <string name="novameta">Adicione uma meta</string>
+  <string name="buttomprofile">Foto de perfil</string>
+  <string name="backicon">Icone de retorno</string>
   <string-array name="meses">
     <item>Janeiro</item>
     <item>Fevereiro</item>
