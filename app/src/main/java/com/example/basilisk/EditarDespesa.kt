@@ -30,38 +30,39 @@ class EditarDespesa : AppCompatActivity() {
 
         val idDespesa = intent.getStringExtra("idDespesa")
         val titulo = intent.getStringExtra("titulo")
-        val valor = intent.getDoubleExtra("valor", 0.0) // Recebe como String
+        val valor = intent.getDoubleExtra("valor", 0.0)
         val dataPagamento = intent.getStringExtra("dataPagamento")
 
         titulo?.let {
-            binding.inputValorEditDespesa.setText(it)
+            binding.inputTituloEditDespesa.setText(it)
         } ?: run {
-            Log.e("EditarRenda", "Nome não recebido!")
+            Log.e("EditarDespesa", "Nome não recebido!")
         }
 
-        // Adiciona o TextWatcher corrigido
-        binding.inputDataFinal.addTextChangedListener(DateTextWatcher(binding.inputDataFinal))
-        val valorFormatado = NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(valor)
+        val valorFormatado = formatarValor(valor)
         binding.inputValorEditDespesa.setText(valorFormatado)
-
-
-        // Preenche os campos com os dados da despesa
-        binding.inputTituloEditDespesa.setText(titulo)
-        binding.inputValorEditDespesa.text.toString().toDoubleOrNull()  // Ajusta o valor inicial
+        binding.inputDataFinal.addTextChangedListener(DateTextWatcher(binding.inputDataFinal))
         binding.inputDataFinal.setText(dataPagamento)
 
-        // Evento de clique do botão salvar
         binding.ButtonEditdespesa.setOnClickListener {
             val novoTitulo = binding.inputTituloEditDespesa.text.toString()
-            val novoValor = binding.inputValorEditDespesa.text.toString().toDoubleOrNull() // Corrige a escala
+            val novoValorFormatado = binding.inputValorEditDespesa.text.toString()
+                .replace("R$", "") // Remove o "R$"
+                .replace(".", "") // Remove o ponto separador de milhar
+                .replace(",", ".") // Substitui a vírgula por ponto
+                .trim()
+            val novoValor = novoValorFormatado.toDoubleOrNull()
             val novaData = binding.inputDataFinal.text.toString()
 
+            println(novoTitulo)
+            println(novoValorFormatado)
+            println(novaData)
+
             if (novoTitulo.isNotEmpty() && novoValor != null && novaData.isNotEmpty() && idDespesa != null) {
-                // Cria a despesa atualizada
                 val despesaAtualizada = Despesas(
                     id = idDespesa,
                     nome = novoTitulo,
-                    valor = novoValor, // Utiliza o valor diretamente
+                    valor = novoValor,
                     despesaFixa = binding.switch1.isChecked,
                     dataPagamento = novaData,
                     parcelas = 1
@@ -76,7 +77,7 @@ class EditarDespesa : AppCompatActivity() {
                         despesaAtualizada,
                         onSuccess = {
                             Toast.makeText(this, "Despesa atualizada com sucesso!", Toast.LENGTH_SHORT).show()
-                            finish() // Volta para a tela anterior
+                            finish()
                         },
                         onFailure = { exception ->
                             Toast.makeText(this, "Erro ao atualizar despesa: ${exception.message}", Toast.LENGTH_SHORT).show()
@@ -89,21 +90,19 @@ class EditarDespesa : AppCompatActivity() {
                 Toast.makeText(this, "Preencha todos os campos obrigatórios!", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
-
-    fun irParaDash(view: View) {
-        val intent = Intent(view.context, MainActivity::class.java)
-        view.context.startActivity(intent)
-    }
-
-
-    // Formata o valor para exibição inicial no campo
+    
     private fun formatarValor(valor: Double): String {
         val numberFormat = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
         return numberFormat.format(valor)
     }
-
-
+    
+    fun irParaDash(view: View) {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+    
     class DateTextWatcher(private val editText: EditText?) : TextWatcher {
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -113,9 +112,8 @@ class EditarDespesa : AppCompatActivity() {
         override fun afterTextChanged(editable: Editable?) {
             editText?.removeTextChangedListener(this)
 
-            val cleanString = editable.toString().replace(Regex("[^\\d]"), "") // Remove qualquer caractere não numérico
+            val cleanString = editable.toString().replace(Regex("[^\\d]"), "")
 
-            // Adiciona as barras (/) a cada dois números
             val formattedString = when {
                 cleanString.length >= 8 -> cleanString.substring(0, 2) + "/" + cleanString.substring(2, 4) + "/" + cleanString.substring(4, 8)
                 cleanString.length >= 6 -> cleanString.substring(0, 2) + "/" + cleanString.substring(2, 4) + cleanString.substring(4)
@@ -128,6 +126,6 @@ class EditarDespesa : AppCompatActivity() {
             editText?.addTextChangedListener(this)
         }
     }
-
 }
+
 

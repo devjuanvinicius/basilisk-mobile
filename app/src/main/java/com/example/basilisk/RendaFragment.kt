@@ -6,7 +6,9 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.basilisk.database.DespesasDAO
 import com.example.basilisk.database.RendaDAO
+import com.example.basilisk.model.Despesas
 import com.example.basilisk.model.Renda
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -59,6 +61,31 @@ class RendaFragment : Fragment(R.layout.fragment_renda) {
         }
 
         return total
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val rendasDAO = RendaDAO(FirebaseFirestore.getInstance())
+        val idUsuario = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+
+        if (idUsuario.isNotEmpty()) {
+            rendasDAO.retornarRenda(idUsuario, onSuccess = { renda ->
+                atualizarDadosTela(requireView(), renda)
+            }, onFailure = { exception ->
+                Toast.makeText(context, "Erro ao carregar despesas: ${exception.message}", Toast.LENGTH_SHORT).show()
+            })
+        } else {
+            Toast.makeText(context, "Usuário não autenticado!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun atualizarDadosTela(view: View, rendaList: List<Renda>) {
+        val totalDespesas: TextView = view.findViewById(R.id.totalrendas)
+        val valorDespesas = rendaList.sumOf { it.valor.toDouble() }
+        val formatador = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
+
+        totalDespesas.text = formatador.format(valorDespesas)
     }
 
     private fun irParaRendas() {

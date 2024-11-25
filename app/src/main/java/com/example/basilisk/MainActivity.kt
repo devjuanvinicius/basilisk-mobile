@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import com.example.basilisk.database.DespesasDAO
 import com.example.basilisk.database.RendaDAO
 import com.example.basilisk.databinding.ActivityMainBinding
 import com.example.basilisk.model.Despesas
+import com.example.basilisk.model.Renda
 import com.example.basilisk.recyclers.ItemAdapterDespesa
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
@@ -34,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     private val auth by lazy { FirebaseAuth.getInstance() }
     private val db by lazy { FirebaseFirestore.getInstance() }
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -44,10 +46,52 @@ class MainActivity : AppCompatActivity() {
         setupSpinner()
         setupPieChart()
         setupButtons()
-        loadDespesas()
 
         rvLista = findViewById(R.id.rv_dashboard)
         rvLista.layoutManager = LinearLayoutManager(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val despesasArray = mutableListOf<Despesas>()
+        loadDespesas(despesasArray)
+        calculaSaldo(despesasArray)
+    }
+
+    private fun calculaSaldo(despesasArray: List<Despesas>) {
+        RendaDAO(db).retornarRenda(
+            auth.currentUser!!.uid,
+            onSuccess = { rendas ->
+                val totalRenda = calcularTotalRenda(rendas)
+                val totalDespesa = calcularTotalDespesa(despesasArray)
+
+                val total = totalRenda - totalDespesa
+
+                val formatador = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
+                val textView: TextView = findViewById(R.id.saldoText)
+                textView.text = formatador.format(total)
+            },
+            onFailure = { exception ->
+                // Aqui você pode adicionar um log para verificar falhas
+                Log.e("Erro", "Falha ao carregar rendas: ${exception.message}")
+            }
+        )
+    }
+
+    private fun calcularTotalDespesa(despesasArray: List<Despesas>): Double {
+        var total = 0.0
+        for (despesa in despesasArray) {
+            total += despesa.valor
+        }
+        return total
+    }
+
+    private fun calcularTotalRenda(rendaLista: List<Renda>): Double {
+        var total = 0.0
+        for (renda in rendaLista) {
+            total += renda.valor
+        }
+        return total
     }
 
     private fun setupWindowInsets() {
@@ -135,9 +179,7 @@ class MainActivity : AppCompatActivity() {
         buttonDespesa.setOnClickListener { replaceFragment(RendaFragment()) }
     }
 
-    private fun loadDespesas() {
-        val despesasArray = mutableListOf<Despesas>()
-
+    private fun loadDespesas(despesasArray: MutableList<Despesas>) {
         if (auth.currentUser?.uid != null) {
             DespesasDAO(db).retornarDespesa(
                 auth.currentUser!!.uid,
@@ -158,7 +200,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun excluirDespesa(despesaId: String, despesasArray: MutableList<Despesas>) {
         DespesasDAO(db).deletarDespesa(
             auth.currentUser!!.uid, despesaId,
@@ -172,14 +213,18 @@ class MainActivity : AppCompatActivity() {
         val proxPagamentoText: TextView = findViewById(R.id.nomeProximoPagamento)
         val valorProxPagamentoText: TextView = findViewById(R.id.valorProximoPagamento)
 
-        val primeiraDespesa = despesasArray[0]
-        val diaPagamento = primeiraDespesa.dataPagamento.substring(0,2)
+        if(despesasArray.isNotEmpty()){
+            val primeiraDespesa = despesasArray[0]
+            val diaPagamento = primeiraDespesa.dataPagamento.substring(0,2)
 
-        val formater = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
+            val formater = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
 
-        diaPagamentoText.text = diaPagamento
-        proxPagamentoText.text = primeiraDespesa.nome
-        valorProxPagamentoText.text = formater.format(primeiraDespesa.valor)
+            diaPagamentoText.text = diaPagamento
+            proxPagamentoText.text = primeiraDespesa.nome
+            valorProxPagamentoText.text = formater.format(primeiraDespesa.valor)
+
+            loadDespesas(despesasArray)
+        }
     }
 
     private fun replaceFragment(fragment: Fragment) {

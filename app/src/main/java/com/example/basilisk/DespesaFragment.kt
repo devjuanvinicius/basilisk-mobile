@@ -45,6 +45,24 @@ class DespesaFragment : Fragment(R.layout.fragment_despesa) {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        val despesasDAO = DespesasDAO(FirebaseFirestore.getInstance())
+        val idUsuario = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+
+        if (idUsuario.isNotEmpty()) {
+            despesasDAO.retornarDespesa(idUsuario, onSuccess = { despesas ->
+                atualizarDadosTela(requireView(), despesas)
+            }, onFailure = { exception ->
+                Toast.makeText(context, "Erro ao carregar despesas: ${exception.message}", Toast.LENGTH_SHORT).show()
+            })
+        } else {
+            Toast.makeText(context, "Usuário não autenticado!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
     private fun atualizarDadosTela(view: View, despesaLista: List<Despesas>) {
         val totalDespesas: TextView = view.findViewById(R.id.totaldespesas)
         val valorDespesas = despesaLista.sumOf { it.valor.toDouble() }
