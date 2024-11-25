@@ -13,7 +13,8 @@
         android:background="@drawable/radiuscar2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-16dp">
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
 
         <TextView
             android:id="@+id/tituloItemLista"
@@ -48,7 +49,7 @@
             android:id="@+id/valorItemLista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="124dp"
             android:alpha="0.6"
             android:fontFamily="@font/inter_medium"
             android:text="-R$ 21,90"
@@ -57,7 +58,33 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintVertical_bias="0.491" />
+
+        <Button
+            android:id="@+id/edit_despesa"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="6dp"
+            android:backgroundTint="@color/slate800"
+            android:drawableTop="@drawable/edit_vector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/delete_despesa"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="64dp"
+            android:backgroundTint="@color/slate800"
+            android:drawableTop="@drawable/delete_vector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

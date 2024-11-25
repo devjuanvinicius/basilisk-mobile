@@ -102,7 +102,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/inputTituloMeta"
+                    android:id="@+id/inputTituloEditRenda"
                     android:layout_width="320dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="31dp"
@@ -142,13 +142,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/inputValorMeta"
+                    android:id="@+id/inputValorEditRenda"
                     android:layout_width="320dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="31dp"
                     android:background="@drawable/textinput"
                     android:ems="10"
-                    android:inputType="text"
+                    android:inputType="numberDecimal"
                     android:padding="2dp"
                     android:paddingStart="10dp"
                     android:textColor="@color/white"
@@ -214,33 +214,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button_excluir"
-            android:layout_width="150dp"
-            android:layout_height="38dp"
-            android:layout_marginBottom="176dp"
-            android:background="@drawable/radiuscar4"
-            android:text="Excluir"
-            android:textColor="#000"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.839"
-            app:layout_constraintStart_toStartOf="parent"
-
-            tools:ignore="MissingConstraints" />
-
-        <Button
-            android:id="@+id/button_editar"
-            android:layout_width="150dp"
+            android:id="@+id/buttoneditar"
+            android:layout_width="320dp"
             android:layout_height="38dp"
             android:layout_marginBottom="176dp"
             android:background="@drawable/radiuscar3"
             android:text="Editar"
+
             android:textColor="#000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.157"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-
             tools:ignore="MissingConstraints" />
 
         <androidx.appcompat.widget.SwitchCompat

@@ -2,14 +2,17 @@ package com.example.basilisk.database
 
 import android.util.Log
 import com.example.basilisk.model.Despesas
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.gson.Gson
 
-class DespesasDAO(private val db: FirebaseFirestore): IDespesasDAO {
 
+
+class DespesasDAO(private val db: FirebaseFirestore, private val auth: FirebaseAuth): IDespesasDAO {
     override fun criarDespesa(
+
         idUsuario: String,
         despesa: Despesas,
         onSuccess: () -> Unit,
@@ -127,4 +130,40 @@ class DespesasDAO(private val db: FirebaseFirestore): IDespesasDAO {
             onFailure(Exception("ID do usuário é inválido ou está vazio."))
         }
     }
+
+    fun ouvirDespesas(
+        idUsuario: String,
+        onChange: (List<Despesas>) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        if (idUsuario.isNotEmpty()) {
+            db.collection("users").document(idUsuario)
+                .addSnapshotListener { snapshot, exception ->
+                    if (exception != null) {
+                        onFailure(exception)
+                        return@addSnapshotListener
+                    }
+
+                    if (snapshot != null && snapshot.exists()) {
+                        val despesasList = snapshot.get("despesa") as? List<Map<String, Any>> ?: emptyList()
+
+                        val despesas = despesasList.mapNotNull { despesaMap ->
+                            try {
+                                val json = Gson().toJson(despesaMap)
+                                Gson().fromJson(json, Despesas::class.java)
+                            } catch (e: Exception) {
+                                null
+                            }
+                        }
+
+                        onChange(despesas)
+                    } else {
+                        onChange(emptyList()) // Documento ainda não existe ou está vazio
+                    }
+                }
+        } else {
+            onFailure(Exception("ID do usuário é inválido ou está vazio."))
+        }
+    }
+
 }

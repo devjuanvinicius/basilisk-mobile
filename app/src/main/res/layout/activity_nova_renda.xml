@@ -107,10 +107,10 @@
                     android:id="@+id/inputTituloRenda"
                     android:layout_width="300dp"
                     android:layout_height="37dp"
-                    android:layout_marginTop="31dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/textinput"
                     android:ems="10"
-                    android:inputType="text"
+                    android:inputType="textCapWords"
                     android:padding="2dp"
                     android:paddingStart="10dp"
                     android:textColor="@color/white"
@@ -151,7 +151,7 @@
                     android:layout_marginTop="31dp"
                     android:background="@drawable/textinput"
                     android:ems="10"
-                    android:inputType="text"
+                    android:inputType="numberDecimal"
                     android:padding="2dp"
                     android:paddingStart="10dp"
                     android:textColor="@color/white"
@@ -185,13 +185,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/inputDataPagRenda"
+                    android:id="@+id/inputDataFinal"
                     android:layout_width="300dp"
                     android:layout_height="37dp"
                     android:layout_marginTop="31dp"
                     android:background="@drawable/textinput"
                     android:ems="10"
-                    android:inputType="text"
+                    android:inputType="date"
                     android:padding="2dp"
                     android:paddingStart="10dp"
                     android:textColor="@color/white"
@@ -234,7 +234,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonAddRenda"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="150dp"
