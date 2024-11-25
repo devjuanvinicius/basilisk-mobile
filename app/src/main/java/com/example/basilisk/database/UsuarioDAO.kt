@@ -3,6 +3,7 @@ package com.example.basilisk.database
 import com.example.basilisk.model.Usuario
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.gson.Gson
 
 class UsuarioDAO(private val db: FirebaseFirestore, private val auth: FirebaseAuth): IUsuarioDAO {
 
@@ -96,17 +97,12 @@ class UsuarioDAO(private val db: FirebaseFirestore, private val auth: FirebaseAu
                 .get()
                 .addOnSuccessListener { documentSnapshot ->
                     val dados = documentSnapshot.data
-                    if (dados != null){
-                        val usuario = Usuario(
-                            nome = dados["nome"] as? String ?: "Nome não disponível",
-                            id = dados["id"] as? String ?: "ID não disponível",
-                            email = dados["email"] as? String ?: "Email não disponível",
-                            dataNascimento = dados["dataNascimento"] as? String ?: "Data de nascimento não disponível",
-                            telefone = dados["telefone"] as? String ?: "Telefone não disponível"
-                        )
+                    if (dados != null) {
+                        val gson = Gson()
+                        val usuario = gson.fromJson(gson.toJson(dados), Usuario::class.java)
 
                         onSuccess(usuario)
-                    } else {
+                    }else {
                         onFailure(Exception("Usuário não encontrado"))
                     }
                 }

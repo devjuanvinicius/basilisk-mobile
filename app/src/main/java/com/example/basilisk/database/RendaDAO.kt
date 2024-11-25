@@ -7,7 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.gson.Gson
 
-class RendaDAO(private val db: FirebaseFirestore, private val auth: FirebaseAuth) : IRendaDAO {
+class RendaDAO(private val db: FirebaseFirestore) : IRendaDAO {
 
     override fun criarRenda(
         idUsuario: String,

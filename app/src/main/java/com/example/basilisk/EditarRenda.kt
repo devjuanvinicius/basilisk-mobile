@@ -1,9 +1,11 @@
 package com.example.basilisk
 
+import android.content.Intent
 import android.icu.text.NumberFormat
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.basilisk.database.RendaDAO
@@ -19,6 +21,7 @@ class EditarRenda : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         // Inicializa o binding para acessar os elementos do layout
         binding = ActivityEditarRendaBinding.inflate(layoutInflater)
@@ -61,7 +64,7 @@ class EditarRenda : AppCompatActivity() {
                 )
 
                 // Instância do RendaDAO
-                val rendaDAO = RendaDAO(FirebaseFirestore.getInstance(), FirebaseAuth.getInstance())
+                val rendaDAO = RendaDAO(FirebaseFirestore.getInstance())
                 val idUsuario = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
                 if (idUsuario.isNotEmpty()) {
@@ -84,5 +87,11 @@ class EditarRenda : AppCompatActivity() {
                 Toast.makeText(this, "Preencha todos os campos obrigatórios!", Toast.LENGTH_SHORT).show()
             }
         }
+
+        val voltar: ImageView = findViewById(R.id.voltar)
+        voltar.setOnClickListener{
+            startActivity(Intent(applicationContext, TotalRendas::class.java))
+        }
+
     }
 }

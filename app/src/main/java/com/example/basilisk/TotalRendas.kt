@@ -28,7 +28,7 @@ class TotalRendas : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
         val auth = FirebaseAuth.getInstance()
         val idUsuario = auth.currentUser?.uid ?: ""
-        val rendasDAO = RendaDAO(db, auth)
+        val rendasDAO = RendaDAO(db)
 
         val customFont = Typeface.createFromAsset(assets, "fonts/custom_font.ttf")
 

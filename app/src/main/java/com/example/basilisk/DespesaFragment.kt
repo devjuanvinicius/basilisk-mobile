@@ -20,7 +20,7 @@ class DespesaFragment : Fragment(R.layout.fragment_despesa) {
 
         val auth = FirebaseAuth.getInstance()
         val db = FirebaseFirestore.getInstance()
-        val despesasDAO = DespesasDAO(db, auth)
+        val despesasDAO = DespesasDAO(db)
         var despesaLista: List<Despesas> = listOf()
 
         val currentUser = auth.currentUser

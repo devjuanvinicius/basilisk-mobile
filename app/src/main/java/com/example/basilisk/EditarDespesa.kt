@@ -1,7 +1,6 @@
 package com.example.basilisk
 
 import android.content.Intent
-import android.icu.text.DecimalFormat
 import android.icu.text.NumberFormat
 import android.os.Bundle
 import android.text.Editable
@@ -17,7 +16,6 @@ import com.example.basilisk.databinding.ActivityEditarDespesaBinding
 import com.example.basilisk.model.Despesas
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import java.math.BigDecimal
 import java.util.Locale
 
 class EditarDespesa : AppCompatActivity() {
@@ -27,17 +25,14 @@ class EditarDespesa : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Inicializa o binding para acessar os elementos do layout
         binding = ActivityEditarDespesaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Obtém os dados enviados pela intent
         val idDespesa = intent.getStringExtra("idDespesa")
         val titulo = intent.getStringExtra("titulo")
         val valor = intent.getDoubleExtra("valor", 0.0) // Recebe como String
         val dataPagamento = intent.getStringExtra("dataPagamento")
 
-        // Formata o valor recebido para exibição
         titulo?.let {
             binding.inputValorEditDespesa.setText(it)
         } ?: run {
@@ -72,13 +67,10 @@ class EditarDespesa : AppCompatActivity() {
                     parcelas = 1
                 )
 
-
-                // Instância do DespesasDAO
-                val despesasDAO = DespesasDAO(FirebaseFirestore.getInstance(), FirebaseAuth.getInstance())
+                val despesasDAO = DespesasDAO(FirebaseFirestore.getInstance())
                 val idUsuario = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
                 if (idUsuario.isNotEmpty()) {
-                    // Chama o método editarDespesa
                     despesasDAO.editarDespesa(
                         idUsuario,
                         despesaAtualizada,

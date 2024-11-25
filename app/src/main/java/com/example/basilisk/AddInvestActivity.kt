@@ -30,8 +30,6 @@ class AddInvestActivity : AppCompatActivity() {
     private val auth by lazy { FirebaseAuth.getInstance() }
     private val db by lazy { FirebaseFirestore.getInstance() }
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -48,9 +46,6 @@ class AddInvestActivity : AppCompatActivity() {
         inputQuantInvest = findViewById(R.id.inputQuantInvest)
         inputDataInvest = findViewById(R.id.inputDataInvest)
         btnSalvarInvestimento = findViewById(R.id.buttonAddInvest)
-
-
-
 
         btnSalvarInvestimento.setOnClickListener {
             salvarInvestimento()

@@ -10,7 +10,7 @@ import com.google.gson.Gson
 
 
 
-class DespesasDAO(private val db: FirebaseFirestore, private val auth: FirebaseAuth): IDespesasDAO {
+class DespesasDAO(private val db: FirebaseFirestore): IDespesasDAO {
     override fun criarDespesa(
 
         idUsuario: String,

@@ -30,6 +30,7 @@ import java.util.Locale
 class CalendarioActivity : AppCompatActivity() {
     private lateinit var rvLista: RecyclerView
     private lateinit var calendarView: CalendarView
+    private lateinit var editarPagamento: TextView
     private val auth by lazy { FirebaseAuth.getInstance() }
     private val db by lazy { FirebaseFirestore.getInstance() }
     private var despesasList: List<Despesas> = emptyList()
@@ -53,6 +54,12 @@ class CalendarioActivity : AppCompatActivity() {
             atualizarRecyclerView(despesasList)
             atualizarCalendarView(despesasList)
             atualizarDadosTela(despesasList)
+        }
+
+        editarPagamento.findViewById<TextView>(R.id.EditarEconomia)
+        editarPagamento.setOnClickListener{
+            val intent = Intent(this, EditarDespesa::class.java)
+            startActivity(intent)
         }
     }
 
@@ -88,7 +95,11 @@ class CalendarioActivity : AppCompatActivity() {
     }
 
     private fun atualizarRecyclerView(despesas: List<Despesas>) {
-        rvLista.adapter = ItemAdapterDespesa(despesas)
+        println(despesas[0])
+        rvLista.adapter = ItemAdapterDespesa(
+            despesas,
+            onDeleteClick = TODO()
+        )
     }
 
     private fun atualizarCalendarView(despesas: List<Despesas>) {
@@ -127,7 +138,6 @@ class CalendarioActivity : AppCompatActivity() {
             }
         }
     }
-
 
     fun irParaInvestimento(view: View) {
         val intent = Intent(view.context, InvestimentoActivity::class.java)

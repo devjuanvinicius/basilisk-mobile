@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.basilisk.R
 import com.example.basilisk.model.Investimento
+import java.text.NumberFormat
+import java.util.Locale
 
 class ItemAdapterInvestimento(
     val lista: List<Investimento>
@@ -33,10 +35,11 @@ class ItemAdapterInvestimento(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val itemDaLista = lista[position]
+        val formatador = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
 
         holder.titulo.text = itemDaLista.dataCompra
         holder.codigo.text = itemDaLista.codigoAcao
-        holder.valor.text = itemDaLista.valor.toString()
+        holder.valor.text = formatador.format(itemDaLista.valor)
     }
 
     override fun getItemCount(): Int {

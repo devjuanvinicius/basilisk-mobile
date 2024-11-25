@@ -19,9 +19,9 @@ class ItemAdapterRendas(
 ) : Adapter<ItemAdapterRendas.ItemViewHolder>() {
 
     inner class ItemViewHolder(itemView: View) : ViewHolder(itemView) {
-        val tituloRenda: TextView = itemView.findViewById(R.id.tituloDespesa)
-        val dataRenda: TextView = itemView.findViewById(R.id.dataDespesa)
-        val valorRenda: TextView = itemView.findViewById(R.id.valorDespesa)
+        val tituloRenda: TextView = itemView.findViewById(R.id.tituloItemLista)
+        val dataRenda: TextView = itemView.findViewById(R.id.subTituloItemLista)
+        val valorRenda: TextView = itemView.findViewById(R.id.valorItemLista)
         val deleteButton: View = itemView.findViewById(R.id.delete_despesa)
         val editButton: View = itemView.findViewById(R.id.edit_despesa)
     }

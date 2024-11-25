@@ -14,46 +14,42 @@ import java.text.NumberFormat
 import java.util.Locale
 
 class ItemAdapterDespesa(
-    val lista: MutableList<Despesas>,
+    val lista: List<Despesas>,
     private val onDeleteClick: (String) -> Unit
 ) : Adapter<ItemAdapterDespesa.ItemViewHolder>() {
 
     inner class ItemViewHolder(itemView: View) : ViewHolder(itemView) {
-        val tituloDespesa: TextView = itemView.findViewById(R.id.tituloDespesa) // Título da despesa
-        val dataDespesa: TextView = itemView.findViewById(R.id.dataDespesa)     // Data da despesa
-        val valorDespesa: TextView = itemView.findViewById(R.id.valorDespesa)   // Valor da despesa
-        val deleteButton: View = itemView.findViewById(R.id.delete_despesa)     // Botão de deletar
-        val editButton: View = itemView.findViewById(R.id.edit_despesa)         // Botão de editar
+        val tituloDespesa: TextView = itemView.findViewById(R.id.tituloItemLista)
+        val dataDespesa: TextView = itemView.findViewById(R.id.subTituloItemLista)
+        val valorDespesa: TextView = itemView.findViewById(R.id.valorItemLista)
+        val deleteButton: View = itemView.findViewById(R.id.delete_despesa)
+        val editButton: View = itemView.findViewById(R.id.edit_despesa)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val itemView = layoutInflater.inflate(R.layout.item_lista, parent, false) // Certifique-se de que o layout esteja correto
+        val itemView = layoutInflater.inflate(R.layout.item_lista, parent, false)
         return ItemViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val itemDaLista = lista[position]
 
-        // Formatar o valor para exibição com "R$" (sem alterar o valor real)
         val valorFormatado = NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(itemDaLista.valor)
 
-        // Acessando corretamente os componentes do ViewHolder
         holder.tituloDespesa.text = itemDaLista.nome
         holder.dataDespesa.text = itemDaLista.dataPagamento
-        holder.valorDespesa.text = valorFormatado // Exibe o valor com "R$"
+        holder.valorDespesa.text = valorFormatado
 
-        // Configurar o botão de deletar
         holder.deleteButton.setOnClickListener {
-            onDeleteClick(itemDaLista.id) // Passa o ID da despesa para a função de callback
+            onDeleteClick(itemDaLista.id)
         }
 
-        // Configurar o botão de editar
         holder.editButton.setOnClickListener {
             val intent = Intent(holder.itemView.context, EditarDespesa::class.java)
             intent.putExtra("idDespesa", itemDaLista.id)
             intent.putExtra("titulo", itemDaLista.nome)
-            intent.putExtra("valor", itemDaLista.valor) // Passa o valor real da despesa
+            intent.putExtra("valor", itemDaLista.valor)
             intent.putExtra("dataPagamento", itemDaLista.dataPagamento)
             holder.itemView.context.startActivity(intent)
         }
@@ -61,11 +57,5 @@ class ItemAdapterDespesa(
 
     override fun getItemCount(): Int {
         return lista.size
-    }
-
-    fun updateList(novaLista: List<Despesas>) {
-        lista.clear()
-        lista.addAll(novaLista)
-        notifyDataSetChanged()
     }
 }

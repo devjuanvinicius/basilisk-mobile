@@ -61,15 +61,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/buttonTesteDeLogof"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Button"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="259dp"
-                    tools:layout_editor_absoluteY="0dp" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -230,7 +221,7 @@
                             android:layout_gravity="start|top"
                             android:alpha="0.2"
                             android:fontFamily="@font/inter_medium"
-                            android:text="31"
+                            android:text="00"
                             android:textColor="#1C1C1C"
                             android:textSize="100sp"
                             android:translationX="60dp"
@@ -248,7 +239,7 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/inscricao"
+                            android:id="@+id/valorProximoPagamento"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start|bottom"
@@ -259,7 +250,7 @@
                             android:textSize="18sp" />
 
                         <TextView
-                            android:id="@+id/valor"
+                            android:id="@+id/nomeProximoPagamento"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/inter_semibold"
@@ -326,6 +317,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <Button
+                android:id="@+id/buttonTesteDeLogof"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="232dp"
+                tools:layout_editor_absoluteY="316dp" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_dashboard"
                 android:layout_width="0dp"
@@ -339,7 +339,6 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8"
-                app:layout_constraintVertical_bias="0.0"
                 tools:itemCount="2"
                 tools:listitem="@layout/item_lista" />
 

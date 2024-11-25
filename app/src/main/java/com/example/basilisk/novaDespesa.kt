@@ -38,7 +38,7 @@ class novaDespesa : AppCompatActivity() {
 
         val db = FirebaseFirestore.getInstance()
         val auth = FirebaseAuth.getInstance()
-        val despesasDAO = DespesasDAO(db, auth)
+        val despesasDAO = DespesasDAO(db)
 
         // Evento de clique do botão adicionar
         binding.button3.setOnClickListener {

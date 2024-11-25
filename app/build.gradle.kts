@@ -71,7 +71,7 @@ dependencies {
     // Fragment KTX (versão mais recente)
     implementation("androidx.fragment:fragment-ktx:1.6.1")
     implementation(libs.androidx.junit.ktx)
-  implementation(libs.core)
+    implementation(libs.androidx.core.ktx)
 
   // Testes
     testImplementation(libs.junit)

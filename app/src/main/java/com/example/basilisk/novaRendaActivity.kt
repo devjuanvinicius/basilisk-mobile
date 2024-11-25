@@ -43,7 +43,7 @@ class novaRendaActivity : AppCompatActivity() {
 
         val db = FirebaseFirestore.getInstance()
         val auth = FirebaseAuth.getInstance()
-        val rendasDAO = RendaDAO(db, auth)
+        val rendasDAO = RendaDAO(db)
 
         // Configura o TextWatcher para o campo de valor
         binding.inputValorRenda.addTextChangedListener(ExampleTextWatcher(binding.inputValorRenda))
