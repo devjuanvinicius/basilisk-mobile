@@ -1,89 +1,78 @@
 package com.example.basilisk
 
-import android.content.Intent
-import com.example.basilisk.databinding.ActivityCadastroBinding
-import com.example.basilisk.databinding.ActivityLoginBinding
-import com.example.basilisk.utils.exibirMensagem
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
+import android.widget.EditText
+import androidx.test.core.app.ActivityScenario
 import com.google.firebase.auth.FirebaseAuth
+import org.junit.Before
 import org.junit.Test
-import org.mockito.ArgumentMatchers.any
-import org.mockito.ArgumentMatchers.anyString
+import org.junit.runner.RunWith
+import org.mockito.Mock
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.`when`
+import org.mockito.MockitoAnnotations
+import org.junit.Assert.*
+import org.mockito.junit.MockitoJUnitRunner
 
+@RunWith(MockitoJUnitRunner::class) // Usando MockitoJUnitRunner ao invés de RobolectricTestRunner
 class LoginActivityTest {
 
-  // Mock da atividade com setup do binding
-  private val activity = CadastroActivity().apply {
-    setupTestBinding()
-  }
+  private lateinit var scenario: ActivityScenario<LoginActivity>
 
-  // Método para configurar o mock do binding
-  private fun CadastroActivity.setupTestBinding() {
-    binding = mock(ActivityCadastroBinding::class.java) // Mock do binding
+  @Mock
+  lateinit var mockAuth: FirebaseAuth
+  @Mock
+  lateinit var mockEmailEditText: EditText
+  @Mock
+  lateinit var mockSenhaEditText: EditText
+
+  @Before
+  fun setUp() {
+    // Inicializa o Mockito
+    MockitoAnnotations.openMocks(this)
+
+    // Criação do Activity e inicia ela
+    scenario = ActivityScenario.launch(LoginActivity::class.java)
+    scenario.onActivity { activity: LoginActivity ->
+      activity.auth = mockAuth // Definindo o auth para o mockado
+    }
   }
 
   @Test
-  fun loginPreenchidoIncorretamente() {
-    // Mocking exibirMensagem
-    val mockActivity = mock(LoginActivity::class.java)
-    val mockBinding = mock(ActivityLoginBinding::class.java)
-    `when`(mockActivity.binding).thenReturn(mockBinding)
-
-    val email = ""
-    val senha = ""
-
-    // Simulando a ação de clicar no botão
-    mockActivity.binding.btnEntrar.performClick()
-
-    verify(mockActivity).exibirMensagem("Preencha todos os campos")
+  fun testUsuarioNaoVazio() {
+    scenario.onActivity { activity: LoginActivity ->
+      val emailEditText = activity.findViewById<EditText>(R.id.emailCad)
+      val email = emailEditText.text.toString().trim()
+      assertTrue("Email não pode ser vazio", email.isNotEmpty())
+    }
   }
 
-  // Quando o login é bem-sucedido, o usuário deve ser encaminhado para o MainActivity
   @Test
-  fun navegacaoParaMainActivityAcontece() {
-    // Mockando FirebaseAuth
-    val mockAuth = mock(FirebaseAuth::class.java)
-    val mockActivity = mock(LoginActivity::class.java)
-    val mockBinding = mock(ActivityLoginBinding::class.java)
-    `when`(mockActivity.binding).thenReturn(mockBinding)
-    `when`(mockActivity.auth).thenReturn(mockAuth)
-
-    // Criando o mock do AuthResult
-    val mockAuthResult = mock(AuthResult::class.java)
-
-    // Criando o mock do Task<AuthResult>
-    val mockTask = mock(Task::class.java) as Task<AuthResult>
-    `when`(mockAuth.signInWithEmailAndPassword(anyString(), anyString()))
-      .thenReturn(mockTask)
-
-    // Simulando uma resposta de login bem-sucedido
-    `when`(mockTask.isSuccessful).thenReturn(true)
-    `when`(mockTask.result).thenReturn(mockAuthResult)
-
-    // Simulando a ação de clicar no botão
-    mockActivity.binding.btnEntrar.performClick()
-
-    // Verificando se a MainActivity é iniciada
-    verify(mockActivity).startActivity(any(Intent::class.java))
-    verify(mockActivity).finish()
+  fun testSenhaNaoVazia() {
+    scenario.onActivity { activity: LoginActivity ->
+      val senhaEditText = activity.findViewById<EditText>(R.id.senhaCad)
+      val senha = senhaEditText.text.toString().trim()
+      assertTrue("Senha não pode ser vazia", senha.isNotEmpty())
+    }
   }
 
-  //Caso o usuário clique para se cadastrar ao invés de preencher o campo de login, ele deve ser redirecionado para o cadastro.
   @Test
-  fun navegacaoParaCadastroAcontece() {
-    // Mockando a Activity
-    val mockActivity = mock(LoginActivity::class.java)
-    val mockBinding = mock(ActivityLoginBinding::class.java)
-    `when`(mockActivity.binding).thenReturn(mockBinding)
+  fun testLoginComCredenciaisValidas() {
+    `when`(mockAuth.signInWithEmailAndPassword("usuario_teste", "senha_teste"))
+      .thenReturn(mock()) // Mockar a resposta de sucesso ou falha do login
 
-    // Simulando a ação de clicar no link de registro
-    mockActivity.binding.registerLink.performClick()
+    scenario.onActivity { activity: LoginActivity ->
+      val emailEditText = activity.findViewById<EditText>(R.id.emailCad)
+      val senhaEditText = activity.findViewById<EditText>(R.id.senhaCad)
 
-    // Verificando se a CadastroActivity é iniciada
-    verify(mockActivity).startActivity(any(Intent::class.java))
+      // Simular entrada de dados
+      emailEditText.setText("usuario_teste")
+      senhaEditText.setText("senha_teste")
+
+      activity.binding.btnEntrar.performClick() // Simular clique no botão "Entrar"
+
+      // Verificar se o método de login foi chamado
+      verify(mockAuth).signInWithEmailAndPassword("usuario_teste", "senha_teste")
+    }
   }
 }

@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 class LoginActivity : AppCompatActivity() {
 
     public lateinit var binding: ActivityLoginBinding
-    val auth = FirebaseAuth.getInstance()
+    var auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
