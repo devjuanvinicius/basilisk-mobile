@@ -114,6 +114,7 @@ class AddInvestActivity : AppCompatActivity() {
         irParaInvest()
     }
 
+
     public fun getMensagemErro(exception: Exception): String {
         return when (exception) {
             is FirebaseAuthWeakPasswordException -> "Digite uma senha com no mínimo 6 caracteres"

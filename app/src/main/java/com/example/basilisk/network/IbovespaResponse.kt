@@ -10,7 +10,7 @@ data class ApiResult(
     val longName: String,
     val regularMarketChange: Double,
     val regularMarketChangePercent: Double,
-    val regularMarketTime: String,  // Você pode mudar para um tipo de data, se necessário
+    val regularMarketTime: String,
     val regularMarketPrice: Double,
     val regularMarketDayHigh: Double,
     val regularMarketDayRange: String,

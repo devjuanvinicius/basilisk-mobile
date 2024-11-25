@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.basilisk.database.InvestimentoDAO
 import com.example.basilisk.model.Investimento
-import com.example.basilisk.network.IbovespaResponse
+import com.example.basilisk.network.ApiResponse
 import com.example.basilisk.network.RetrofitClient
 import com.example.basilisk.recyclers.ItemAdapterInvestimento
 import com.google.firebase.auth.FirebaseAuth

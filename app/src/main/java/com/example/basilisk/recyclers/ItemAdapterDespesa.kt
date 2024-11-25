@@ -47,6 +47,7 @@ class ItemAdapterDespesa(
             onDeleteClick(itemDaLista.id)
         }
 
+
         // Configuração do botão de editar
         holder.editButton.setOnClickListener {
             val intent = Intent(holder.itemView.context, EditarDespesa::class.java)

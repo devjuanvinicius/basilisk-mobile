@@ -272,6 +272,21 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintEditPerfil"
         tools:ignore="MissingConstraints" />
 
+    <Button
+        android:id="@+id/buttonTesteDeLogof"
+        android:layout_width="320dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="96dp"
+        android:backgroundTint="@color/slate600"
+        android:background="@drawable/radiuscar4"
+        android:text="Sair"
+        android:textColor="#000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintEditPerfil"
+        tools:ignore="MissingConstraints" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/navbar"
         android:layout_width="350dp"

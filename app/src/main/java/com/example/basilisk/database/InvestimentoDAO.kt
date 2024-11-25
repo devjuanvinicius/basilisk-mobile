@@ -7,6 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.gson.Gson
 
+
 class InvestimentoDAO(private val db: FirebaseFirestore): IInvestimentoDAO {
     override fun criarInvestimento(
         idUsuario: String,

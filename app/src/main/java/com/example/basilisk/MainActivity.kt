@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         calculaSaldo(despesasArray)
     }
 
+
     private fun calculaSaldo(despesasArray: List<Despesas>) {
         val currentUser = auth.currentUser
         if (currentUser == null) {

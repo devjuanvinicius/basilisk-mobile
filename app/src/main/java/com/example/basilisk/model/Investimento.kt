@@ -7,3 +7,4 @@ data class Investimento(
     val qtdAcoes: Int,
     val valor: Double
 )
+

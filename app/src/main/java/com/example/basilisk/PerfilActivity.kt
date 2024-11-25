@@ -26,6 +26,7 @@ class PerfilActivity : AppCompatActivity() {
   lateinit var usuario: Usuario
   lateinit var btnExcluirConta: Button
   lateinit var btnSalvarEdicoes: Button
+  lateinit var buttonTesteDeLogof: Button
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -37,6 +38,7 @@ class PerfilActivity : AppCompatActivity() {
       insets
     }
 
+    // Verificação do usuário atual e carregamento de dados
     if (!auth.currentUser?.uid.isNullOrEmpty()) {
       UsuarioDAO(db, auth).retornarUsuario(
         auth.currentUser!!.uid,
@@ -52,9 +54,22 @@ class PerfilActivity : AppCompatActivity() {
       )
     }
 
+    // Configuração dos botões
     btnExcluirConta = findViewById(R.id.button_excluir)
-    btnExcluirConta.setOnClickListener{deletarUsuario(auth.currentUser!!.uid)}
+    btnExcluirConta.setOnClickListener { deletarUsuario(auth.currentUser!!.uid) }
 
+    btnSalvarEdicoes = findViewById(R.id.button_editar)
+    btnSalvarEdicoes.setOnClickListener { salvarEdicoesBd() }
+
+    buttonTesteDeLogof = findViewById(R.id.buttonTesteDeLogof) // Certifique-se de ter o ID correto no layout
+    buttonTesteDeLogof.setOnClickListener {
+      FirebaseAuth.getInstance().signOut()
+      val voltarTelaLogin = Intent(this, CadastroActivity::class.java)
+      startActivity(voltarTelaLogin)
+      finish()
+    }
+
+    // Configuração do campo de data
     val dataInput: EditText = findViewById(R.id.inputNascimentoUsuario)
     dataInput.addTextChangedListener(object : TextWatcher {
       override fun afterTextChanged(s: Editable?) {
@@ -76,9 +91,6 @@ class PerfilActivity : AppCompatActivity() {
         }
       }
     })
-
-    btnSalvarEdicoes = findViewById(R.id.button_editar)
-    btnSalvarEdicoes.setOnClickListener{salvarEdicoesBd()}
   }
 
   private fun salvarEdicoesBd() {
@@ -87,7 +99,13 @@ class PerfilActivity : AppCompatActivity() {
     val dataInput: EditText = findViewById(R.id.inputNascimentoUsuario)
     val telefoneInput: EditText = findViewById(R.id.inputTelefoneUsuario)
 
-    val usuarioAtualizado = Usuario(auth.currentUser?.uid, nomeInput.text.toString(), emailInput.text.toString(),dataInput.text.toString(), telefoneInput.text.toString())
+    val usuarioAtualizado = Usuario(
+      auth.currentUser?.uid,
+      nomeInput.text.toString(),
+      emailInput.text.toString(),
+      dataInput.text.toString(),
+      telefoneInput.text.toString()
+    )
 
     UsuarioDAO(db, auth).editarUsuario(
       usuarioAtualizado,
@@ -96,7 +114,7 @@ class PerfilActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
       },
-      onFailure = {exception ->  exibirMensagem(exception.toString())},
+      onFailure = { exception -> exibirMensagem(exception.toString()) },
     )
   }
 
@@ -106,13 +124,15 @@ class PerfilActivity : AppCompatActivity() {
       onSuccess = {
         btnExcluirConta = findViewById(R.id.button_excluir)
 
-        btnExcluirConta.setOnClickListener{
+        btnExcluirConta.setOnClickListener {
           FirebaseAuth.getInstance().signOut()
           val intent = Intent(this, EntryActivity::class.java)
           startActivity(intent)
         }
       },
-      onFailure = TODO()
+      onFailure = {
+        exibirMensagem("Erro ao deletar conta!")
+      }
     )
   }
 
@@ -152,14 +172,17 @@ class PerfilActivity : AppCompatActivity() {
     val intent = Intent(view.context, MainActivity::class.java)
     view.context.startActivity(intent)
   }
+
   fun irParaInvest(view: View) {
     val intent = Intent(view.context, InvestimentoActivity::class.java)
     view.context.startActivity(intent)
   }
+
   fun irParaCofrinho(view: View) {
     val intent = Intent(view.context, CofrinhoActivity::class.java)
     view.context.startActivity(intent)
   }
+
   fun irParaCalendario(view: View) {
     val intent = Intent(view.context, CalendarioActivity::class.java)
     view.context.startActivity(intent)

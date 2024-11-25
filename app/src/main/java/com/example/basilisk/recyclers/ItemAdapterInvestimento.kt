@@ -35,6 +35,7 @@ class ItemAdapterInvestimento(
         val itemDaLista = lista[position]
         val formatador = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
 
+
         holder.titulo.text = itemDaLista.nomeAcao
         holder.codigo.text = formatador.format(itemDaLista.valor)
         holder.valor.text = ""

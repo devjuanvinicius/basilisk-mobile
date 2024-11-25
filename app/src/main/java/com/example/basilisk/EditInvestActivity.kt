@@ -42,7 +42,6 @@ class EditInvestActivity : AppCompatActivity() {
       insets
     }
 
-    // Recuperando dados da Intent
     val codigoInvestimento = intent.getStringExtra("codigoInvestimento")
     val valor = intent.getDoubleExtra("valor", 0.0)
     val nomeAcao = intent.getStringExtra("nomeAcao")
