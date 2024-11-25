@@ -13,4 +13,3 @@ interface BrapiService {
         @Query("token") token: String
     ): Call<ApiResponse>
 }
-

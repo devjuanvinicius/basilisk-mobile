@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.basilisk.database.InvestimentoDAO
 import com.example.basilisk.model.Investimento
-import com.example.basilisk.network.ApiResponse
+import com.example.basilisk.network.IbovespaResponse
 import com.example.basilisk.network.RetrofitClient
 import com.example.basilisk.recyclers.ItemAdapterInvestimento
 import com.google.firebase.auth.FirebaseAuth
@@ -39,11 +39,13 @@ class InvestimentoActivity : AppCompatActivity() {
     enableEdgeToEdge()
     setContentView(R.layout.activity_investimento)
 
+
     ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
       val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
       v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
       insets
     }
+
 
     homeButton = findViewById(R.id.homeButton)
     homeButton.setOnClickListener {
