@@ -9,13 +9,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.basilisk.EditInvestActivity
 import com.example.basilisk.R
+import com.example.basilisk.database.InvestimentoDAO
 import com.example.basilisk.model.Investimento
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import java.text.NumberFormat
 import java.util.Locale
 
 class ItemAdapterInvestimento(
     val lista: List<Investimento>
 ) : RecyclerView.Adapter<ItemAdapterInvestimento.ItemViewHolder>() {
+
+    private val auth by lazy { FirebaseAuth.getInstance() }
+    private val db by lazy { FirebaseFirestore.getInstance() }
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titulo: TextView = itemView.findViewById(R.id.tituloItemLista)
@@ -49,6 +55,17 @@ class ItemAdapterInvestimento(
             intent.putExtra("qtdAcoes", itemDaLista.qtdAcoes)
 
             holder.itemView.context.startActivity(intent)
+        }
+
+        holder.deleteButton.setOnClickListener{
+            InvestimentoDAO(db).deletarInvestimento(
+                auth.currentUser!!.uid,
+                codigoAcao = itemDaLista.codigoAcao,
+                onSuccess = {
+
+                },
+                onFailure = {}
+            )
         }
     }
 

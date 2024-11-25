@@ -315,15 +315,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/buttonTesteDeLogof"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Button"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="232dp"
-                tools:layout_editor_absoluteY="316dp" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_dashboard"
                 android:layout_width="0dp"

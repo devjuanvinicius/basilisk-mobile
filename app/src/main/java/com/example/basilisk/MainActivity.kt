@@ -157,12 +157,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupButtons() {
-        binding.buttonTesteDeLogof.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            val intent = Intent(this, EntryActivity::class.java)
-            startActivity(intent)
-        }
-
         val buttonRenda = binding.buttonRenda
         val buttonDespesa = binding.buttonDespesa
 
@@ -197,7 +191,9 @@ class MainActivity : AppCompatActivity() {
     private fun excluirDespesa(despesaId: String, despesasArray: MutableList<Despesas>) {
         DespesasDAO(db).deletarDespesa(
             auth.currentUser!!.uid, despesaId,
-            onSuccess = { atualizarDadosNaTela(despesasArray) },
+            onSuccess = {
+                loadDespesas(despesasArray)
+                calculaSaldo(despesasArray) },
             onFailure = {}
         )
     }
