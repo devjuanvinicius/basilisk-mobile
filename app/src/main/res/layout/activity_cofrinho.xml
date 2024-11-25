@@ -24,14 +24,12 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout6"
-            android:layout_width="98dp"
+            android:layout_width="wrap_content"
             android:layout_height="27dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+            app:layout_constraintEnd_toEndOf="parent">
 
             <ImageView
                 android:id="@+id/EditarEconomiaSeting"
@@ -50,7 +48,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/inter_medium"
-                android:text="Editar meta"
+                android:text="Excluir meta"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/EditarEconomiaSeting"
@@ -62,89 +60,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="45dp"
-            android:layout_marginTop="13dp"
             android:layout_marginBottom="13dp"
             android:fontFamily="@font/inter_medium"
+            android:onClick="irparaAddMeta"
             android:text="+ Nova meta"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-            android:onClick="irParaAddMeta"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
             android:layout_width="349dp"
             android:layout_height="185dp"
-            android:layout_marginTop="1dp"
-            android:background="@drawable/radiuscar2"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
 
-            <TextView
-                android:id="@+id/textNomeMeta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="143dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="146dp"
-                android:fontFamily="@font/inter_medium"
-                android:text="Geladeira"
-                android:textColor="@color/white"
-                android:textSize="22dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.47"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            >
 
-            <TextView
-                android:id="@+id/saldo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="106dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="107dp"
-                android:layout_marginBottom="17dp"
-                android:fontFamily="@font/inter_semibold"
-                android:text="R$ 2.200,00"
-                android:textColor="@color/white"
-                android:textSize="42dp"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/headline"
-                tools:ignore="NotSibling" />
+        </androidx.viewpager2.widget.ViewPager2>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout3"
-                android:layout_width="142dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="103dp"
-                android:layout_marginEnd="104dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/radiuscar3"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <TextView
-                    android:id="@+id/textMeta"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Meta: R$ 2500,00"
-                    android:textColor="#000"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -158,8 +96,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout9"
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerEconomizado"
             android:layout_width="172dp"
             android:layout_height="97dp"
             android:layout_marginTop="20dp"
@@ -168,37 +107,11 @@
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout8"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="-1dp">
+            tools:layout_editor_absoluteX="-1dp"
 
-            <TextView
-                android:id="@+id/textValorEconomia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="28dp"
-                android:fontFamily="@font/inter_medium"
-                android:text="Valor economizado"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            >
 
-            <TextView
-                android:id="@+id/EconomiaSaldo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="34dp"
-                android:layout_marginBottom="28dp"
-                android:fontFamily="@font/inter_semibold"
-                android:text="R$1800,00"
-                android:textColor="@color/white"
-                android:textSize="23dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.viewpager2.widget.ViewPager2>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout10"
@@ -220,12 +133,14 @@
                 android:layout_marginEnd="61dp"
                 android:layout_marginBottom="77dp"
                 android:fontFamily="@font/inter_medium"
-                android:text="Guardar valor"
+                android:text="Valor total"
                 android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.2" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -234,7 +149,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="93dp"
                 android:fontFamily="@font/inter_medium"
-                android:text="Julho"
+                android:text="R$: 0.00"
                 android:textColor="#000"
                 android:textSize="23dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -242,7 +157,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5" />
+                app:layout_constraintVertical_bias="0.593" />
 
             <TextView
                 android:id="@+id/textValorGuardado"
@@ -253,8 +168,9 @@
                 android:layout_marginEnd="43dp"
                 android:layout_marginBottom="6dp"
                 android:fontFamily="@font/inter_medium"
-                android:text="Valor: R$200,00"
+                android:text="Metas totais por mês"
                 android:textColor="#000"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -263,31 +179,18 @@
                 app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout8"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerProgressBar"
             android:layout_width="167dp"
             android:layout_height="187dp"
             android:layout_marginStart="1dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/radiuscar2"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/pieChart"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </com.github.mikephil.charting.charts.PieChart>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout11"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerValorPorMes"
             android:layout_width="169dp"
             android:layout_height="100dp"
             android:layout_marginStart="13dp"
@@ -295,94 +198,36 @@
             android:background="@drawable/radiuscar2"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout12"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout8"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout10">
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout10"
+            app:layout_constraintVertical_bias="0.384" />
 
-            <TextView
-                android:id="@+id/textValorMes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="46dp"
-                android:fontFamily="@font/inter_medium"
-                android:text="Valor por mês"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/MetaMes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="36dp"
-                android:layout_marginEnd="62dp"
-                android:fontFamily="@font/inter_semibold"
-                android:text="R$200,00"
-                android:textColor="@color/white"
-                android:textSize="25dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout12"
-            android:layout_width="164dp"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerProgresso"
+            android:layout_width="169dp"
             android:layout_height="77dp"
-            android:layout_marginStart="13dp"
             android:layout_marginTop="14dp"
             android:background="@drawable/radiuscar2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout8"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout11">
-
-            <TextView
-                android:id="@+id/textProgressoMeta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginEnd="27dp"
-                android:fontFamily="@font/inter_medium"
-                android:text="Progresso da meta"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/MesesFaltante"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="11dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="@font/inter_semibold"
-                android:text="5 de 7 meses"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.1"
-                app:layout_constraintStart_toStartOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout11"
+            tools:ignore="UnknownIdInLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/navbar"
         android:layout_width="350dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/navbar_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        >
 
 
         <ImageButton
@@ -396,8 +241,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="irParaPerfil"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/homeButton"
@@ -405,13 +249,13 @@
             android:layout_height="wrap_content"
             android:background="@drawable/homeicon"
             android:contentDescription="home"
+            android:onClick="irParaDash"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.04"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/home"
-            android:onClick="irParaDash"/>
+            app:srcCompat="@drawable/home" />
 
         <ImageButton
             android:id="@+id/investbutton"
@@ -419,13 +263,13 @@
             android:layout_height="wrap_content"
             android:background="@drawable/homeicon"
             android:contentDescription="investiemntos"
+            android:onClick="irParaInvestimento"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/investicon"
-            android:onClick="irParaInvestimento"/>
+            app:srcCompat="@drawable/investicon" />
 
 
         <ImageButton
@@ -452,12 +296,10 @@
             app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/calendarioicon"
-            android:onClick="irParaCalendario"/>
+            app:srcCompat="@drawable/calendarioicon" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headline"
@@ -491,11 +333,22 @@
             android:drawableTop="@drawable/notification"
             android:text="@string/noti"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.955"
+            app:layout_constraintHorizontal_bias="0.848"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/set"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/slate950"
+            android:contentDescription="settings"
+            android:drawableTop="@drawable/settings"
+            android:text="@string/set"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.98"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Este é um comentário em XML -->

@@ -1,106 +1,187 @@
 package com.example.basilisk
 
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Bundle
-import android.view.View
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
+import androidx.viewpager2.widget.ViewPager2
+import com.example.basilisk.databinding.ActivityCofrinhoBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
 
 class CofrinhoActivity : AppCompatActivity() {
-    lateinit var pieChart: PieChart
+
+    private lateinit var viewPager: ViewPager2
+    private lateinit var viewPagerEconomizado: ViewPager2
+    private lateinit var viewPagerValorPorMes: ViewPager2
+    private lateinit var viewPagerProgresso: ViewPager2
+    private lateinit var viewPagerProgressBar: ViewPager2
+
+    private lateinit var metasAdapter: MetasAdapter
+    private lateinit var valorEconomizadoAdapter: ValorEconomizadoAdapter
+    private lateinit var valorPorMesAdapter: ValorPorMesAdapter
+    private lateinit var progressoAdapter: ProgressoAdapter
+    private lateinit var progressBarAdapter: ProgressBarAdapter
+
+    private lateinit var binding: ActivityCofrinhoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_cofrinho) // Certifique-se de que este layout existe
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        binding = ActivityCofrinhoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // Inicializando os ViewPager2 existentes
+        viewPager = findViewById(R.id.viewPager)
+        metasAdapter = MetasAdapter(this)
+        viewPager.adapter = metasAdapter
+
+        viewPagerEconomizado = findViewById(R.id.viewPagerEconomizado)
+        valorEconomizadoAdapter = ValorEconomizadoAdapter(this)
+        viewPagerEconomizado.adapter = valorEconomizadoAdapter
+
+        viewPagerValorPorMes = findViewById(R.id.viewPagerValorPorMes)
+        valorPorMesAdapter = ValorPorMesAdapter(this)
+        viewPagerValorPorMes.adapter = valorPorMesAdapter
+
+        viewPagerProgresso = findViewById(R.id.viewPagerProgresso)
+        progressoAdapter = ProgressoAdapter(this, listOf())
+        viewPagerProgresso.adapter = progressoAdapter
+
+        // Inicializando o novo ViewPager2 para ProgressBars
+        viewPagerProgressBar = findViewById(R.id.viewPagerProgressBar)
+        progressBarAdapter = ProgressBarAdapter(this, listOf())
+        viewPagerProgressBar.adapter = progressBarAdapter
+
+        // Sincronizar o movimento dos ViewPager2
+        val pageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                viewPagerEconomizado.setCurrentItem(position, false)
+                viewPagerValorPorMes.setCurrentItem(position, false)
+                viewPagerProgresso.setCurrentItem(position, false)
+                viewPagerProgressBar.setCurrentItem(position, false) // Novo ViewPager sincronizado
+            }
         }
-        pieChart = findViewById(R.id.pieChart)
-        val customFont = Typeface.createFromAsset(assets, "fonts/custom_font.ttf")
+        viewPager.registerOnPageChangeCallback(pageChangeCallback)
 
-        val gastos = 700f
-        val renda = 1000f
-        val porcentagemGastos = (gastos / renda) * 100
+        // Botão de nova economia
+        binding.NovaEconomia.setOnClickListener {
+            Log.d("CofrinhoActivity", "Navegando para AddMeta")
+            intent = Intent(this, AddMeta::class.java)
+            startActivity(intent)
+        }
 
-        // Criando entradas para o gráfico
-        val entries = arrayListOf(
-            PieEntry(gastos, "Gasto"),
-            PieEntry(renda - gastos, "Renda")
-        )
+        // Botão de editar economia (agora redireciona para EditMeta)
+        binding.EditarEconomia.setOnClickListener {
+            Log.d("CofrinhoActivity", "Navegando para EditMeta")
+            intent = Intent(this, EditMeta::class.java)
 
-        // Definindo as cores específicas
-        val dataSet = PieDataSet(entries, "")
-        dataSet.colors = listOf(Color.parseColor("#FFBF54"), Color.BLACK)
-        dataSet.setDrawValues(false)
+            val metaId = ""
+            val tituloMeta = ""
+            val valorMeta = 0.0
+            val qtnMeses = 0
 
-        val pieData = PieData(dataSet)
-        pieChart.data = pieData
-        pieChart.setDrawEntryLabels(false)
-        pieChart.isDrawHoleEnabled = true
-        pieChart.holeRadius = 58f
-        pieChart.setHoleColor(Color.parseColor("#1C1C1C"))
+            // Enviar os dados para a EditMeta Activity
+            intent.putExtra("metaId", metaId)
+            intent.putExtra("tituloMeta", tituloMeta)
+            intent.putExtra("valorMeta", valorMeta)
+            intent.putExtra("qtnMeses", qtnMeses)
 
-        // Aplicando a fonte customizada no texto central
-        pieChart.setCenterText("${porcentagemGastos.toInt()}%")
-        pieChart.setCenterTextSize(20f)
-        pieChart.setCenterTextColor(Color.WHITE)
-        pieChart.setCenterTextTypeface(customFont) // Fonte customizada no texto central
+            startActivity(intent)
+        }
 
-        // Remover a descrição do gráfico
-        pieChart.description.isEnabled = false
-
-        // Customizando a legenda
-        val legend = pieChart.legend
-        legend.isEnabled = true
-        legend.textColor = Color.WHITE
-        legend.textSize = 12f
-        legend.typeface = customFont // Aplicando fonte customizada na legenda
-        val typeface = Typeface.createFromAsset(
-            assets,
-            "fonts/custom_font.ttf"
-        ) // Certifique-se de que o caminho está correto
-        pieChart.legend.typeface = typeface
-        val boldTypeface = Typeface.create(typeface, Typeface.BOLD) // Define a fonte como bold
-
-        // Aplicar a fonte bold à legenda e ao texto central
-        pieChart.legend.typeface = boldTypeface
-        pieChart.setCenterTextTypeface(boldTypeface)
+        // Buscar metas e atualizar as informações
+        buscarMetas()
     }
 
-    fun irParaDash(view: View) {
-        intent = Intent(view.context, MainActivity::class.java)
-        view.context.startActivity(intent)
+    override fun onResume() {
+        super.onResume()
+        Log.d("CofrinhoActivity", "onResume chamado")
+        // Recarregar as metas quando a atividade for retomada
+        buscarMetas()
     }
 
-    fun irParaInvestimento(view: View) {
-        intent = Intent(view.context, InvestimentoActivity::class.java)
-        view.context.startActivity(intent)
-    }
+    private fun buscarMetas() {
+        val db = FirebaseFirestore.getInstance()
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
 
-//    fun irParaAddMeta(view: View) {
-//        intent = Intent(view.context, FragmentaAddMeta::class.java)
-//        view.context.startActivity(intent)
-//    }
+        Log.d("CofrinhoActivity", "Buscando metas para o usuário: $userId")
 
-    fun irParaPerfil(view: View) {
-        intent = Intent(view.context, PerfilActivity::class.java)
-        view.context.startActivity(intent)
-    }
+        if (userId != null) {
+            val metasRef = db.collection("Metas").whereEqualTo("userId", userId)
 
-    fun irParaCalendario(view: View) {
-        val intent = Intent(view.context, CalendarioActivity::class.java)
-        view.context.startActivity(intent)
+            metasRef.get()
+                .addOnSuccessListener { documents ->
+                    Log.d("CofrinhoActivity", "Metas recebidas: ${documents.size()}")
+
+                    // Inicialize as listas de dados
+                    val metas = mutableListOf<Triple<String, Double, Int>>()
+                    val valorEconomizadoList = mutableListOf<Double>()
+                    val valorPorMesList = mutableListOf<Double>()
+                    val progressoList = mutableListOf<String>()
+                    val progressValues = mutableListOf<Int>() // Novo: progresso em %
+
+                    var totalValorMensal = 0.0
+
+                    if (documents.isEmpty) {  // Verifique com .isEmpty em vez de isNotEmpty
+                        Toast.makeText(this, "Nenhuma meta encontrada!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        for (document in documents) {
+                            val metaId = document.id
+                            val tituloMeta = document.getString("tituloMeta") ?: continue
+                            val valorMeta = document.getDouble("valorMeta") ?: continue
+                            val qtnMeses = document.getLong("qtnMeses")?.toInt() ?: 0
+                            val mesesConcluidos = document.getLong("mesesConcluidos")?.toInt() ?: 0
+
+                            metas.add(Triple(tituloMeta, valorMeta, qtnMeses))
+
+                            if (qtnMeses > 0) {
+                                val valorEconomizado = valorMeta / qtnMeses
+                                valorEconomizadoList.add(valorEconomizado)
+                            }
+
+                            if (qtnMeses > 0) {
+                                val valorPorMes = valorMeta / qtnMeses
+                                valorPorMesList.add(valorPorMes)
+                                totalValorMensal += valorPorMes
+                            }
+
+                            val progressoMeta = "$mesesConcluidos de $qtnMeses meses"
+                            progressoList.add(progressoMeta)
+
+                            // Novo: calculando progresso em %
+                            if (qtnMeses > 0) {
+                                val progresso = maxOf((mesesConcluidos.toDouble() / qtnMeses * 100).toInt(), 2)
+                                progressValues.add(progresso)
+                            }
+                        }
+
+                        // Atualizando adaptadores
+                        metasAdapter.submitList(metas)
+                        valorEconomizadoAdapter.submitList(valorEconomizadoList)
+                        valorPorMesAdapter.submitList(valorPorMesList)
+                        progressoAdapter = ProgressoAdapter(this, progressoList)
+                        viewPagerProgresso.adapter = progressoAdapter
+
+                        // Atualizando ProgressBarAdapter
+                        progressBarAdapter = ProgressBarAdapter(this, progressValues)
+                        viewPagerProgressBar.adapter = progressBarAdapter
+
+                        binding.textView10.text = "R$: %.2f".format(totalValorMensal)
+                    }
+                }
+                .addOnFailureListener { e ->
+                    Log.e("CofrinhoActivity", "Erro ao buscar as metas: ${e.message}", e)
+                    Toast.makeText(this, "Erro ao buscar as metas: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+        } else {
+            Toast.makeText(this, "Usuário não autenticado!", Toast.LENGTH_SHORT).show()
+        }
     }
 }
 
