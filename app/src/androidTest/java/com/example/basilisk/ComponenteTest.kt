@@ -13,7 +13,7 @@ import org.junit.Test
 class ComponenteTest {
 
   @Test
-  fun testEmptyFieldsValidation() {
+  fun camposDeLoginVazios() {
     // Lança a Activity em teste
     val activityScenario = ActivityScenario.launch(CadastroActivity::class.java)
 
@@ -33,7 +33,7 @@ class ComponenteTest {
   }
 
   @Test
-  fun testNavigationToLogin() {
+  fun navegacaoDeCadastroParaLogin() {
     // Lança a Activity em teste
     val activityScenario = ActivityScenario.launch(CadastroActivity::class.java)
 
@@ -46,6 +46,4 @@ class ComponenteTest {
     // Finaliza a Activity
     activityScenario.close()
   }
-
-
 }
