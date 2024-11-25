@@ -55,7 +55,8 @@ class InvestimentoActivity : AppCompatActivity() {
     variaçãoTextView = findViewById(R.id.negativoVermelho)
 
     val token = "6AfdujsFQpyPMnwfgeNWFf"
-    getIbovespa(token)
+    getIbovespa()
+
 
     var investimentos: List<Investimento>
 
@@ -72,12 +73,12 @@ class InvestimentoActivity : AppCompatActivity() {
     )
   }
 
-  private fun getIbovespa(token: String) {
+  private fun getIbovespa() {
     val formatador = NumberFormat.getPercentInstance(Locale("pt", "BR")).apply {
       minimumFractionDigits = 2
     }
 
-    val call = RetrofitClient.api.getIbovespa(token)
+    val call = RetrofitClient.api.getIbovespa()
     call.enqueue(object : Callback<IbovespaResponse> {
       override fun onResponse(
         call: Call<IbovespaResponse>,
@@ -105,6 +106,7 @@ class InvestimentoActivity : AppCompatActivity() {
       }
     })
   }
+
 
 
   fun irParaAddInvest(view: View) {
