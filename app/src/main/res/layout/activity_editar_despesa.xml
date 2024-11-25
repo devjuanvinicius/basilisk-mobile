@@ -101,7 +101,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/inputTituloMeta"
+                    android:id="@+id/inputTituloEditDespesa"
                     android:layout_width="320dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="31dp"
@@ -142,13 +142,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/inputValorMeta"
+                    android:id="@+id/inputValorEditDespesa"
                     android:layout_width="320dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="31dp"
                     android:background="@drawable/textinput"
                     android:ems="10"
-                    android:inputType="text"
+                    android:inputType="numberDecimal"
                     android:padding="2dp"
                     android:paddingStart="10dp"
                     android:textColor="@color/white"
@@ -176,7 +176,7 @@
                     android:layout_marginStart="9dp"
                     android:layout_marginEnd="261dp"
                     android:fontFamily="@font/inter_medium"
-                    android:text="Data de finalização*"
+                    android:text="Data*"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -187,10 +187,10 @@
                     android:id="@+id/inputDataFinal"
                     android:layout_width="320dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="31dp"
+                    android:layout_marginTop="24dp"
                     android:background="@drawable/textinput"
                     android:ems="10"
-                    android:inputType="text"
+                    android:inputType="date"
                     android:padding="2dp"
                     android:paddingStart="10dp"
                     android:textColor="@color/white"
@@ -229,39 +229,21 @@
             app:layout_constraintTop_toTopOf="parent"
             app:track="@drawable/switch_track" />
 
-        <Button
-            android:id="@+id/button_excluir"
-            android:layout_width="150dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="48dp"
-            android:layout_marginBottom="164dp"
-            android:background="@drawable/radiuscar4"
-            android:text="Excluir"
-            android:textColor="#000"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_editar"
-            tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/button_editar"
-            android:layout_width="150dp"
+            android:id="@+id/ButtonEditdespesa"
+            android:layout_width="320dp"
             android:layout_height="38dp"
-            android:layout_marginStart="44dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginBottom="164dp"
             android:background="@drawable/radiuscar3"
-            android:text="Editar"
 
+            android:text="Editar"
             android:textColor="#000"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button_excluir"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Este é um comentário em XML -->

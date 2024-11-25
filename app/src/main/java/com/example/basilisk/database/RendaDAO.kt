@@ -1,18 +1,21 @@
 package com.example.basilisk.database
 
 import com.example.basilisk.model.Renda
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.google.gson.Gson
 
-class RendaDAO(private val db: FirebaseFirestore): IRendaDAO {
+class RendaDAO(private val db: FirebaseFirestore, private val auth: FirebaseAuth) : IRendaDAO {
+
     override fun criarRenda(
         idUsuario: String,
         renda: Renda,
         onSuccess: () -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        if(idUsuario.isNotEmpty()){
+        if (idUsuario.isNotEmpty()) {
             db.collection("users").document(idUsuario)
                 .set(
                     mapOf("rendas" to FieldValue.arrayUnion(renda)),
@@ -47,7 +50,7 @@ class RendaDAO(private val db: FirebaseFirestore): IRendaDAO {
                 onFailure(exception)
             })
         } else {
-            onFailure(Exception("ID do usuário é nulo"))
+            onFailure(Exception("ID do usuário ou ID da renda são nulos"))
         }
     }
 
@@ -57,12 +60,11 @@ class RendaDAO(private val db: FirebaseFirestore): IRendaDAO {
         onSuccess: () -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        if (idUsuario.isNotEmpty()) {
+        if (idUsuario.isNotEmpty() && renda != null) {
             retornarRenda(idUsuario, { rendas ->
                 val rendasAtualizadas = rendas.map { item ->
                     if (item.id == renda.id) {
                         item.copy(
-                            id = renda.id,
                             nome = renda.nome,
                             valor = renda.valor,
                             dataRecebimento = renda.dataRecebimento,
@@ -87,7 +89,7 @@ class RendaDAO(private val db: FirebaseFirestore): IRendaDAO {
                 onFailure(exception)
             })
         } else {
-            onFailure(Exception("ID do usuário ou despesa inválidos"))
+            onFailure(Exception("ID do usuário ou renda inválidos"))
         }
     }
 
@@ -96,26 +98,66 @@ class RendaDAO(private val db: FirebaseFirestore): IRendaDAO {
         onSuccess: (List<Renda>) -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        db.collection("users").document(idUsuario).get()
-            .addOnSuccessListener { document ->
-                if (document.exists()) {
-                    val rendas = document.get("renda") as? List<Map<String, Any>> ?: emptyList()
-                    val rendasList = rendas.map {
-                        Renda(
-                            id = it["id"] as String,
-                            nome = it["nome"] as String,
-                            valor = it["valor"] as Double,
-                            dataRecebimento = it["dataPagamento"] as String,
-                            rendaFixa = it["rendaFixa"] as Boolean
-                        )
+        if (idUsuario.isNotEmpty()) {
+            db.collection("users").document(idUsuario).get()
+                .addOnSuccessListener { document ->
+                    if (document.exists()) {
+                        val rendasList = document.get("rendas") as? List<Map<String, Any>> ?: emptyList()
+
+                        val rendas = rendasList.mapNotNull { rendaMap ->
+                            try {
+                                val json = Gson().toJson(rendaMap)
+                                Gson().fromJson(json, Renda::class.java)
+                            } catch (e: Exception) {
+                                null
+                            }
+                        }
+
+                        onSuccess(rendas)
+                    } else {
+                        onFailure(Exception("Documento não encontrado no Firebase."))
                     }
-                    onSuccess(rendasList)
-                } else {
-                    onFailure(Exception("Documento não encontrado"))
                 }
-            }
-            .addOnFailureListener { exception ->
-                onFailure(exception)
-            }
+                .addOnFailureListener { exception ->
+                    onFailure(exception)
+                }
+        } else {
+            onFailure(Exception("ID do usuário é inválido ou está vazio."))
+        }
+    }
+
+    fun ouvirRendas(
+        idUsuario: String,
+        onChange: (List<Renda>) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        if (idUsuario.isNotEmpty()) {
+            db.collection("users").document(idUsuario)
+                .addSnapshotListener { snapshot, exception ->
+                    if (exception != null) {
+                        onFailure(exception)
+                        return@addSnapshotListener
+                    }
+
+                    if (snapshot != null && snapshot.exists()) {
+                        val rendasList = snapshot.get("rendas") as? List<Map<String, Any>> ?: emptyList()
+
+                        val rendas = rendasList.mapNotNull { rendaMap ->
+                            try {
+                                val json = Gson().toJson(rendaMap)
+                                Gson().fromJson(json, Renda::class.java)
+                            } catch (e: Exception) {
+                                null
+                            }
+                        }
+
+                        onChange(rendas)
+                    } else {
+                        onChange(emptyList()) // Documento ainda não existe ou está vazio
+                    }
+                }
+        } else {
+            onFailure(Exception("ID do usuário é inválido ou está vazio."))
+        }
     }
 }

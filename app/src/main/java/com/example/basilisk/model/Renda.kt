@@ -7,3 +7,4 @@ data class Renda(
     val dataRecebimento: String,
     val rendaFixa: Boolean
 )
+

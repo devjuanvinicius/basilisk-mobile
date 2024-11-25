@@ -5,18 +5,19 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.basilisk.database.DespesasDAO
+import com.example.basilisk.database.RendaDAO
 import com.example.basilisk.databinding.ActivityMainBinding
-import com.example.basilisk.model.Despesas
+import com.example.basilisk.model.Usuario
 import com.example.basilisk.recyclers.ItemAdapterDespesa
+import com.example.basilisk.recyclers.ItemAdapterRendas
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -28,10 +29,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var pieChart: PieChart
-    private lateinit var rvLista: RecyclerView
-
-    private val auth by lazy { FirebaseAuth.getInstance() }
-    private val db by lazy { FirebaseFirestore.getInstance() }
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,113 +36,169 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupWindowInsets()
-        setupSpinner()
-        setupPieChart()
-        setupButtons()
-        loadDespesas()
+        val db = FirebaseFirestore.getInstance()
+        val auth = FirebaseAuth.getInstance()
+        val idUsuario = auth.currentUser?.uid ?: ""
+        val despesasDAO = DespesasDAO(db, auth)
+        var usuario: Usuario
 
-        rvLista = findViewById(R.id.rv_dashboard)
-        rvLista.layoutManager = LinearLayoutManager(this)
-    }
 
-    private fun setupWindowInsets() {
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-    }
-
-    private fun setupSpinner() {
-        val spinner: Spinner = findViewById(R.id.spinnermes)
-        val meses = resources.getStringArray(R.array.meses)
-        val mesesAbrev = arrayOf("Nov", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez")
         val customFont = Typeface.createFromAsset(assets, "fonts/custom_font.ttf")
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, meses)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = adapter
+        // Configuração do Spinner
+        val meses = resources.getStringArray(R.array.meses)
+        val mesesabv = arrayOf("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez")
 
-        val selectedMonthTextView: TextView = findViewById(R.id.selectedMonth)
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        var adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, meses)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnermes.adapter = adapter
+
+        binding.spinnermes.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                selectedMonthTextView.text = mesesAbrev[position]
-                selectedMonthTextView.typeface = customFont
+                binding.selectedMonth.text = mesesabv[position]
+                binding.selectedMonth.typeface = customFont
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
+
+        // Botão de logout
+        binding.buttonTesteDeLogof.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this, CadastroActivity::class.java))
+            finish()
+        }
+
+        configurarPieChart(customFont)
+        calculoSaldo()
+
+        // Configurar RecyclerView para despesas
+        despesasDAO.retornarDespesa(
+            idUsuario = idUsuario,
+            onSuccess = { despesasList ->
+                // Configurar RecyclerView
+                val recyclerView = binding.rvDashboard
+                recyclerView.layoutManager = LinearLayoutManager(this)
+
+                // Passando a função de exclusão para o adaptador
+                recyclerView.adapter = ItemAdapterDespesa(despesasList.toMutableList()) { idDespesa ->
+                    // Função de exclusão: chamando o método de deletar despesa no DAO
+                    despesasDAO.deletarDespesa(
+                        idUsuario = idUsuario,
+                        idDespesas = idDespesa,
+                        onSuccess = {
+                            // Atualiza a RecyclerView após a exclusão
+                            despesasDAO.retornarDespesa(idUsuario, { despesas ->
+                                (binding.rvDashboard.adapter as ItemAdapterDespesa).updateList(despesas)
+
+                            }, { exception ->
+                                Log.e("MainActivity", "Erro ao atualizar lista de despesas: ${exception.message}")
+                            })
+                        },
+                        onFailure = { exception ->
+                            Log.e("MainActivity", "Erro ao deletar despesa: ${exception.message}")
+                        }
+                    )
+                }
+            },
+            onFailure = { exception ->
+                // Tratar erro
+                Log.e("MainActivity", "Erro ao buscar despesas: ${exception.message}")
+            }
+        )
+
+        despesasDAO.ouvirDespesas(
+            idUsuario = idUsuario,
+            onChange = { despesasList ->
+                // Atualiza a RecyclerView automaticamente com as despesas em tempo real
+                val recyclerView = binding.rvDashboard
+                recyclerView.layoutManager = LinearLayoutManager(this)
+
+                // Passando a função de exclusão para o adaptador
+                recyclerView.adapter = ItemAdapterDespesa(despesasList.toMutableList()) { idDespesa ->
+                    // Função de exclusão: chamando o método de deletar despesa no DAO
+                    despesasDAO.deletarDespesa(
+                        idUsuario = idUsuario,
+                        idDespesas = idDespesa,
+                        onSuccess = {
+                            // Atualiza a RecyclerView após a exclusão
+                            despesasDAO.retornarDespesa(idUsuario, { despesas ->
+                                (binding.rvDashboard.adapter as ItemAdapterDespesa).updateList(despesas)
+                            }, { exception ->
+                                Log.e("MainActivity", "Erro ao atualizar lista de despesas: ${exception.message}")
+                            })
+                        },
+                        onFailure = { exception ->
+                            Log.e("MainActivity", "Erro ao deletar despesa: ${exception.message}")
+                        }
+                    )
+                }
+            },
+            onFailure = { exception ->
+                // Tratar erro
+                Log.e("MainActivity", "Erro ao buscar despesas: ${exception.message}")
+            }
+        )
+
+
+
+
+
+
+
+        // Configurar Fragment inicial
+        if (savedInstanceState == null) {
+            replaceFragment(RendaFragment())
+        }
+
+        // Configurar botões para troca de fragmentos
+        binding.buttonRenda.setOnClickListener {
+            replaceFragment(DespesaFragment())
+        }
+
+        binding.buttonDespesa.setOnClickListener {
+            replaceFragment(RendaFragment())
+        }
     }
 
-    private fun setupPieChart() {
-        pieChart = findViewById(R.id.pieChart)
+    private fun calculoSaldo() {
+        TODO("Not yet implemented")
+    }
 
+    private fun configurarPieChart(customFont: Typeface) {
         val gastos = 600f
         val renda = 1000f
         val porcentagemGastos = (gastos / renda) * 100
+
+        pieChart = binding.pieChart
 
         val entries = arrayListOf(
             PieEntry(gastos, "Gasto"),
             PieEntry(renda - gastos, "Renda")
         )
 
-        val dataSet = PieDataSet(entries, "")
-        dataSet.colors = listOf(Color.parseColor("#FFBF54"), Color.BLACK)
-        dataSet.setDrawValues(false)
-
-        val pieData = PieData(dataSet)
-        pieChart.data = pieData
-        pieChart.setDrawEntryLabels(false)
-        pieChart.isDrawHoleEnabled = true
-        pieChart.holeRadius = 58f
-        pieChart.setHoleColor(Color.parseColor("#1C1C1C"))
-
-        val customFont = Typeface.createFromAsset(assets, "fonts/custom_font.ttf")
-        pieChart.setCenterText("${porcentagemGastos.toInt()}%")
-        pieChart.setCenterTextSize(20f)
-        pieChart.setCenterTextColor(Color.WHITE)
-        pieChart.setCenterTextTypeface(customFont)
-
-        pieChart.description.isEnabled = false
-
-        val legend = pieChart.legend
-        legend.isEnabled = true
-        legend.textColor = Color.WHITE
-        legend.textSize = 12f
-        legend.typeface = customFont
-    }
-
-    private fun setupButtons() {
-        binding.buttonTesteDeLogof.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            val intent = Intent(this, CadastroActivity::class.java)
-            startActivity(intent)
+        val dataSet = PieDataSet(entries, "").apply {
+            colors = listOf(Color.parseColor("#FFBF54"), Color.BLACK)
+            setDrawValues(false)
         }
 
-        val buttonRenda = findViewById<Button>(R.id.buttonRenda)
-        val buttonDespesa = findViewById<Button>(R.id.buttonDespesa)
-
-        if (supportFragmentManager.fragments.isEmpty()) {
-            replaceFragment(RendaFragment())
-        }
-
-        buttonRenda.setOnClickListener { replaceFragment(DespesaFragment()) }
-        buttonDespesa.setOnClickListener { replaceFragment(RendaFragment()) }
-    }
-
-    private fun loadDespesas() {
-        val despesasArray = mutableListOf<Despesas>()
-
-        if (auth.currentUser?.uid != null) {
-            DespesasDAO(db).retornarDespesa(
-                auth.currentUser!!.uid,
-                onSuccess = { despesasList ->
-                    despesasArray.addAll(despesasList)
-                    rvLista.adapter = ItemAdapterDespesa(despesasArray)
-                },
-                onFailure = { }
-            )
+        pieChart.apply {
+            data = PieData(dataSet)
+            setDrawEntryLabels(false)
+            isDrawHoleEnabled = true
+            holeRadius = 58f
+            setHoleColor(Color.parseColor("#1C1C1C"))
+            setCenterText("${porcentagemGastos.toInt()}%")
+            setCenterTextSize(20f)
+            setCenterTextColor(Color.WHITE)
+            setCenterTextTypeface(customFont)
+            description.isEnabled = false
+            legend.apply {
+                isEnabled = true
+                textColor = Color.WHITE
+                textSize = 12f
+                typeface = Typeface.create(customFont, Typeface.BOLD)
+            }
         }
     }
 
@@ -155,9 +208,27 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    fun irParaInvestimento(view: View) = startActivity(Intent(this, InvestimentoActivity::class.java))
-    fun irParaCoffin(view: View) = startActivity(Intent(this, CofrinhoActivity::class.java))
-    fun irParaAddRenda(view: View) = startActivity(Intent(this, novaRendaActivity::class.java))
-    fun irParaPerfil(view: View) = startActivity(Intent(this, PerfilActivity::class.java))
-    fun irParaCalendario(view: View) = startActivity(Intent(this, CalendarioActivity::class.java))
+    // Funções para navegação entre Activities
+    fun irParaInvestimento(view: View) {
+        startActivity(Intent(view.context, InvestimentoActivity::class.java))
+    }
+
+    fun irParaCoffin(view: View) {
+        startActivity(Intent(view.context, CofrinhoActivity::class.java))
+    }
+
+    fun irParaAddRenda(view: View) {
+        startActivity(Intent(view.context, novaRendaActivity::class.java))
+    }
+
+    fun irParaPerfil(view: View) {
+        startActivity(Intent(view.context, PerfilActivity::class.java))
+    }
+
+    fun irParaCalendario(view: View) {
+        startActivity(Intent(view.context, CalendarioActivity::class.java))
+    }
 }
+
+
+
