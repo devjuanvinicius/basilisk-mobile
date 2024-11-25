@@ -4,9 +4,9 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.recyclerview.widget.RecyclerView
 import com.example.basilisk.EditarDespesa
 import com.example.basilisk.R
 import com.example.basilisk.model.Despesas
@@ -16,14 +16,14 @@ import java.util.Locale
 class ItemAdapterDespesa(
     val lista: List<Despesas>,
     private val onDeleteClick: (String) -> Unit
-) : Adapter<ItemAdapterDespesa.ItemViewHolder>() {
+) : RecyclerView.Adapter<ItemAdapterDespesa.ItemViewHolder>() {
 
-    inner class ItemViewHolder(itemView: View) : ViewHolder(itemView) {
+    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tituloDespesa: TextView = itemView.findViewById(R.id.tituloItemLista)
         val dataDespesa: TextView = itemView.findViewById(R.id.subTituloItemLista)
         val valorDespesa: TextView = itemView.findViewById(R.id.valorItemLista)
-        val deleteButton: View = itemView.findViewById(R.id.delete_despesa)
-        val editButton: View = itemView.findViewById(R.id.edit_despesa)
+        val deleteButton: Button = itemView.findViewById(R.id.delete_despesa)
+        val editButton: Button = itemView.findViewById(R.id.edit_despesa)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -35,22 +35,29 @@ class ItemAdapterDespesa(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val itemDaLista = lista[position]
 
+        // Formatar o valor como moeda
         val valorFormatado = NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(itemDaLista.valor)
 
         holder.tituloDespesa.text = itemDaLista.nome
         holder.dataDespesa.text = itemDaLista.dataPagamento
         holder.valorDespesa.text = valorFormatado
 
+        // Configuração do botão de deletar
         holder.deleteButton.setOnClickListener {
             onDeleteClick(itemDaLista.id)
         }
 
+        // Configuração do botão de editar
         holder.editButton.setOnClickListener {
             val intent = Intent(holder.itemView.context, EditarDespesa::class.java)
+
+            // Passando dados para a activity EditarDespesa
             intent.putExtra("idDespesa", itemDaLista.id)
             intent.putExtra("titulo", itemDaLista.nome)
             intent.putExtra("valor", itemDaLista.valor)
             intent.putExtra("dataPagamento", itemDaLista.dataPagamento)
+
+            // Iniciando a Activity para editar
             holder.itemView.context.startActivity(intent)
         }
     }

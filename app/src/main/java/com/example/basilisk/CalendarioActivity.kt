@@ -39,11 +39,8 @@ class CalendarioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_calendario)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        editarPagamento = findViewById(R.id.EditarEconomia)
 
         rvLista = findViewById(R.id.rv_calendario)
         calendarView = findViewById(R.id.calendarView)
@@ -56,8 +53,7 @@ class CalendarioActivity : AppCompatActivity() {
             atualizarDadosTela(despesasList)
         }
 
-        editarPagamento.findViewById<TextView>(R.id.EditarEconomia)
-        editarPagamento.setOnClickListener{
+        editarPagamento.setOnClickListener {
             val intent = Intent(this, EditarDespesa::class.java)
             startActivity(intent)
         }
@@ -98,7 +94,7 @@ class CalendarioActivity : AppCompatActivity() {
         println(despesas[0])
         rvLista.adapter = ItemAdapterDespesa(
             despesas,
-            onDeleteClick = TODO()
+            onDeleteClick = {}
         )
     }
 

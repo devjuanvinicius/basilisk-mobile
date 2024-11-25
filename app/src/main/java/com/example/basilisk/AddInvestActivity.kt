@@ -11,6 +11,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.basilisk.database.InvestimentoDAO
 import com.example.basilisk.model.Investimento
+import com.example.basilisk.network.ApiResponse
+import com.example.basilisk.network.RetrofitClient
 import com.example.basilisk.utils.exibirMensagem
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
@@ -18,6 +20,9 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class AddInvestActivity : AppCompatActivity() {
 
@@ -61,20 +66,50 @@ class AddInvestActivity : AppCompatActivity() {
         if (codigoAcao.isEmpty() || valorInvest.isEmpty() || quantInvest.isEmpty() || dataInvest.isEmpty()) {
             return
         }
-        val investimento = Investimento(codigoAcao, dataInvest, quantInvest.toInt(), valorInvest.toDouble())
 
-        InvestimentoDAO(db).criarInvestimento(
-            auth.currentUser!!.uid,
-            investimento,
-            onSuccess = {
-                irParaInvest()
-            },
-            onFailure = { exception ->
-                val mensagemErro = getMensagemErro(exception)
-                exibirMensagem(mensagemErro)
+        val token = "6AfdujsFQpyPMnwfgeNWFf"
+        var nomeAcao: String? = null
+
+        val call = RetrofitClient.api.getAcao(codigoAcao, token)
+
+        call.enqueue(object : Callback<ApiResponse> {
+            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                if (response.isSuccessful) {
+                    val result = response.body()?.results?.firstOrNull()
+                    result?.let {
+                        nomeAcao = it.shortName
+                    }
+                }
+
+                if (nomeAcao != null) {
+                    val investimento = Investimento(
+                        codigoAcao = codigoAcao,
+                        nomeAcao = nomeAcao!!,
+                        dataCompra = dataInvest,
+                        qtdAcoes = quantInvest.toInt(),
+                        valor = valorInvest.toDouble()
+                    )
+
+                    InvestimentoDAO(db).criarInvestimento(
+                        auth.currentUser!!.uid,
+                        investimento,
+                        onSuccess = {
+                            irParaInvest()
+                        },
+                        onFailure = { exception ->
+                            val mensagemErro = getMensagemErro(exception)
+                            exibirMensagem(mensagemErro)
+                        }
+
+                    )
+                } else {
+                }
             }
 
-        )
+            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                t.printStackTrace()
+            }
+        })
 
         irParaInvest()
     }

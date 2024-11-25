@@ -56,18 +56,20 @@ class InvestimentoDAO(private val db: FirebaseFirestore): IInvestimentoDAO {
     override fun editarInvestimento(
         idUsuario: String,
         investimento: Investimento,
+        codigoAcao: String,
         onSuccess: () -> Unit,
         onFailure: (Exception) -> Unit
     ) {
         if (idUsuario.isNotEmpty()) {
             retornarInvestimento(idUsuario, { investimentos ->
                 val investimentoAtualizadas = investimentos.map { item ->
-                    if (item.codigoAcao == investimento.codigoAcao) {
+                    if (item.codigoAcao == codigoAcao) {
                         item.copy(
                             codigoAcao = investimento.codigoAcao,
                             dataCompra = investimento.dataCompra,
                             qtdAcoes = investimento.qtdAcoes,
                             valor = investimento.valor,
+                            nomeAcao = investimento.nomeAcao
                         )
                     } else {
                         item

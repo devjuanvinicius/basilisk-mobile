@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.basilisk.database.InvestimentoDAO
 import com.example.basilisk.model.Investimento
-import com.example.basilisk.network.IbovespaResponse
+import com.example.basilisk.network.ApiResponse
 import com.example.basilisk.network.RetrofitClient
 import com.example.basilisk.recyclers.ItemAdapterInvestimento
 import com.google.firebase.auth.FirebaseAuth
@@ -30,6 +30,7 @@ class InvestimentoActivity : AppCompatActivity() {
   private lateinit var ibovespaTextView: TextView
   private lateinit var variaçãoTextView: TextView
   private lateinit var rvInvestimento: RecyclerView
+  private lateinit var principalTextView: TextView
   private val db by lazy { FirebaseFirestore.getInstance() }
   private val auth by lazy { FirebaseAuth.getInstance() }
 
@@ -38,13 +39,11 @@ class InvestimentoActivity : AppCompatActivity() {
     enableEdgeToEdge()
     setContentView(R.layout.activity_investimento)
 
-
     ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
       val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
       v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
       insets
     }
-
 
     homeButton = findViewById(R.id.homeButton)
     homeButton.setOnClickListener {
@@ -67,9 +66,44 @@ class InvestimentoActivity : AppCompatActivity() {
         rvInvestimento = findViewById(R.id.rvInvestimento)
         rvInvestimento.adapter = ItemAdapterInvestimento(investimentos)
         rvInvestimento.layoutManager = LinearLayoutManager(this)
+
+        carregadorDado(investimentos)
       },
       onFailure = {exception -> val ficaaqui = exception}
     )
+  }
+
+  override fun onResume() {
+    super.onResume()
+    var investimentos: List<Investimento>
+
+    InvestimentoDAO(db).retornarInvestimento(
+      auth.currentUser!!.uid,
+      onSuccess = { investimentosList ->
+        investimentos = investimentosList
+
+        rvInvestimento = findViewById(R.id.rvInvestimento)
+        rvInvestimento.adapter = ItemAdapterInvestimento(investimentosList)
+        rvInvestimento.layoutManager = LinearLayoutManager(this)
+
+        carregadorDado(investimentos)
+      },
+      onFailure = { exception ->
+
+        exception.printStackTrace()
+      }
+    )
+  }
+
+  private fun carregadorDado(investimentosList: List<Investimento>) {
+    principalTextView = findViewById(R.id.principalAtivoText)
+
+    // Atualizar o texto com o nome da primeira ação
+    if (investimentosList.isNotEmpty()) {
+      principalTextView.text = investimentosList[0].nomeAcao
+    } else {
+      principalTextView.text = "Nenhum investimento encontrado"
+    }
   }
 
   private fun getIbovespa(token: String) {
@@ -77,11 +111,11 @@ class InvestimentoActivity : AppCompatActivity() {
       minimumFractionDigits = 2
     }
 
-    val call = RetrofitClient.api.getIbovespa(token)
-    call.enqueue(object : Callback<IbovespaResponse> {
+    val call = RetrofitClient.api.getAcao("^BVSP", token)
+    call.enqueue(object : Callback<ApiResponse> {
       override fun onResponse(
-        call: Call<IbovespaResponse>,
-        response: Response<IbovespaResponse>
+        call: Call<ApiResponse>,
+        response: Response<ApiResponse>
       ) {
         if (response.isSuccessful) {
           val ibovespa = response.body()?.results?.firstOrNull()
@@ -99,7 +133,7 @@ class InvestimentoActivity : AppCompatActivity() {
         }
       }
 
-      override fun onFailure(call: Call<IbovespaResponse>, t: Throwable) {
+      override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
         ibovespaTextView.text = "Erro de conexão"
         variaçãoTextView.text = "Erro na variação"
       }

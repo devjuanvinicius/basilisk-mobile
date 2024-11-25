@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity() {
 
     private val auth by lazy { FirebaseAuth.getInstance() }
     private val db by lazy { FirebaseFirestore.getInstance() }
+    private val customFont by lazy { Typeface.createFromAsset(assets, "fonts/custom_font.ttf") }
+    private val formatador by lazy { NumberFormat.getCurrencyInstance(Locale("pt", "BR")) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         setupPieChart()
         setupButtons()
 
-        rvLista = findViewById(R.id.rv_dashboard)
+        rvLista = binding.rvDashboard
         rvLista.layoutManager = LinearLayoutManager(this)
     }
 
@@ -59,39 +61,34 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculaSaldo(despesasArray: List<Despesas>) {
+        val currentUser = auth.currentUser
+        if (currentUser == null) {
+            Log.e("Erro", "Usuário não autenticado")
+            return
+        }
+
         RendaDAO(db).retornarRenda(
-            auth.currentUser!!.uid,
+            currentUser.uid,
             onSuccess = { rendas ->
                 val totalRenda = calcularTotalRenda(rendas)
                 val totalDespesa = calcularTotalDespesa(despesasArray)
 
                 val total = totalRenda - totalDespesa
-
-                val formatador = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
-                val textView: TextView = findViewById(R.id.saldoText)
+                val textView: TextView = binding.saldoText
                 textView.text = formatador.format(total)
             },
             onFailure = { exception ->
-                // Aqui você pode adicionar um log para verificar falhas
                 Log.e("Erro", "Falha ao carregar rendas: ${exception.message}")
             }
         )
     }
 
     private fun calcularTotalDespesa(despesasArray: List<Despesas>): Double {
-        var total = 0.0
-        for (despesa in despesasArray) {
-            total += despesa.valor
-        }
-        return total
+        return despesasArray.sumOf { it.valor }
     }
 
     private fun calcularTotalRenda(rendaLista: List<Renda>): Double {
-        var total = 0.0
-        for (renda in rendaLista) {
-            total += renda.valor
-        }
-        return total
+        return rendaLista.sumOf { it.valor }
     }
 
     private fun setupWindowInsets() {
@@ -103,16 +100,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupSpinner() {
-        val spinner: Spinner = findViewById(R.id.spinnermes)
+        val spinner: Spinner = binding.spinnermes
         val meses = resources.getStringArray(R.array.meses)
         val mesesAbrev = arrayOf("Nov", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez")
-        val customFont = Typeface.createFromAsset(assets, "fonts/custom_font.ttf")
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, meses)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
-        val selectedMonthTextView: TextView = findViewById(R.id.selectedMonth)
+        val selectedMonthTextView: TextView = binding.selectedMonth
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 selectedMonthTextView.text = mesesAbrev[position]
@@ -124,7 +120,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupPieChart() {
-        pieChart = findViewById(R.id.pieChart)
+        pieChart = binding.pieChart
 
         val gastos = 600f
         val renda = 1000f
@@ -145,8 +141,6 @@ class MainActivity : AppCompatActivity() {
         pieChart.isDrawHoleEnabled = true
         pieChart.holeRadius = 58f
         pieChart.setHoleColor(Color.parseColor("#1C1C1C"))
-
-        val customFont = Typeface.createFromAsset(assets, "fonts/custom_font.ttf")
         pieChart.setCenterText("${porcentagemGastos.toInt()}%")
         pieChart.setCenterTextSize(20f)
         pieChart.setCenterTextColor(Color.WHITE)
@@ -168,8 +162,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val buttonRenda = findViewById<Button>(R.id.buttonRenda)
-        val buttonDespesa = findViewById<Button>(R.id.buttonDespesa)
+        val buttonRenda = binding.buttonRenda
+        val buttonDespesa = binding.buttonDespesa
 
         if (supportFragmentManager.fragments.isEmpty()) {
             replaceFragment(RendaFragment())
@@ -180,18 +174,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadDespesas(despesasArray: MutableList<Despesas>) {
-        if (auth.currentUser?.uid != null) {
+        val currentUser = auth.currentUser
+        if (currentUser?.uid != null) {
             DespesasDAO(db).retornarDespesa(
-                auth.currentUser!!.uid,
+                currentUser.uid,
                 onSuccess = { despesasList ->
                     despesasArray.clear() // Limpar a lista antes de adicionar os novos dados
                     despesasArray.addAll(despesasList) // Adiciona as despesas recebidas
 
                     rvLista.adapter = ItemAdapterDespesa(
                         despesasArray,
-                        onDeleteClick = { despesaId ->
-                            excluirDespesa(despesaId, despesasArray)
-                        }
+                        onDeleteClick = { despesaId -> excluirDespesa(despesaId, despesasArray) }
                     )
                     atualizarDadosNaTela(despesasArray)
                 },
@@ -209,27 +202,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun atualizarDadosNaTela(despesasArray: MutableList<Despesas>) {
-        val diaPagamentoText: TextView = findViewById(R.id.numberBackground)
-        val proxPagamentoText: TextView = findViewById(R.id.nomeProximoPagamento)
-        val valorProxPagamentoText: TextView = findViewById(R.id.valorProximoPagamento)
+        val diaPagamentoText: TextView = binding.numberBackground
+        val proxPagamentoText: TextView = binding.nomeProximoPagamento
+        val valorProxPagamentoText: TextView = binding.valorProximoPagamento
 
-        if(despesasArray.isNotEmpty()){
+        if (despesasArray.isNotEmpty()) {
             val primeiraDespesa = despesasArray[0]
-            val diaPagamento = primeiraDespesa.dataPagamento.substring(0,2)
-
-            val formater = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
+            val diaPagamento = primeiraDespesa.dataPagamento.substring(0, 2)
 
             diaPagamentoText.text = diaPagamento
             proxPagamentoText.text = primeiraDespesa.nome
-            valorProxPagamentoText.text = formater.format(primeiraDespesa.valor)
-
-            loadDespesas(despesasArray)
+            valorProxPagamentoText.text = formatador.format(primeiraDespesa.valor)
         }
     }
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment, fragment)
+            .addToBackStack(null) // Adiciona o fragmento à pilha de navegação
             .commit()
     }
 
@@ -239,6 +229,3 @@ class MainActivity : AppCompatActivity() {
     fun irParaPerfil(view: View) = startActivity(Intent(this, PerfilActivity::class.java))
     fun irParaCalendario(view: View) = startActivity(Intent(this, CalendarioActivity::class.java))
 }
-
-
-

@@ -53,15 +53,15 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textAddInvest"
+        android:id="@+id/textEditInvest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
         android:fontFamily="@font/roboto_slab_bold"
-        android:text="Editar Spotify - S1PO34"
+        android:gravity="center"
+        android:text="Editar"
         android:textColor="@color/white"
         android:textSize="23sp"
-        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -245,7 +245,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/buttonAddInvest"
+        android:id="@+id/buttonEditInvest"
         android:layout_width="150dp"
         android:layout_height="36dp"
         android:layout_marginStart="46dp"
